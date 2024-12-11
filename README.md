@@ -1,2 +1,2 @@
 # TelePorti
-### Get your way Quickly.
+### One car, many destinations.
