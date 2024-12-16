@@ -33,4 +33,8 @@ public class UserController {
     public void truncate() {
         _serviceUser.truncate();
     }
+
+    public User getUserByEmailAndPassword(String email, String password) {
+        return _serviceUser.getUserByEmailAndPassword(email, password);
+    }
 }

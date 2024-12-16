@@ -110,4 +110,25 @@ public class ServiceUser implements IServiceUser {
         }
         return 0;
     }
+
+    public User getUserByEmailAndPassword(String email, String password) {
+        String req = "select * from users where email='" + email + "' and password='" + password + "'";
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                return new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("motDePasse"),
+                        res.getString("type")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return User.empty();
+    }
 }

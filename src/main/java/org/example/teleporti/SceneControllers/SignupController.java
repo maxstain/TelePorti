@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class SignupController {
     @FXML
     public Label errorText;
     @FXML
@@ -36,6 +36,18 @@ public class HelloController {
             }
         } else {
             errorText.setText("Invalid email or password.");
+        }
+    }
+
+    @FXML
+    protected void goToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/login-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) emailText.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

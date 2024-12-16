@@ -7,8 +7,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
+<?import org.controlsfx.control.HyperlinkLabel?>
+<?import javafx.scene.control.Hyperlink?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.teleporti.SceneControllers.HelloController">
+      fx:controller="org.example.teleporti.SceneControllers.SignupController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
@@ -17,5 +19,7 @@
     <TextField fx:id="emailText" promptText="Email"/>
     <PasswordField fx:id="passwordText" promptText="Password"/>
     <Label fx:id="errorText"/>
+    <Label text="Avez-vous un compte ?"/>
+    <Hyperlink text="Connectez" onAction="#goToLogin"/>
     <Button text="Login" onAction="#onFormSubmit"/>
 </VBox>

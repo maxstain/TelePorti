@@ -114,4 +114,8 @@ public class User {
                 ", type='" + type + '\'' +
                 '}';
     }
+
+    public static User empty() {
+        return new User(0, "", "", 0, "", "", "");
+    }
 }

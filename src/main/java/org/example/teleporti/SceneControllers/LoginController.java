@@ -1,0 +1,60 @@
+package org.example.teleporti.SceneControllers;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.example.teleporti.Controllers.UserController;
+import org.example.teleporti.Entities.User;
+import org.example.teleporti.Utils.PasswordHash;
+
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
+public class LoginController {
+    @FXML
+    public Label errorText;
+    @FXML
+    private TextField emailText;
+    @FXML
+    private PasswordField passwordText;
+
+    private UserController _userController = new UserController();
+
+    @FXML
+    protected void onFormSubmit() {
+        String email = emailText.getText();
+        String password = passwordText.getText();
+        User user = _userController.getUserByEmailAndPassword(email, password);
+        user.toString();
+        try {
+            if (email.equals(user.getEmail()) && PasswordHash.checkPassword(password, user.getMotDePasse())) {
+                errorText.setText("Login successful!");
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) emailText.getScene().getWindow();
+                stage.setScene(scene);
+            } else {
+                errorText.setText("Invalid email or password.");
+            }
+        } catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    protected void goToSignup() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/signup-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) emailText.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
