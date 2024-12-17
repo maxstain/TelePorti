@@ -19,16 +19,13 @@ public class Main {
                     "Firas",
                     25,
                     "firaschabchoub@gmail.com",
-                    PasswordHash.hashPassword("123456"),
+                    "123456",
                     "Admin"
             );
             _userController.truncate();
             _userController.ajout(user);
             _userController.afficher();
-            user.setAge(30);
-            _userController.modifier(user);
-            _userController.afficher();
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

@@ -122,13 +122,13 @@ public class ServiceUser implements IServiceUser {
                         res.getString("prenom"),
                         res.getInt("age"),
                         res.getString("email"),
-                        res.getString("motDePasse"),
+                        res.getString("password"), // This maps to motDePasse in the User entity
                         res.getString("type")
                 );
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return User.empty();
+        return null;
     }
 }

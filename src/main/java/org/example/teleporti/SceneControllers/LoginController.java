@@ -23,16 +23,22 @@ public class LoginController {
     @FXML
     private PasswordField passwordText;
 
-    private UserController _userController = new UserController();
+    private final UserController userController = new UserController();
 
     @FXML
     protected void onFormSubmit() {
         String email = emailText.getText();
         String password = passwordText.getText();
-        User user = _userController.getUserByEmailAndPassword(email, password);
-        user.toString();
+
         try {
-            if (email.equals(user.getEmail()) && PasswordHash.checkPassword(password, user.getMotDePasse())) {
+            User user = userController.getUserByEmailAndPassword(email, password);
+
+            if (user == null) {
+                errorText.setText("Invalid email or password.");
+                return;
+            }
+
+            if (email.equals(user.getEmail()) && password.equals(user.getMotDePasse())) {
                 errorText.setText("Login successful!");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
@@ -41,7 +47,7 @@ public class LoginController {
             } else {
                 errorText.setText("Invalid email or password.");
             }
-        } catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
