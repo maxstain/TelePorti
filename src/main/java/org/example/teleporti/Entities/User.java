@@ -1,5 +1,6 @@
 package org.example.teleporti.Entities;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class User {
@@ -10,6 +11,8 @@ public class User {
     private String email;
     private String motDePasse;
     private String type;
+    private Date creationDate = new Date();
+    private Date updateDate = new Date();
 
     public User(
             int id,
@@ -89,17 +92,31 @@ public class User {
         this.type = type;
     }
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return getId() == user.getId() && getAge() == user.getAge() && Objects.equals(getNom(), user.getNom()) && Objects.equals(getPrenom(), user.getPrenom()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getMotDePasse(), user.getMotDePasse()) && Objects.equals(getType(), user.getType());
+        if (!(o instanceof User user)) return false;
+        return getId() == user.getId() && getAge() == user.getAge() && Objects.equals(getNom(), user.getNom()) && Objects.equals(getPrenom(), user.getPrenom()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getMotDePasse(), user.getMotDePasse()) && Objects.equals(getType(), user.getType()) && Objects.equals(getCreationDate(), user.getCreationDate()) && Objects.equals(getUpdateDate(), user.getUpdateDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNom(), getPrenom(), getAge(), getEmail(), getMotDePasse(), getType());
+        return Objects.hash(getId(), getNom(), getPrenom(), getAge(), getEmail(), getMotDePasse(), getType(), getCreationDate(), getUpdateDate());
     }
 
     @Override
@@ -112,6 +129,8 @@ public class User {
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", type='" + type + '\'' +
+                ", creationDate=" + creationDate +
+                ", updateDate=" + updateDate +
                 '}';
     }
 
