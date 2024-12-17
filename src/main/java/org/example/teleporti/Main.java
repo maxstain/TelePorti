@@ -22,6 +22,7 @@ public class Main {
                     "123456",
                     "Admin"
             );
+
             _userController.truncate();
             _userController.ajout(user);
             _userController.afficher();
