@@ -15,11 +15,11 @@ public class Main {
         User user = null;
         try {
             user = new User(_userController.getSize() + 1,
-                    "Chabchoub",
-                    "Firas",
-                    25,
-                    "firaschabchoub@gmail.com",
-                    "123456",
+                    "Abbassi",
+                    "Chaima",
+                    23,
+                    "chaimaabbassi@gmail.com",
+                    "chaima123",
                     "Admin"
             );
 
