@@ -36,3 +36,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Windows ###
+Thumbs.db
+
+### Main ###
+*/main/java/org/example/teleporti/Main.java
