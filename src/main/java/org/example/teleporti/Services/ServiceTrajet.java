@@ -74,13 +74,13 @@ public class ServiceTrajet implements IServiceTrajet {
 
     @Override
     public void modifier(Trajet trajet) {
-        String req = "update trajets set nom = '" +
-                trajet.getConducteurId() + "', prenom = '" +
-                trajet.getPointDepart() + "', age= '" +
-                trajet.getDestination() + "', email = '" +
-                trajet.getDateHeure() + "', password = '" +
-                trajet.getPlacesDisponibles() + "', type = '" +
-                trajet.getCo2Economise() + "' where id = " + trajet.getId();
+        String req = "update trajets set conducteurId = '" + trajet.getConducteurId() +
+                "', pointDepart = '" + trajet.getPointDepart() +
+                "', destination = '" + trajet.getDestination() +
+                "', dateHeure = '" + trajet.getDateHeure() +
+                "', placesDisponibles = '" + trajet.getPlacesDisponibles() +
+                "', co2Economise = '" + trajet.getCo2Economise() +
+                "' where id = " + trajet.getId();
         try {
             ste.executeUpdate(req);
         } catch (SQLException e) {

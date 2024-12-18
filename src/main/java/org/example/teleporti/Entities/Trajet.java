@@ -1,6 +1,6 @@
 package org.example.teleporti.Entities;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 public class Trajet {

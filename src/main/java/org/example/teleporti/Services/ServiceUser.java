@@ -82,7 +82,8 @@ public class ServiceUser implements IServiceUser {
                 user.getAge() + "', email = '" +
                 user.getEmail() + "', password = '" +
                 user.getMotDePasse() + "', type = '" +
-                user.getType() + "', update_date = '" +
+                user.getType() + "', creation_date = '" +
+                user.getCreationDate() + "', update_date = '" +
                 user.getUpdateDate() + "' where id = " +
                 user.getId();
         try {

@@ -1,6 +1,6 @@
 package org.example.teleporti.Entities;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 public class User {
@@ -11,8 +11,8 @@ public class User {
     private String email;
     private String motDePasse;
     private String type;
-    private Date creationDate = new Date();
-    private Date updateDate = new Date();
+    private Date creationDate = new Date(new java.util.Date().getDate());
+    private Date updateDate = new Date(new java.util.Date().getDate());
 
     public User(
             int id,
@@ -28,12 +28,8 @@ public class User {
         this.prenom = prenom;
         this.age = age;
         this.email = email;
-        this.motDePasse = hashPassword(motDePasse);
+        this.motDePasse = motDePasse;
         this.type = type;
-    }
-
-    public static String hashPassword(String motDePasse) {
-        return motDePasse.hashCode() + "";
     }
 
     public int getId() {
