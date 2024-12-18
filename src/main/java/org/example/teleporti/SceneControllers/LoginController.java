@@ -40,7 +40,7 @@ public class LoginController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 DashboardController controller = fxmlLoader.getController();
-                controller.setWelcomeMessage(user.getEmail());
+                controller.setWelcomeMessage(user.getPrenom());
                 Stage stage = (Stage) emailText.getScene().getWindow();
                 stage.setScene(scene);
             } else {

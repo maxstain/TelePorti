@@ -49,7 +49,7 @@ public class DashboardController {
         System.out.println("Refreshed.");
     }
 
-    public void setWelcomeMessage(String email) {
-        welcome.setText("Welcome, " + email + "!");
+    public void setWelcomeMessage(String string) {
+        welcome.setText("Welcome, " + string + "!");
     }
 }
