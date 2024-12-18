@@ -9,11 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
-import org.example.teleporti.Utils.PasswordHash;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 public class LoginController {
     @FXML
