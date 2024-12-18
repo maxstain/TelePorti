@@ -4,6 +4,7 @@ import org.example.teleporti.Entities.User;
 
 public interface IServiceUser {
 
+
     public void ajout(User newUser);
 
 
