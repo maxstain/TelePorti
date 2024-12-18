@@ -14,7 +14,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label text="Welcome to the Dashboard!"/>
+    <Label fx:id="welcome"/>
 
     <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="200.0">
     <columns>

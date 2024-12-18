@@ -13,6 +13,7 @@ import org.example.teleporti.Entities.User;
 public class DashboardController {
 
     private UserController userController = new UserController();
+    public Label welcome;
 
     @FXML
     private TableView<User> usersTable;
@@ -46,5 +47,9 @@ public class DashboardController {
         ObservableList<User> users = FXCollections.observableArrayList(userController.afficherList());
         usersTable.setItems(users);
         System.out.println("Refreshed.");
+    }
+
+    public void setWelcomeMessage(String email) {
+        welcome.setText("Welcome, " + email + "!");
     }
 }
