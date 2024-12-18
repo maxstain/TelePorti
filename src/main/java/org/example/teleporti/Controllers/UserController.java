@@ -5,6 +5,7 @@ import org.example.teleporti.Services.ServiceUser;
 import org.example.teleporti.Entities.User;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class UserController {
     private static Connection con = new DatabaseConnection().getConnection();
@@ -16,6 +17,10 @@ public class UserController {
 
     public void afficher() {
         _serviceUser.afficher();
+    }
+
+    public List<User> afficherList() {
+        return _serviceUser.afficherList();
     }
 
     public void modifier(User user) {

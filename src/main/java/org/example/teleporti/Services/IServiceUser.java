@@ -2,6 +2,8 @@ package org.example.teleporti.Services;
 
 import org.example.teleporti.Entities.User;
 
+import java.util.List;
+
 public interface IServiceUser {
 
 
@@ -10,6 +12,7 @@ public interface IServiceUser {
 
     public void afficher();
 
+    public List<User> afficherList();
 
     public void modifier(User user);
 

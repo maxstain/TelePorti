@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 // La classe ServiceUser implémente l'interface IServiceUser et fournit des fonctionnalités pour gérer les entités User.
 public class ServiceUser implements IServiceUser {
@@ -77,6 +79,30 @@ public class ServiceUser implements IServiceUser {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+
+    @Override
+    public List<User> afficherList() {
+        List<User> users = new ArrayList<>();
+        String req = "select * from users";
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                users.add(new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("password"),
+                        res.getString("type")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return users;
     }
 
     // Méthode pour modifier les informations d'un utilisateur dans la base de données.

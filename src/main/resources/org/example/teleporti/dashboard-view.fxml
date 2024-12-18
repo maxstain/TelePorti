@@ -4,6 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.teleporti.SceneControllers.DashboardController">
     <padding>
@@ -11,4 +15,24 @@
     </padding>
 
     <Label text="Welcome to the Dashboard!"/>
+
+    <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="200.0">
+    <columns>
+        <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID">
+            <cellValueFactory>
+                <PropertyValueFactory property="id"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email">
+            <cellValueFactory>
+                <PropertyValueFactory property="email"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type">
+            <cellValueFactory>
+                <PropertyValueFactory property="type"/>
+            </cellValueFactory>
+        </TableColumn>
+    </columns>
+</TableView>
 </VBox>
