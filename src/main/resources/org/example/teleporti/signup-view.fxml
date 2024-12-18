@@ -16,10 +16,13 @@
     </padding>
 
     <Label text="TelePorti"/>
+    <TextField fx:id="nomText" promptText="Nom"/>
+    <TextField fx:id="prenomText" promptText="Prenom"/>
     <TextField fx:id="emailText" promptText="Email"/>
     <PasswordField fx:id="passwordText" promptText="Password"/>
+    <PasswordField fx:id="ageText" promptText="Age"/>
     <Label fx:id="errorText"/>
     <Label text="Avez-vous un compte ?"/>
     <Hyperlink text="Connectez" onAction="#goToLogin"/>
-    <Button text="Login" onAction="#onFormSubmit"/>
+    <Button text="Inscrire" onAction="#onFormSubmit"/>
 </VBox>

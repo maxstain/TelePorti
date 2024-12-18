@@ -7,36 +7,57 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.example.teleporti.Controllers.UserController;
+import org.example.teleporti.Entities.User;
 
 import java.io.IOException;
 
 public class SignupController {
+
+    private final UserController userController = new UserController();
+
     @FXML
     public Label errorText;
     @FXML
-    private TextField emailText;
+    public TextField ageText;
     @FXML
-    private PasswordField passwordText;
+    public TextField emailText;
+    @FXML
+    public PasswordField passwordText;
+    @FXML
+    public TextField nomText;
+    @FXML
+    public TextField prenomText;
 
     @FXML
     protected void onFormSubmit() {
+        String nom = nomText.getText();
+        String prenom = prenomText.getText();
         String email = emailText.getText();
         String password = passwordText.getText();
+        int age = Integer.parseInt(ageText.getText());
 
-        // Add your login logic here
-        if (email.equals("user@example.com") && password.equals("password")) {
-            errorText.setText("Login successful!");
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = (Stage) emailText.getScene().getWindow();
-                stage.setScene(scene);
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-        } else {
-            errorText.setText("Invalid email or password.");
+        // Create a new user
+        User newUser = new User(userController.getSize() + 1, nom, prenom, age, email, password, "Utilisateur");
+
+        // Add the new user to the database
+        userController.ajout(newUser);
+        
+        // if (userController.ajout(newUser)) {
+        errorText.setText("Registration successful!");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            DashboardController controller = fxmlLoader.getController();
+            controller.setWelcomeMessage(newUser.getEmail());
+            Stage stage = (Stage) emailText.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
+//    } else {
+//        errorText.setText("Registration failed. Please try again.");
+//    }
     }
 
     @FXML
