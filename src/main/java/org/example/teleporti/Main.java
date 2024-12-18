@@ -21,9 +21,11 @@ public class Main {
 
             _userController.truncate();
             _userController.ajout(user);
+            _userController.modifier(user);
             _userController.afficher();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
 }
