@@ -38,7 +38,7 @@ public class SignupController {
         int age = Integer.parseInt(ageText.getText());
 
         // Create a new user
-        User newUser = new User(userController.getSize() + 1, nom, prenom, age, email, password, "Utilisateur");
+        User newUser = new User(userController.getSize() + 1, nom, prenom, age, email, password, "Client");
 
         // Add the new user to the database
         userController.ajout(newUser);

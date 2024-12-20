@@ -36,15 +36,23 @@ public class LoginController {
             }
 
             if (email.equals(user.getEmail()) && password.equals(user.getMotDePasse())) {
-                errorText.setText("Login successful!");
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                DashboardController controller = fxmlLoader.getController();
-                controller.setWelcomeMessage(user.getPrenom());
-                Stage stage = (Stage) emailText.getScene().getWindow();
-                stage.setScene(scene);
+                if (user.getType().equals("Admin")) {
+                    errorText.setText("Login successful!");
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    DashboardController controller = fxmlLoader.getController();
+                    controller.setWelcomeMessage(user.getPrenom());
+                    Stage stage = (Stage) emailText.getScene().getWindow();
+                    stage.setScene(scene);
+                } else {
+                    errorText.setText("Interface inacessible pour les utilisateurs normaux.");
+//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/user-view.fxml"));
+//                    Scene scene = new Scene(loader.load());
+//                    Stage stage = (Stage) emailText.getScene().getWindow();
+//                    stage.setScene(scene);
+                }
             } else {
-                errorText.setText("Invalid email or password.");
+                errorText.setText("Email ou mot de passe incorrect.");
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

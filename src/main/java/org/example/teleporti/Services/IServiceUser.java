@@ -7,7 +7,7 @@ import java.util.List;
 public interface IServiceUser {
 
 
-    public void ajout(User newUser);
+    public boolean ajout(User newUser);
 
 
     public void afficher();

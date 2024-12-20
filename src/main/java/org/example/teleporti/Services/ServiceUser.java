@@ -36,7 +36,7 @@ public class ServiceUser implements IServiceUser {
 
     // Méthode pour ajouter un nouvel utilisateur dans la base de données.
     @Override
-    public void ajout(User newUser) {
+    public boolean ajout(User newUser) {
         String req = "insert into users (nom, prenom, age, email, password, type, creation_date, update_date) values ('" +
                 newUser.getNom() + "', '" +
                 newUser.getPrenom() + "', '" +
@@ -48,10 +48,17 @@ public class ServiceUser implements IServiceUser {
                 newUser.getUpdateDate() +
                 "')";
         try {
-            ste.executeUpdate(req); // Exécution de la requête pour insérer un utilisateur
+            if (getUserByEmailAndPassword(newUser.getEmail(), newUser.getMotDePasse()) != null) { // Vérifie si l'utilisateur existe déjà
+                System.out.println("L'utilisateur existe déjà");
+                return false;
+            } else {
+                ste.executeUpdate(req); // Exécution de la requête pour insérer un utilisateur
+                return true;
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return false;
     }
 
     // Méthode pour afficher tous les utilisateurs dans la base de données.

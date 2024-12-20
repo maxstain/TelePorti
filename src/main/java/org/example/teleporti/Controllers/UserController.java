@@ -11,8 +11,9 @@ public class UserController {
     private static Connection con = new DatabaseConnection().getConnection();
     private static ServiceUser _serviceUser = new ServiceUser(con);
 
-    public void ajout(User user) {
+    public boolean ajout(User user) {
         _serviceUser.ajout(user);
+        return false;
     }
 
     public void afficher() {
