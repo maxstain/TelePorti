@@ -1,4 +1,4 @@
-package org.example.teleporti.Services;
+package org.example.teleporti.Services.Trajet;
 
 
 import org.example.teleporti.Entities.Trajet;

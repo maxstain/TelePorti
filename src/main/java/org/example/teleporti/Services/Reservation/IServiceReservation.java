@@ -1,4 +1,4 @@
-package org.example.teleporti.Services;
+package org.example.teleporti.Services.Reservation;
 
 import org.example.teleporti.Entities.Reservation;
 

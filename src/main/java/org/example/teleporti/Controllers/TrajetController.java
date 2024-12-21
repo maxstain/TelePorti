@@ -1,7 +1,7 @@
 package org.example.teleporti.Controllers;
 
 import org.example.teleporti.Entities.Trajet;
-import org.example.teleporti.Services.ServiceTrajet;
+import org.example.teleporti.Services.Trajet.ServiceTrajet;
 import org.example.teleporti.Utils.DatabaseConnection;
 
 import java.sql.Connection;

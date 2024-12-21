@@ -1,7 +1,7 @@
 package org.example.teleporti.Controllers;
 
 import org.example.teleporti.Entities.Reservation;
-import org.example.teleporti.Services.ServiceReservation;
+import org.example.teleporti.Services.Reservation.ServiceReservation;
 import org.example.teleporti.Utils.DatabaseConnection;
 
 import java.sql.Connection;

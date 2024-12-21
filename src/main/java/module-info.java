@@ -23,4 +23,12 @@ module org.example.teleporti {
     opens org.example.teleporti.Entities to javafx.fxml;
     exports org.example.teleporti.SceneControllers;
     opens org.example.teleporti.SceneControllers to javafx.fxml;
+    exports org.example.teleporti.Services.User;
+    opens org.example.teleporti.Services.User to javafx.fxml;
+    exports org.example.teleporti.Services.Trajet;
+    opens org.example.teleporti.Services.Trajet to javafx.fxml;
+    exports org.example.teleporti.Services.Reservation;
+    opens org.example.teleporti.Services.Reservation to javafx.fxml;
+    exports org.example.teleporti.Services.Auth;
+    opens org.example.teleporti.Services.Auth to javafx.fxml;
 }

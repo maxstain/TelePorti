@@ -1,4 +1,4 @@
-package org.example.teleporti.Services;
+package org.example.teleporti.Services.User;
 
 import org.example.teleporti.Entities.User;
 
@@ -89,7 +89,6 @@ public class ServiceUser implements IServiceUser {
     }
 
 
-    @Override
     public List<User> afficherList() {
         List<User> users = new ArrayList<>();
         String req = "select * from users";

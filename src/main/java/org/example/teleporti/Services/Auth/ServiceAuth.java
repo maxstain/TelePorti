@@ -1,4 +1,4 @@
-package org.example.teleporti.Services;
+package org.example.teleporti.Services.Auth;
 
 import org.example.teleporti.Entities.User;
 

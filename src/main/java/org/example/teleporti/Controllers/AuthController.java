@@ -1,7 +1,7 @@
 package org.example.teleporti.Controllers;
 
 import org.example.teleporti.Entities.User;
-import org.example.teleporti.Services.ServiceAuth;
+import org.example.teleporti.Services.Auth.ServiceAuth;
 import org.example.teleporti.Utils.DatabaseConnection;
 
 import java.sql.Connection;
