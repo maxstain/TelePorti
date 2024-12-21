@@ -38,7 +38,7 @@ public class LoginController {
             if (email.equals(user.getEmail()) && password.equals(user.getMotDePasse())) {
                 if (user.getType().equals("Admin")) {
                     errorText.setText("Login successful!");
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
                     DashboardController controller = fxmlLoader.getController();
                     controller.setWelcomeMessage(user.getPrenom());
@@ -62,7 +62,7 @@ public class LoginController {
     @FXML
     protected void goToSignup() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/signup-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/signup-view.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) emailText.getScene().getWindow();
             stage.setScene(scene);

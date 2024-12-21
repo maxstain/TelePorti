@@ -9,6 +9,7 @@
 
 <?import javafx.scene.control.Hyperlink?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@../Styles/Styles.css"
       fx:controller="org.example.teleporti.SceneControllers.LoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

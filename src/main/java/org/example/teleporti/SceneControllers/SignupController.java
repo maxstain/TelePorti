@@ -46,7 +46,7 @@ public class SignupController {
         // if (userController.ajout(newUser)) {
         errorText.setText("Registration successful!");
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/dashboard-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             DashboardController controller = fxmlLoader.getController();
             controller.setWelcomeMessage(newUser.getEmail());
@@ -63,7 +63,7 @@ public class SignupController {
     @FXML
     protected void goToLogin() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/login-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) emailText.getScene().getWindow();
             stage.setScene(scene);

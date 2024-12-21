@@ -55,7 +55,7 @@ public class DashboardController {
         System.out.println("User logged out.");
         try {
             authController.logout();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/login-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
             stage.setScene(scene);
