@@ -102,7 +102,9 @@ public class ServiceUser implements IServiceUser {
                         res.getInt("age"),
                         res.getString("email"),
                         res.getString("password"),
-                        res.getString("type")
+                        res.getString("type"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
                 ));
             }
         } catch (SQLException e) {
@@ -125,7 +127,7 @@ public class ServiceUser implements IServiceUser {
                 user.getUpdateDate() + "' where id = " +
                 user.getId();
         try {
-            ste.executeUpdate(req); // Exécution de la requête pour mettre à jour un utilisateur
+            ste.executeUpdate(req);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -136,7 +138,7 @@ public class ServiceUser implements IServiceUser {
     public void supprimer(User user) {
         String req = "delete from users where id = " + user.getId();
         try {
-            ste.executeUpdate(req); // Exécution de la requête pour supprimer un utilisateur
+            ste.executeUpdate(req);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -144,38 +146,40 @@ public class ServiceUser implements IServiceUser {
 
     // Méthode pour obtenir le nombre total d'utilisateurs dans la base de données.
     public int getSize() {
-        String req = "select count(*) from users"; // Requête SQL pour compter toutes les lignes dans la table "users"
+        String req = "select count(*) from users";
         try {
-            ResultSet result = ste.executeQuery(req); // Exécution de la requête et récupération du résultat
-            while (result.next()) { // Récupération du nombre d'utilisateurs
+            ResultSet result = ste.executeQuery(req);
+            while (result.next()) {
                 size = result.getInt(1);
             }
             return size;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return 0; // Retourne 0 si une erreur se produit
+        return 0;
     }
 
     // Méthode pour récupérer un utilisateur par son email et son mot de passe.
     public User getUserByEmailAndPassword(String email, String password) {
         String req = "select * from users where email='" + email + "' and password='" + password + "'";
         try {
-            ResultSet res = ste.executeQuery(req); // Exécution de la requête et récupération du résultat
-            while (res.next()) { // Si un utilisateur correspondant est trouvé, crée et retourne un objet User
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
                 return new User(
                         res.getInt("id"),
                         res.getString("nom"),
                         res.getString("prenom"),
                         res.getInt("age"),
                         res.getString("email"),
-                        res.getString("password"), // Cela correspond à motDePasse dans l'entité User
-                        res.getString("type")
+                        res.getString("password"),
+                        res.getString("type"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
                 );
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return null; // Retourne null si aucun utilisateur correspondant n'est trouvé
+        return null;
     }
 }

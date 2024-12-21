@@ -55,11 +55,11 @@
         </VBox>
     </masterNode>
     <detailNode>
-        <VBox alignment="CENTER" spacing="20.0">
+        <VBox alignment="CENTER_LEFT" spacing="20.0">
             <Label fx:id="welcome"/>
             <ButtonBar>
                 <buttons>
-                    <Button text="Déconnecté" onAction="#onLogout"/>
+                    <Button text="Déconnecter" onAction="#onLogout" styleClass="btn"/>
                 </buttons>
             </ButtonBar>
         </VBox>

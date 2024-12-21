@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class DashboardController {
 
@@ -58,6 +59,7 @@ public class DashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
@@ -51,6 +52,7 @@ public class SignupController {
             DashboardController controller = fxmlLoader.getController();
             controller.setWelcomeMessage(newUser.getEmail());
             Stage stage = (Stage) emailText.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (IOException e) {
             System.out.println(e.getMessage());

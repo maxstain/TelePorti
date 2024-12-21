@@ -11,8 +11,8 @@ public class User {
     private String email;
     private String motDePasse;
     private String type;
-    private Date creationDate = new Date(new java.util.Date().getDate());
-    private Date updateDate = new Date(new java.util.Date().getDate());
+    private Date creationDate = new Date(new java.util.Date().getTime());
+    private Date updateDate = new Date(new java.util.Date().getTime());
 
     public User(
             int id,
@@ -30,6 +30,28 @@ public class User {
         this.email = email;
         this.motDePasse = motDePasse;
         this.type = type;
+    }
+
+    public User(
+            int id,
+            String nom,
+            String prenom,
+            int age,
+            String email,
+            String motDePasse,
+            String type,
+            Date creationDate,
+            Date updateDate
+    ) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+        this.email = email;
+        this.motDePasse = motDePasse;
+        this.type = type;
+        this.creationDate = creationDate;
+        this.updateDate = updateDate;
     }
 
     public int getId() {

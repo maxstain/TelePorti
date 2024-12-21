@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
@@ -40,6 +41,7 @@ public class LoginController {
                     errorText.setText("Login successful!");
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
+                    scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                     DashboardController controller = fxmlLoader.getController();
                     controller.setWelcomeMessage(user.getPrenom());
                     Stage stage = (Stage) emailText.getScene().getWindow();
