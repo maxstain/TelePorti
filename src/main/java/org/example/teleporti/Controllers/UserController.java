@@ -12,8 +12,7 @@ public class UserController {
     private static ServiceUser _serviceUser = new ServiceUser(con);
 
     public boolean ajout(User user) {
-        _serviceUser.ajout(user);
-        return false;
+        return _serviceUser.ajout(user);
     }
 
     public void afficher() {

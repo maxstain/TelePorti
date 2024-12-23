@@ -27,6 +27,7 @@ public class LoginController {
     protected void onFormSubmit() {
         String email = emailText.getText();
         String password = passwordText.getText();
+        Scene scene;
 
         try {
             User user = userController.getUserByEmailAndPassword(email, password);
@@ -37,21 +38,24 @@ public class LoginController {
             }
 
             if (email.equals(user.getEmail()) && password.equals(user.getMotDePasse())) {
+                errorText.setText("Login successful!");
+                FXMLLoader fxmlLoader;
                 if (user.getType().equals("Admin")) {
-                    errorText.setText("Login successful!");
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load());
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
+                    scene = new Scene(fxmlLoader.load());
                     scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                     DashboardController controller = fxmlLoader.getController();
                     controller.setWelcomeMessage(user.getPrenom());
                     Stage stage = (Stage) emailText.getScene().getWindow();
                     stage.setScene(scene);
                 } else {
-                    errorText.setText("Interface inacessible pour les utilisateurs normaux.");
-//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/user-view.fxml"));
-//                    Scene scene = new Scene(loader.load());
-//                    Stage stage = (Stage) emailText.getScene().getWindow();
-//                    stage.setScene(scene);
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/user-view.fxml"));
+                    scene = new Scene(fxmlLoader.load());
+                    scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+                    UserViewController controller = fxmlLoader.getController();
+                    controller.setWelcomeMessage(user.getPrenom());
+                    Stage stage = (Stage) emailText.getScene().getWindow();
+                    stage.setScene(scene);
                 }
             } else {
                 errorText.setText("Email ou mot de passe incorrect.");

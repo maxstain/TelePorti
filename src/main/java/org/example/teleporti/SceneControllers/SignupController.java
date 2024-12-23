@@ -43,23 +43,13 @@ public class SignupController {
 
         // Add the new user to the database
         userController.ajout(newUser);
-        
-        // if (userController.ajout(newUser)) {
-        errorText.setText("Registration successful!");
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            DashboardController controller = fxmlLoader.getController();
-            controller.setWelcomeMessage(newUser.getEmail());
-            Stage stage = (Stage) emailText.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+
+        if (userController.ajout(newUser)) {
+            errorText.setText("Registration successful!");
+            goToLogin();
+        } else {
+            errorText.setText("Registration failed. Please try again.");
         }
-//    } else {
-//        errorText.setText("Registration failed. Please try again.");
-//    }
     }
 
     @FXML
