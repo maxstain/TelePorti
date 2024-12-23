@@ -13,7 +13,7 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginViewController {
     @FXML
     public Label errorText;
     @FXML
@@ -44,7 +44,7 @@ public class LoginController {
                     fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
                     scene = new Scene(fxmlLoader.load());
                     scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-                    DashboardController controller = fxmlLoader.getController();
+                    DashboardViewController controller = fxmlLoader.getController();
                     controller.setWelcomeMessage(user.getPrenom());
                     Stage stage = (Stage) emailText.getScene().getWindow();
                     stage.setScene(scene);

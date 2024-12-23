@@ -15,7 +15,7 @@ import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
-public class DashboardController {
+public class DashboardViewController {
 
     private UserController userController = new UserController();
     private AuthController authController = new AuthController();
@@ -75,5 +75,17 @@ public class DashboardController {
 
     public void setWelcomeMessage(String string) {
         welcome.setText("Welcome, " + string + "!");
+    }
+
+    public void onGotToProfile() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/profile-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

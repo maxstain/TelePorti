@@ -9,11 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
-public class SignupController {
+public class SignupViewController {
 
     private final UserController userController = new UserController();
 

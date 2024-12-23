@@ -10,7 +10,8 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Button?>
 <MasterDetailPane xmlns:fx="http://javafx.com/fxml"
-                  fx:controller="org.example.teleporti.SceneControllers.DashboardController"
+                  fx:controller="org.example.teleporti.SceneControllers.DashboardViewController"
+                  stylesheets="@../Styles/Styles.css"
                   showDetailNode="true"
                   detailSide="LEFT"
                   dividerPosition="0.2">
@@ -57,11 +58,8 @@
     <detailNode>
         <VBox alignment="CENTER_LEFT" spacing="20.0">
             <Label fx:id="welcome"/>
-            <ButtonBar>
-                <buttons>
-                    <Button text="Déconnecter" onAction="#onLogout" styleClass="btn"/>
-                </buttons>
-            </ButtonBar>
+            <Button text="Profile" onAction="#onGotToProfile" styleClass="btn"/>
+            <Button text="Déconnecter" onAction="#onLogout" styleClass="btn"/>
         </VBox>
     </detailNode>
 </MasterDetailPane>

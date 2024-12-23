@@ -1,0 +1,29 @@
+<?import javafx.scene.layout.BorderPane?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.bootstrapfx.scene.layout.Panel?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.teleporti.SceneControllers.ProfileViewController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <top>
+        <Panel styleClass="panel-primary">
+            <Label text="Profile Header" styleClass="h1"/>
+        </Panel>
+    </top>
+
+    <center>
+        <VBox spacing="10.0" padding="20.0">
+            <Label text="Name:"/>
+            <Label fx:id="nameLabel"/>
+            <Label text="Email:"/>
+            <Label fx:id="emailLabel"/>
+        </VBox>
+    </center>
+
+</BorderPane>
