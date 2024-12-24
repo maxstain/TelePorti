@@ -1,3 +1,4 @@
+// MainApplication.java
 package org.example.teleporti;
 
 import javafx.application.Application;
@@ -17,7 +18,10 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Views/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Panel panel = new Panel("TelePorti");
+        String css = this.getClass().getResource("Styles/Styles.css").toExternalForm();
         panel.getStyleClass().add("panel-primary");
+        panel.getStyleClass().add("panel-with-background-image");
+        panel.getStylesheets().add(css);
         BorderPane content = new BorderPane();
         content.setCenter(scene.getRoot());
         panel.setBody(content);

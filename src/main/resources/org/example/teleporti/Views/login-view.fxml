@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Hyperlink?>
+<!-- login-view.fxml -->
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../Styles/Styles.css"
       fx:controller="org.example.teleporti.SceneControllers.LoginViewController">
@@ -15,11 +16,11 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label text="TelePorti"/>
-    <TextField fx:id="emailText" promptText="Email"/>
-    <PasswordField fx:id="passwordText" promptText="Password"/>
+    <Label styleClass="title" text="TelePorti"/>
+    <TextField fx:id="emailText" promptText="Email" styleClass="text-field"/>
+    <PasswordField fx:id="passwordText" promptText="Password" styleClass="password-field"/>
     <Label fx:id="errorText"/>
-    <Label text="N'a pas d'un compte ?"/>
-    <Hyperlink text="Inscrivez-vous" onAction="#goToSignup"/>
-    <Button text="Login" onAction="#onFormSubmit"/>
+    <Label styleClass="font-bold" text="N'a pas d'un compte ?"/>
+    <Hyperlink text="Inscrivez-vous" onAction="#goToSignup" styleClass="hyperlink"/>
+    <Button styleClass="button" text="Login" onAction="#onFormSubmit"/>
 </VBox>

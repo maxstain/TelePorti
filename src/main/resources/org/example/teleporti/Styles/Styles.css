@@ -1,14 +1,75 @@
-.table-view {
-    -fx-background-color: #f0f0f0;
-    -fx-border-color: #d0d0d0;
+/* Styles.css */
+.root {
+    -fx-background-color: #222; /* Dark background */
 }
 
-.side-bar {
-
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 14pt;
 }
 
-.buttons {
-    -fx-content-display: flex;
-    -fx-alignment: left;
-    -fx-spacing: 10;
+.text-field {
+    -fx-border-radius: 5px;
+    -fx-background-color: #333;
+}
+
+.button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.label {
+    -fx-text-fill: #333;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.panel-primary {
+    -fx-background-color: #ecf0f1;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 20px;
+}
+
+.panel-with-background-image {
+    -fx-background-image: url('../Images/background.png');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #ecf0f1;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+}
+
+.hyperlink {
+    -fx-text-fill: #3498db;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #2980b9;
 }
