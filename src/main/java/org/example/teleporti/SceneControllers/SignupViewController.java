@@ -43,7 +43,7 @@ public class SignupViewController {
         if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || password.isEmpty() || ageText.getText().isEmpty()) {
             errorText.setText("Please fill in all fields.");
             return;
-        } else if (EmailVerification.isValid(email)) {
+        } else if (!EmailVerification.isValid(email)) {
             errorText.setText("Please enter a valid email address.");
             return;
         }
