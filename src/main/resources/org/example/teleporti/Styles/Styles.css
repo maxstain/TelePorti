@@ -2,8 +2,8 @@
     -fx-background-color: #222;
 }
 
-.label {
-    -fx-text-fill: white;
+.text-label {
+    -fx-text-fill: #333;
     -fx-font-size: 14pt;
 }
 
@@ -12,15 +12,20 @@
     -fx-background-color: #333;
 }
 
-.button {
-    -fx-background-color: #007bff;
-    -fx-text-fill: white;
+.password-field {
     -fx-border-radius: 5px;
-    -fx-cursor: hand;
+    -fx-background-color: #333;
 }
 
-.label {
-    -fx-text-fill: #333;
+.container {
+    -fx-border-radius: 5px;
+    -fx-padding: 20px;
+}
+
+.side-menu {
+    -fx-border-radius: 5px;
+    -fx-padding: 20px;
+    -fx-font-size: 10pt;
 }
 
 .title {
@@ -35,6 +40,7 @@
     -fx-padding: 10px 20px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+    -fx-cursor: hand;
 }
 
 .button:hover {

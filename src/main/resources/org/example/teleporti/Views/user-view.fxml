@@ -13,7 +13,7 @@
                   prefHeight="400.0" prefWidth="600.0">
 
     <masterNode>
-        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="container">
             <Label text="User Details"/>
             <Label text="Name:"/>
             <Label text="Email:"/>
@@ -22,7 +22,7 @@
         </VBox>
     </masterNode>
     <detailNode>
-        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+        <VBox styleClass="side-menu" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
             <Label fx:id="welcome"/>
             <Label text="User Details"/>
             <Label text="Name:"/>

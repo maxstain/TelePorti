@@ -7,17 +7,14 @@
 <MasterDetailPane xmlns:fx="http://javafx.com/fxml"
                   fx:controller="org.example.teleporti.SceneControllers.DashboardViewController"
                   stylesheets="@../Styles/Styles.css"
+                  styleClass="panel-with-background-image"
                   showDetailNode="true"
                   detailSide="LEFT"
                   dividerPosition="0.2"
                   prefHeight="400.0" prefWidth="600.0">
     <masterNode>
-        <VBox alignment="CENTER" spacing="5.0" prefWidth="500">
-            <VBox alignment="CENTER" spacing="10.0">
-                <Label text="Welcome to Teleporti!"/>
-                <Label text="Here you can manage your users."/>
-            </VBox>
-
+        <VBox styleClass="container" alignment="CENTER" spacing="5.0" prefWidth="500">
+            <Label styleClass="text-label" text="Utilisateurs"/>
             <VBox alignment="CENTER" spacing="10.0">
                 <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="200.0">
                     <columns>
@@ -52,12 +49,12 @@
         </VBox>
     </masterNode>
     <detailNode>
-        <VBox alignment="CENTER_LEFT" spacing="20.0">
+        <VBox styleClass="side-menu" alignment="CENTER_LEFT" spacing="20.0">
             <Label fx:id="welcome"/>
-            <Button text="Profile" onAction="#onGotToProfile" styleClass="btn"/>
-            <Button text="Utilisateurs" onAction="#onGotToUsers" styleClass="btn"/>
-            <Button text="Stats" onAction="#onGotToStats" styleClass="btn"/>
-            <Button text="Déconnecter" onAction="#onLogout" styleClass="btn"/>
+            <Button text="Profile" onAction="#onGotToProfile"/>
+            <Button text="Utilisateurs" onAction="#onGotToUsers"/>
+            <Button text="Stats" onAction="#onGotToStats"/>
+            <Button text="Déconnecter" onAction="#onLogout"/>
         </VBox>
     </detailNode>
 </MasterDetailPane>
