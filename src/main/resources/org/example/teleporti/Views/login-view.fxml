@@ -11,6 +11,7 @@
 <!-- login-view.fxml -->
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../Styles/Styles.css"
+      styleClass="panel-with-background-image"
       fx:controller="org.example.teleporti.SceneControllers.LoginViewController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

@@ -1,18 +1,19 @@
 package org.example.teleporti.SceneControllers;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
+import org.example.teleporti.Entities.User;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class UserViewController {
 
     private final AuthController authController = new AuthController();
     public Label welcome;
+    protected User currentUser;
 
     @FXML
     protected void onLogout() {
@@ -31,5 +32,9 @@ public class UserViewController {
 
     public void setWelcomeMessage(String string) {
         welcome.setText("Welcome, " + string + "!");
+    }
+
+    public void setCurrentUser(User user) {
+        currentUser = user;
     }
 }

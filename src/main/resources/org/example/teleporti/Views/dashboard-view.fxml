@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import org.controlsfx.control.MasterDetailPane?>
-
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Button?>
 <MasterDetailPane xmlns:fx="http://javafx.com/fxml"
                   fx:controller="org.example.teleporti.SceneControllers.DashboardViewController"
                   stylesheets="@../Styles/Styles.css"
                   showDetailNode="true"
                   detailSide="LEFT"
-                  dividerPosition="0.2">
+                  dividerPosition="0.2"
+                  prefHeight="400.0" prefWidth="600.0">
     <masterNode>
         <VBox alignment="CENTER" spacing="5.0" prefWidth="500">
             <VBox alignment="CENTER" spacing="10.0">

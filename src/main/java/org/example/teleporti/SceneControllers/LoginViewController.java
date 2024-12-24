@@ -46,6 +46,7 @@ public class LoginViewController {
                     scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                     DashboardViewController controller = fxmlLoader.getController();
                     controller.setWelcomeMessage(user.getPrenom());
+                    controller.setCurrentUser(user);
                     Stage stage = (Stage) emailText.getScene().getWindow();
                     stage.setScene(scene);
                 } else {
@@ -54,6 +55,7 @@ public class LoginViewController {
                     scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                     UserViewController controller = fxmlLoader.getController();
                     controller.setWelcomeMessage(user.getPrenom());
+                    controller.setCurrentUser(user);
                     Stage stage = (Stage) emailText.getScene().getWindow();
                     stage.setScene(scene);
                 }

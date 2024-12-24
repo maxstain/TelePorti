@@ -17,9 +17,10 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class DashboardViewController {
 
-    private UserController userController = new UserController();
-    private AuthController authController = new AuthController();
+    private final UserController userController = new UserController();
+    private final AuthController authController = new AuthController();
     public Label welcome;
+    private User currentUser;
 
     @FXML
     private TableView<User> usersTable;
@@ -111,5 +112,10 @@ public class DashboardViewController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
     }
 }
