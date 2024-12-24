@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
+import org.example.teleporti.Utils.EmailVerification;
 
 import java.io.IOException;
 
@@ -37,11 +38,15 @@ public class SignupViewController {
         String password = passwordText.getText();
         int age = Integer.parseInt(ageText.getText());
 
-        // Create a new user
         User newUser = new User(userController.getSize() + 1, nom, prenom, age, email, password, "Client");
 
-        // Add the new user to the database
-        userController.ajout(newUser);
+        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || password.isEmpty() || ageText.getText().isEmpty()) {
+            errorText.setText("Please fill in all fields.");
+            return;
+        } else if (EmailVerification.isValid(email)) {
+            errorText.setText("Please enter a valid email address.");
+            return;
+        }
 
         if (userController.ajout(newUser)) {
             errorText.setText("Registration successful!");
