@@ -88,4 +88,28 @@ public class DashboardViewController {
             System.out.println(e.getMessage());
         }
     }
+
+    public void onGotToUsers() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/users-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void onGotToStats() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/stats-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

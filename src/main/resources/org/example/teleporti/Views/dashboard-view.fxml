@@ -59,6 +59,8 @@
         <VBox alignment="CENTER_LEFT" spacing="20.0">
             <Label fx:id="welcome"/>
             <Button text="Profile" onAction="#onGotToProfile" styleClass="btn"/>
+            <Button text="Utilisateurs" onAction="#onGotToUsers" styleClass="btn"/>
+            <Button text="Stats" onAction="#onGotToStats" styleClass="btn"/>
             <Button text="Déconnecter" onAction="#onLogout" styleClass="btn"/>
         </VBox>
     </detailNode>
