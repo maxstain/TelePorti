@@ -18,17 +18,17 @@ public class SignupViewController {
     private final UserController userController = new UserController();
 
     @FXML
-    public Label errorText;
+    private Label errorText = new Label("");
     @FXML
-    public TextField ageText;
+    private TextField ageText;
     @FXML
-    public TextField emailText;
+    private TextField emailText;
     @FXML
-    public PasswordField passwordText;
+    private PasswordField passwordText;
     @FXML
-    public TextField nomText;
+    private TextField nomText;
     @FXML
-    public TextField prenomText;
+    private TextField prenomText;
 
     @FXML
     protected void onFormSubmit() {
@@ -42,14 +42,9 @@ public class SignupViewController {
 
         if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || password.isEmpty() || ageText.getText().isEmpty()) {
             errorText.setText("Please fill in all fields.");
-            return;
         } else if (!EmailVerification.isValid(email)) {
             errorText.setText("Please enter a valid email address.");
-            return;
-        }
-
-        if (userController.ajout(newUser)) {
-            errorText.setText("Registration successful!");
+        } else if (userController.ajout(newUser)) {
             goToLogin();
         } else {
             errorText.setText("Registration failed. Please try again.");
@@ -61,6 +56,8 @@ public class SignupViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
+            String css = getClass().getResource("/org/example/teleporti/Styles/Auth.css").toExternalForm();
+            scene.getStylesheets().add(css);
             Stage stage = (Stage) emailText.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {

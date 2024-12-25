@@ -59,8 +59,9 @@ public class DashboardViewController {
             authController.logout();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
+            String css = getClass().getResource("/org/example/teleporti/Styles/Auth.css").toExternalForm();
+            scene.getStylesheets().add(css);
             Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
             System.out.println(e.getMessage());

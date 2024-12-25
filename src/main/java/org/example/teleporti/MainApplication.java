@@ -16,10 +16,9 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Views/login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 520, 440);
+        Scene scene = new Scene(fxmlLoader.load());
         Panel panel = new Panel();
         String css = this.getClass().getResource("Styles/Styles.css").toExternalForm();
-        panel.getStyleClass().add("panel-with-background-image");
         panel.getStylesheets().add(css);
         BorderPane content = new BorderPane();
         content.setCenter(scene.getRoot());
@@ -30,7 +29,6 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.setHeight(650.0);
         stage.setWidth(900.0);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.show();
     }
 
