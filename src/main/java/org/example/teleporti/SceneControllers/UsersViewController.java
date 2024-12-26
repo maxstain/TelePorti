@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,9 +17,7 @@ import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
-import java.util.Objects;
-
-public class DashboardViewController {
+public class UsersViewController {
 
     private final UserController userController = new UserController();
     private final AuthController authController = new AuthController();
@@ -29,16 +26,39 @@ public class DashboardViewController {
     @FXML
     protected TextField searchField;
     @FXML
-    protected PieChart usersPieChart;
+    protected User currentUser;
+
     @FXML
-    private User currentUser;
+    private TableView<User> usersTable;
+
+    @FXML
+    private TableColumn<User, Integer> idColumn;
+
+    @FXML
+    private TableColumn<User, String> emailColumn;
+
+    @FXML
+    public TableColumn<User, String> nomColumn;
+
+    @FXML
+    public TableColumn<User, String> prenomColumn;
+
+    @FXML
+    private TableColumn<User, String> typeColumn;
 
     @FXML
     public void initialize() {
-        usersPieChart.setData(FXCollections.observableArrayList(
-                new PieChart.Data("Admins", userController.countByType("Admin")),
-                new PieChart.Data("Users", userController.countByType("Client"))
-        ));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ObservableList<User> users = FXCollections.observableArrayList(userController.rechercher(newValue));
+            usersTable.setItems(users);
+        });
+        ObservableList<User> users = FXCollections.observableArrayList(userController.afficherList());
+        usersTable.setItems(users);
     }
 
     @FXML
@@ -48,13 +68,20 @@ public class DashboardViewController {
             authController.logout();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
-            String css = Objects.requireNonNull(getClass().getResource("/org/example/teleporti/Styles/Auth.css")).toExternalForm();
+            String css = getClass().getResource("/org/example/teleporti/Styles/Auth.css").toExternalForm();
             scene.getStylesheets().add(css);
             Stage stage = (Stage) welcome.getScene().getWindow();
             stage.setScene(scene);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    protected void onRefresh() {
+        ObservableList<User> users = FXCollections.observableArrayList(userController.afficherList());
+        usersTable.setItems(users);
+        System.out.println("Refreshed.");
     }
 
     public void setWelcomeMessage(String string) {
@@ -66,8 +93,6 @@ public class DashboardViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/profile-view.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
-            ProfileViewController controller = loader.getController();
-            controller.setCurrentUser(currentUser);
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
@@ -80,8 +105,6 @@ public class DashboardViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/users-view.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
-            UsersViewController controller = loader.getController();
-            controller.setCurrentUser(currentUser);
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
@@ -91,7 +114,7 @@ public class DashboardViewController {
 
     public void onGotToStats() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/stats-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());

@@ -5,12 +5,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainApplication extends Application {
     @Override
@@ -18,7 +20,7 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Views/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Panel panel = new Panel();
-        String css = this.getClass().getResource("Styles/Styles.css").toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("Styles/Styles.css")).toExternalForm();
         panel.getStylesheets().add(css);
         BorderPane content = new BorderPane();
         content.setCenter(scene.getRoot());
@@ -26,6 +28,7 @@ public class MainApplication extends Application {
         scene.setRoot(panel);
         content.setPadding(new Insets(5));
         stage.setTitle("TelePorti");
+        stage.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResource("/org/example/teleporti/Images/logo.png")).toExternalForm()));
         stage.setScene(scene);
         stage.setHeight(650.0);
         stage.setWidth(900.0);

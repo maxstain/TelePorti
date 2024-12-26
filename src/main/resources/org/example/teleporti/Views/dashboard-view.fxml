@@ -3,58 +3,54 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.VBox?>
-<?import org.controlsfx.control.MasterDetailPane?>
-<MasterDetailPane xmlns:fx="http://javafx.com/fxml"
-                  fx:controller="org.example.teleporti.SceneControllers.DashboardViewController"
-                  stylesheets="@../Styles/Styles.css"
-                  styleClass="panel-with-background-image"
-                  showDetailNode="true"
-                  detailSide="LEFT"
-                  dividerPosition="0.2"
-                  prefHeight="400.0" prefWidth="600.0">
-    <masterNode>
-        <VBox styleClass="container" alignment="CENTER" spacing="5.0" prefWidth="500">
-            <Label styleClass="text-label" text="Utilisateurs"/>
-            <VBox alignment="CENTER" spacing="10.0">
-                <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="20.0" text="ID">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="id"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="nomColumn" prefWidth="75.0" text="Nom">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="nom"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="prenomColumn" prefWidth="75.0" text="Prenom">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="prenom"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="email"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="type"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                    </columns>
-                </TableView>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<?import javafx.scene.chart.PieChart?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.teleporti.SceneControllers.DashboardViewController"
+            stylesheets="@../Styles/General.css"
+            styleClass="panel-with-background-image, container">
+
+    <!-- Top Menu -->
+    <top>
+        <HBox styleClass="NavigationBar" alignment="TOP_CENTER">
+            <VBox alignment="CENTER_LEFT">
+                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/logo.png"/>
+                </ImageView>
             </VBox>
-        </VBox>
-    </masterNode>
-    <detailNode>
-        <VBox styleClass="side-menu" alignment="CENTER_LEFT" spacing="20.0">
-            <Label fx:id="welcome"/>
-            <Button text="Profile" onAction="#onGotToProfile"/>
-            <Button text="Utilisateurs" onAction="#onGotToUsers"/>
-            <Button text="Stats" onAction="#onGotToStats"/>
-            <Button text="Déconnecter" onAction="#onLogout"/>
-        </VBox>
-    </detailNode>
-</MasterDetailPane>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                <TextField focusTraversable="false" styleClass="searchBar" fx:id="searchField" promptText="Rechercher"
+                           prefWidth="200.0"/>
+                <Label styleClass="welcome" fx:id="welcome"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Side Menu and Main Content -->
+    <center>
+        <HBox>
+            <!-- Side Menu -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
+                <VBox spacing="10.0">
+                    <Button text="Stats" onAction="#onGotToStats"/>
+                    <Button text="Profile" onAction="#onGotToProfile"/>
+                    <Button text="Maps" onAction="#onGotToMaps"/>
+                    <Button text="Utilisateurs" onAction="#onGotToUsers"/>
+                    <Button text="Déconnecter" onAction="#onLogout"/>
+                </VBox>
+            </HBox>
+
+            <!-- Main Content -->
+            <VBox spacing="5.0" prefWidth="500">
+                <VBox styleClass="container" alignment="CENTER" spacing="10.0">
+                    <Label styleClass="text-label" text="Utilisateurs"/>
+                    <PieChart fx:id="usersPieChart" prefHeight="300.0" prefWidth="500.0"/>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

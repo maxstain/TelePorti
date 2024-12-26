@@ -133,7 +133,40 @@ public class ServiceUser implements IServiceUser {
         }
     }
 
-    // Méthode pour supprimer un utilisateur de la base de données en fonction de son ID.
+    /**
+     * @param nom
+     * @return
+     */
+    @Override
+    public List<User> rechercher(String nom) {
+        String req = "select * from users where nom like '%" + nom + "%'";
+        List<User> users = new ArrayList<>();
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                users.add(new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("password"),
+                        res.getString("type"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return users;
+    }
+
+    /**
+     * Cette méthode permet de supprimer un utilisateur de la base de données.
+     *
+     * @param user User
+     */
     @Override
     public void supprimer(User user) {
         String req = "delete from users where id = " + user.getId();
@@ -142,6 +175,26 @@ public class ServiceUser implements IServiceUser {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Cette méthode permet de compter le nombre d'utilisateurs en fonction de leur type.
+     *
+     * @param type String
+     * @return int
+     */
+    @Override
+    public int countByType(String type) {
+        String req = "select count(*) from users where type = '" + type + "'";
+        try {
+            ResultSet result = ste.executeQuery(req);
+            while (result.next()) {
+                return result.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
     // Méthode pour obtenir le nombre total d'utilisateurs dans la base de données.

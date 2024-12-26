@@ -42,4 +42,12 @@ public class UserController {
     public User getUserByEmailAndPassword(String email, String password) {
         return _serviceUser.getUserByEmailAndPassword(email, password);
     }
+
+    public List<User> rechercher(String search) {
+        return _serviceUser.rechercher(search);
+    }
+
+    public int countByType(String type) {
+        return _serviceUser.countByType(type);
+    }
 }
