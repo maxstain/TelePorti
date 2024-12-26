@@ -37,7 +37,8 @@ public class DashboardViewController {
     public void initialize() {
         usersPieChart.setData(FXCollections.observableArrayList(
                 new PieChart.Data("Admins", userController.countByType("Admin")),
-                new PieChart.Data("Users", userController.countByType("Client"))
+                new PieChart.Data("Clients", userController.countByType("Client")),
+                new PieChart.Data("Chauffeurs", userController.countByType("Chauffeur"))
         ));
     }
 
@@ -106,6 +107,7 @@ public class DashboardViewController {
         this.currentUser = user;
     }
 
+    @FXML
     public void onGotToMaps(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/maps-view.fxml"));
@@ -116,5 +118,15 @@ public class DashboardViewController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    public void onGotToDashboard(ActionEvent actionEvent) {
+        // To be implemented
+    }
+
+    @FXML
+    public void onGotToSettings(ActionEvent actionEvent) {
+        // To be implemented
     }
 }

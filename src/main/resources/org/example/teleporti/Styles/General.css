@@ -35,6 +35,8 @@
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-cursor: hand;
+    -fx-min-width: 130px;
+    -fx-fill-width: true;
 }
 
 .button:hover {
@@ -64,4 +66,15 @@ TableView {
     -fx-border-width: 1px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+}
+
+.chart-container {
+    -fx-background-color: #333;
+    -fx-text-fill: #fff;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-min-width: 250px;
 }

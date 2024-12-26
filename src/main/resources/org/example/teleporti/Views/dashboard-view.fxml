@@ -36,18 +36,20 @@
             <!-- Side Menu -->
             <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <VBox spacing="10.0">
-                    <Button text="Stats" onAction="#onGotToStats"/>
-                    <Button text="Profile" onAction="#onGotToProfile"/>
-                    <Button text="Maps" onAction="#onGotToMaps"/>
-                    <Button text="Utilisateurs" onAction="#onGotToUsers"/>
-                    <Button text="Déconnecter" onAction="#onLogout"/>
+                    <Button styleClass="button" text="Stats" onAction="#onGotToStats"/>
+                    <Button styleClass="button" text="Dashboard" onAction="#onGotToDashboard"/>
+                    <Button styleClass="button" text="Profile" onAction="#onGotToProfile"/>
+                    <Button styleClass="button" text="Maps" onAction="#onGotToMaps"/>
+                    <Button styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
+                    <Button styleClass="button" text="Paramétres" onAction="#onGotToSettings"/>
+                    <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
                 </VBox>
             </HBox>
 
             <!-- Main Content -->
-            <VBox spacing="5.0" prefWidth="500">
-                <VBox styleClass="container" alignment="CENTER" spacing="10.0">
-                    <Label styleClass="text-label" text="Utilisateurs"/>
+            <VBox spacing="5.0" styleClass="container" prefWidth="500">
+                <VBox styleClass="chart-container" alignment="CENTER" spacing="10.0">
+                    <Label styleClass="text-label, h3" style="-fx-text-fill: #fff" text="Utilisateurs"/>
                     <PieChart fx:id="usersPieChart" prefHeight="300.0" prefWidth="500.0"/>
                 </VBox>
             </VBox>
