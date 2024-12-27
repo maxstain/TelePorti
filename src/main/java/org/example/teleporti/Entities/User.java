@@ -11,6 +11,11 @@ public class User {
     private String email;
     private String motDePasse;
     private String type;
+    private String governerat;
+    private String ville;
+    private String addresse;
+    private String telephone;
+    private String token = "";
     private Date creationDate = new Date(new java.util.Date().getTime());
     private Date updateDate = new Date(new java.util.Date().getTime());
 
@@ -21,7 +26,11 @@ public class User {
             int age,
             String email,
             String motDePasse,
-            String type
+            String type,
+            String governerat,
+            String ville,
+            String addresse,
+            String telephone
     ) {
         this.id = id;
         this.nom = nom;
@@ -30,6 +39,10 @@ public class User {
         this.email = email;
         this.motDePasse = motDePasse;
         this.type = type;
+        this.governerat = governerat;
+        this.ville = ville;
+        this.addresse = addresse;
+        this.telephone = telephone;
     }
 
     public User(
@@ -40,6 +53,10 @@ public class User {
             String email,
             String motDePasse,
             String type,
+            String governerat,
+            String ville,
+            String addresse,
+            String telephone,
             Date creationDate,
             Date updateDate
     ) {
@@ -50,6 +67,10 @@ public class User {
         this.email = email;
         this.motDePasse = motDePasse;
         this.type = type;
+        this.governerat = governerat;
+        this.ville = ville;
+        this.addresse = addresse;
+        this.telephone = telephone;
         this.creationDate = creationDate;
         this.updateDate = updateDate;
     }
@@ -126,15 +147,55 @@ public class User {
         this.updateDate = updateDate;
     }
 
+    public String getGovernerat() {
+        return governerat;
+    }
+
+    public void setGovernerat(String governerat) {
+        this.governerat = governerat;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getAddresse() {
+        return addresse;
+    }
+
+    public void setAddresse(String addresse) {
+        this.addresse = addresse;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
-        return getId() == user.getId() && getAge() == user.getAge() && Objects.equals(getNom(), user.getNom()) && Objects.equals(getPrenom(), user.getPrenom()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getMotDePasse(), user.getMotDePasse()) && Objects.equals(getType(), user.getType()) && Objects.equals(getCreationDate(), user.getCreationDate()) && Objects.equals(getUpdateDate(), user.getUpdateDate());
+        return getId() == user.getId() && getAge() == user.getAge() && Objects.equals(getNom(), user.getNom()) && Objects.equals(getPrenom(), user.getPrenom()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getMotDePasse(), user.getMotDePasse()) && Objects.equals(getType(), user.getType()) && Objects.equals(getGovernerat(), user.getGovernerat()) && Objects.equals(getVille(), user.getVille()) && Objects.equals(getAddresse(), user.getAddresse()) && Objects.equals(getTelephone(), user.getTelephone()) && Objects.equals(getToken(), user.getToken()) && Objects.equals(getCreationDate(), user.getCreationDate()) && Objects.equals(getUpdateDate(), user.getUpdateDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNom(), getPrenom(), getAge(), getEmail(), getMotDePasse(), getType(), getCreationDate(), getUpdateDate());
+        return Objects.hash(getId(), getNom(), getPrenom(), getAge(), getEmail(), getMotDePasse(), getType(), getGovernerat(), getVille(), getAddresse(), getTelephone(), getToken(), getCreationDate(), getUpdateDate());
     }
 
     @Override
@@ -147,12 +208,17 @@ public class User {
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", type='" + type + '\'' +
+                ", governerat='" + governerat + '\'' +
+                ", ville='" + ville + '\'' +
+                ", addresse='" + addresse + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", token='" + token + '\'' +
                 ", creationDate=" + creationDate +
                 ", updateDate=" + updateDate +
                 '}';
     }
 
     public static User empty() {
-        return new User(0, "", "", 0, "", "", "");
+        return new User(0, "", "", 0, "", "", "", "", "", "", "");
     }
 }

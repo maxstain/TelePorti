@@ -37,13 +37,17 @@ public class ServiceUser implements IServiceUser {
     // Méthode pour ajouter un nouvel utilisateur dans la base de données.
     @Override
     public boolean ajout(User newUser) {
-        String req = "insert into users (nom, prenom, age, email, password, type, creation_date, update_date) values ('" +
+        String req = "insert into users (nom, prenom, age, email, password, type, governerat, ville, addresse, telephone, creation_date, update_date) values ('" +
                 newUser.getNom() + "', '" +
                 newUser.getPrenom() + "', '" +
                 newUser.getAge() + "', '" +
                 newUser.getEmail() + "', '" +
                 newUser.getMotDePasse() + "', '" +
                 newUser.getType() + "', '" +
+                newUser.getGovernerat() + "', '" +
+                newUser.getVille() + "', '" +
+                newUser.getAddresse() + "', '" +
+                newUser.getTelephone() + "', '" +
                 newUser.getCreationDate() + "', '" +
                 newUser.getUpdateDate() +
                 "')";
@@ -103,6 +107,10 @@ public class ServiceUser implements IServiceUser {
                         res.getString("email"),
                         res.getString("password"),
                         res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
                         res.getDate("creation_date"),
                         res.getDate("update_date")
                 ));
@@ -122,7 +130,11 @@ public class ServiceUser implements IServiceUser {
                 user.getAge() + "', email = '" +
                 user.getEmail() + "', password = '" +
                 user.getMotDePasse() + "', type = '" +
-                user.getType() + "', creation_date = '" +
+                user.getType() + "', governerat = '" +
+                user.getGovernerat() + "', ville = '" +
+                user.getVille() + "', addresse = '" +
+                user.getAddresse() + "', telephone = '" +
+                user.getTelephone() + "', creation_date = '" +
                 user.getCreationDate() + "', update_date = '" +
                 user.getUpdateDate() + "' where id = " +
                 user.getId();
@@ -152,6 +164,10 @@ public class ServiceUser implements IServiceUser {
                         res.getString("email"),
                         res.getString("password"),
                         res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
                         res.getDate("creation_date"),
                         res.getDate("update_date")
                 ));
@@ -197,6 +213,24 @@ public class ServiceUser implements IServiceUser {
         return 0;
     }
 
+    /**
+     * @param gouvernerat
+     * @return
+     */
+    @Override
+    public int countByGovernerat(String gouvernerat) {
+        String req = "select count(*) from users where gouvernerat = '" + gouvernerat + "'";
+        try {
+            ResultSet result = ste.executeQuery(req);
+            while (result.next()) {
+                return result.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
+
     // Méthode pour obtenir le nombre total d'utilisateurs dans la base de données.
     public int getSize() {
         String req = "select count(*) from users";
@@ -226,6 +260,10 @@ public class ServiceUser implements IServiceUser {
                         res.getString("email"),
                         res.getString("password"),
                         res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
                         res.getDate("creation_date"),
                         res.getDate("update_date")
                 );

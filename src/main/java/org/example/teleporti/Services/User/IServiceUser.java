@@ -19,4 +19,6 @@ public interface IServiceUser {
     public void supprimer(User user);
 
     public int countByType(String type);
+
+    public int countByGovernerat(String gouvernerat);
 }

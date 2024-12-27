@@ -15,8 +15,8 @@ public class AuthController {
         return userController.getUserByEmailAndPassword(email, password) != null;
     }
 
-    public boolean inscription(String nom, String prenom, int age, String email, String password, String type) {
-        return userController.ajout(new User(userController.getSize() + 1, nom, prenom, age, email, password, type));
+    public boolean inscription(String nom, String prenom, int age, String email, String password, String type, String gouvernerat, String ville, String addresse, String telephone) {
+        return userController.ajout(new User(userController.getSize() + 1, nom, prenom, age, email, password, type, gouvernerat, ville, addresse, telephone));
     }
 
     public boolean logout() {

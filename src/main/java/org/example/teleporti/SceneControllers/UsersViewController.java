@@ -47,12 +47,20 @@ public class UsersViewController {
     private TableColumn<User, String> typeColumn;
 
     @FXML
+    private TableColumn<User, String> governeratColumn;
+
+    @FXML
+    private TableColumn<User, String> telephoneColumn;
+
+    @FXML
     public void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        governeratColumn.setCellValueFactory(new PropertyValueFactory<>("governerat"));
+        telephoneColumn.setCellValueFactory(new PropertyValueFactory<>("telephone"));
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             ObservableList<User> users = FXCollections.observableArrayList(userController.rechercher(newValue));
             usersTable.setItems(users);
@@ -139,5 +147,15 @@ public class UsersViewController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    public void onGotToDashboard(ActionEvent actionEvent) {
+        // To be implemented
+    }
+
+    @FXML
+    public void onGotToSettings(ActionEvent actionEvent) {
+        // To be implemented
     }
 }

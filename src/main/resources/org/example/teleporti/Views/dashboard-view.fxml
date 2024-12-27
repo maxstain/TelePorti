@@ -36,12 +36,12 @@
             <!-- Side Menu -->
             <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <VBox spacing="10.0">
-                    <Button styleClass="button" text="Stats" onAction="#onGotToStats"/>
-                    <Button styleClass="button" text="Dashboard" onAction="#onGotToDashboard"/>
-                    <Button styleClass="button" text="Profile" onAction="#onGotToProfile"/>
-                    <Button styleClass="button" text="Maps" onAction="#onGotToMaps"/>
-                    <Button styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
-                    <Button styleClass="button" text="Paramétres" onAction="#onGotToSettings"/>
+                    <Button alignment="CENTER" styleClass="button" text="Stats" onAction="#onGotToStats"/>
+                    <Button alignment="CENTER" styleClass="button" text="Dashboard" onAction="#onGotToDashboard"/>
+                    <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGotToProfile"/>
+                    <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGotToMaps"/>
+                    <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
+                    <Button alignment="CENTER" styleClass="button" text="Paramétres" onAction="#onGotToSettings"/>
                     <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
                 </VBox>
             </HBox>
@@ -50,7 +50,7 @@
             <VBox spacing="5.0" styleClass="container" prefWidth="500">
                 <VBox styleClass="chart-container" alignment="CENTER" spacing="10.0">
                     <Label styleClass="text-label, h3" style="-fx-text-fill: #fff" text="Utilisateurs"/>
-                    <PieChart fx:id="usersPieChart" prefHeight="300.0" prefWidth="500.0"/>
+                    <PieChart fx:id="usersPieChart" prefHeight="250.0" prefWidth="300.0"/>
                 </VBox>
             </VBox>
         </HBox>

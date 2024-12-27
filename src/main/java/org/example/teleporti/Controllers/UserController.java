@@ -50,4 +50,8 @@ public class UserController {
     public int countByType(String type) {
         return _serviceUser.countByType(type);
     }
+
+    public int countByGovernerat(String governerat) {
+        return _serviceUser.countByGovernerat(governerat);
+    }
 }
