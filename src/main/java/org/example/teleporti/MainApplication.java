@@ -8,16 +8,26 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.teleporti.Controllers.AuthController;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.prefs.Preferences;
 
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Views/login-view.fxml"));
+        Preferences prefs = Preferences.userNodeForPackage(MainApplication.class);
+        String sessionToken = prefs.get("sessionToken", null);
+
+        FXMLLoader fxmlLoader;
+        if (sessionToken != null && new AuthController().validateSession(sessionToken)) {
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Views/dashboard-view.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Views/login-view.fxml"));
+        }
         Scene scene = new Scene(fxmlLoader.load());
         Panel panel = new Panel();
         String css = Objects.requireNonNull(this.getClass().getResource("Styles/Styles.css")).toExternalForm();

@@ -5,14 +5,11 @@ import javafx.scene.control.Label;
 import org.example.teleporti.Entities.User;
 
 public class ProfileViewController {
-    protected Label nameLabel;
-    protected Label emailLabel;
-    protected User currentUser;
-
     @FXML
-    public void initialize() {
-        System.out.println("Profile view initialized.");
-    }
+    protected Label nameLabel = new Label("");
+    @FXML
+    protected Label emailLabel = new Label("");
+    protected User currentUser;
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;

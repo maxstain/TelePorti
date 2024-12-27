@@ -73,7 +73,7 @@ public class UsersViewController {
     protected void onLogout() {
         System.out.println("User logged out.");
         try {
-            authController.logout();
+            authController.logout(currentUser.getId());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
             String css = getClass().getResource("/org/example/teleporti/Styles/Auth.css").toExternalForm();

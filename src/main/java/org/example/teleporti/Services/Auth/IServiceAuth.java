@@ -10,5 +10,7 @@ public interface IServiceAuth {
 
     boolean inscription(User user);
 
-    boolean logout();
+    void logout(int userId);
+
+    String getSessionToken(int userId);
 }

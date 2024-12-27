@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.control.CheckBox?>
 <HBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       stylesheets="@../Styles/Auth.css"
       styleClass="panel-with-background-image"
@@ -28,6 +29,7 @@
         <Label styleClass="text-label" text="Connecter"/>
         <TextField fx:id="emailText" promptText="Email" styleClass="text-field"/>
         <PasswordField fx:id="passwordText" promptText="Password" styleClass="password-field"/>
+        <CheckBox fx:id="staySignedInCheckBox" text="Restez connecté"/>
         <Label styleClass="error-text" fx:id="errorText"/>
         <Label styleClass="text-label" text="N'a pas d'un compte ?"/>
         <Hyperlink text="Inscrivez-vous" onAction="#goToSignup" styleClass="hyperlink"/>

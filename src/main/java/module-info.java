@@ -10,6 +10,7 @@ module org.example.teleporti {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires java.prefs;
 
     opens org.example.teleporti to javafx.fxml;
     exports org.example.teleporti;

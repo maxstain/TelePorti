@@ -78,3 +78,9 @@
     -fx-text-fill: red;
     -fx-font-size: 10pt;
 }
+
+CheckBox {
+    -fx-text-fill: #fff;
+    -fx-alignment: center;
+    -fx-font-size: 10pt;
+}

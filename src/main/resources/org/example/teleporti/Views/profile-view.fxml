@@ -13,7 +13,7 @@
 
     <top>
         <Panel styleClass="panel-primary">
-            <Label text="Profile Header" styleClass="h1"/>
+            <Label text="Profile Header"/>
         </Panel>
     </top>
 

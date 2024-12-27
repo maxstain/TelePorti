@@ -25,9 +25,7 @@ public class DashboardViewController {
     private final UserController userController = new UserController();
     private final AuthController authController = new AuthController();
     @FXML
-    protected Label welcome;
-    @FXML
-    protected TextField searchField;
+    protected Label welcome = new Label("");
     @FXML
     protected PieChart usersPieChart;
     @FXML
@@ -46,7 +44,7 @@ public class DashboardViewController {
     protected void onLogout() {
         System.out.println("User logged out.");
         try {
-            authController.logout();
+            authController.logout(currentUser.getId());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
             Scene scene = new Scene(loader.load());
             String css = Objects.requireNonNull(getClass().getResource("/org/example/teleporti/Styles/Auth.css")).toExternalForm();
@@ -54,7 +52,7 @@ public class DashboardViewController {
             Stage stage = (Stage) welcome.getScene().getWindow();
             stage.setScene(scene);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.getStackTrace();
         }
     }
 
@@ -72,7 +70,7 @@ public class DashboardViewController {
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.getStackTrace();
         }
     }
 
@@ -86,7 +84,7 @@ public class DashboardViewController {
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.getStackTrace();
         }
     }
 
@@ -98,7 +96,7 @@ public class DashboardViewController {
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.getStackTrace();
         }
     }
 
@@ -116,13 +114,24 @@ public class DashboardViewController {
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.getStackTrace();
         }
     }
 
     @FXML
     public void onGotToDashboard(ActionEvent actionEvent) {
-        // To be implemented
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            DashboardViewController controller = loader.getController();
+            controller.setWelcomeMessage(currentUser.getPrenom());
+            controller.setCurrentUser(currentUser);
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @FXML

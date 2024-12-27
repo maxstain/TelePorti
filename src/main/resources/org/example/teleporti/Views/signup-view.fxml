@@ -23,6 +23,8 @@
         <TextField fx:id="emailText" promptText="Email"/>
         <PasswordField fx:id="passwordText" promptText="Password"/>
         <TextField fx:id="ageText" promptText="Age"/>
+        <TextField fx:id="governeratText" promptText="Governerat"/>
+        <TextField fx:id="villeText" promptText="Ville"/>
         <Label styleClass="error-text" fx:id="errorText"/>
         <Label styleClass="text-label" text="Avez-vous un compte ?"/>
         <Hyperlink text="Connectez" onAction="#goToLogin"/>
