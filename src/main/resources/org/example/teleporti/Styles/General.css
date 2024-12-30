@@ -1,8 +1,11 @@
 .container {
     -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
     -fx-padding: 8px;
     -fx-content-display: flex;
     -fx-spacing: 10px;
+    -fx-text-fill: #fff;
+    -fx-alignment: center;
 }
 
 .side-menu {

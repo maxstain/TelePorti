@@ -31,6 +31,22 @@
                 <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGoToProfile"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
+            <VBox alignment="CENTER" spacing="20.0" styleClass="container">
+                <HBox spacing="10.0">
+                    <VBox styleClass="container" style="-fx-background-color: #333">
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../Images/user.png"/>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #fff" text="100 Chauffeurs valable"/>
+                    </VBox>
+                    <VBox styleClass="container" style="-fx-background-color: #333">
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../Images/Trip_history.png"/>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #fff" text="Historique"/>
+                    </VBox>
+                </HBox>
+            </VBox>
         </HBox>
     </center>
 </BorderPane>

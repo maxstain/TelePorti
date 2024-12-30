@@ -1,29 +1,51 @@
-<?import javafx.scene.layout.BorderPane?>
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import org.kordamp.bootstrapfx.scene.layout.Panel?>
-
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.teleporti.SceneControllers.ProfileViewController"
+            stylesheets="@../Styles/General.css"
+            styleClass="panel-with-background-image, container"
             prefHeight="400.0" prefWidth="600.0">
 
     <top>
-        <Panel styleClass="panel-primary">
-            <Label text="Profile Header"/>
-        </Panel>
+        <HBox styleClass="NavigationBar" alignment="TOP_CENTER">
+            <VBox alignment="CENTER_LEFT">
+                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/logo.png"/>
+                </ImageView>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                <Label styleClass="welcome" fx:id="welcome"/>
+            </HBox>
+        </HBox>
     </top>
 
     <center>
-        <VBox spacing="10.0" padding="20.0">
-            <Label text="Name:"/>
-            <Label fx:id="nameLabel"/>
-            <Label text="Email:"/>
-            <Label fx:id="emailLabel"/>
-        </VBox>
+        <HBox>
+            <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
+                <Button alignment="CENTER" styleClass="button" text="Acceuil" onAction="#onGoToHome"/>
+                <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="20.0" styleClass="container">
+                <Label text="Profile" styleClass="title"/>
+                <Label text="Nom:"/>
+                <Label text="Prénom:"/>
+                <Label text="Email:"/>
+                <Label text="Téléphone:"/>
+                <Label text="Adresse:"/>
+                <Label text="Ville:"/>
+                <Label text="Code Postal:"/>
+                <Label text="Pays:"/>
+                <Button text="Modifier" onAction="#onEditProfile"/>
+            </VBox>
+        </HBox>
     </center>
 
 </BorderPane>

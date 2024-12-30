@@ -60,6 +60,7 @@ public class UserViewController {
             Scene scene = new Scene(loader.load());
             ProfileViewController controller = loader.getController();
             controller.setCurrentUser(currentUser);
+            controller.setWelcomeMessage(currentUser.getPrenom());
             Stage stage = (Stage) welcome.getScene().getWindow();
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
