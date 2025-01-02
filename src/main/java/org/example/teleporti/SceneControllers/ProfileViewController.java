@@ -23,6 +23,11 @@ public class ProfileViewController {
     protected Label phoneLabel = new Label("");
     @FXML
     protected Label addressLabel = new Label("");
+    @FXML
+    protected Label villeLabel = new Label("");
+    @FXML
+    protected Label paysLabel = new Label("");
+    @FXML
     protected User currentUser;
 
     @FXML
@@ -50,6 +55,8 @@ public class ProfileViewController {
         emailLabel.setText(user.getEmail());
         phoneLabel.setText(user.getTelephone());
         addressLabel.setText(user.getAddresse());
+        villeLabel.setText(user.getVille());
+        paysLabel.setText(user.getGovernerat());
     }
 
     @FXML

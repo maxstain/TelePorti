@@ -81,3 +81,13 @@ TableView {
     -fx-padding: 10px;
     -fx-max-width: 350px;
 }
+
+.title {
+    -fx-font-size: 20px;
+    -fx-text-fill: #fff;
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+}

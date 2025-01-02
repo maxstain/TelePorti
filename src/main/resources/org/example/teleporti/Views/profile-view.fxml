@@ -26,24 +26,47 @@
             </HBox>
         </HBox>
     </top>
-
     <center>
-        <HBox>
+        <HBox spacing="10.0">
             <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <Button alignment="CENTER" styleClass="button" text="Acceuil" onAction="#onGoToHome"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
-            <VBox alignment="CENTER" spacing="20.0" styleClass="container">
-                <Label text="Profile" styleClass="title"/>
-                <Label text="Nom:"/>
-                <Label text="Prénom:"/>
-                <Label text="Email:"/>
-                <Label text="Téléphone:"/>
-                <Label text="Adresse:"/>
-                <Label text="Ville:"/>
-                <Label text="Code Postal:"/>
-                <Label text="Pays:"/>
-                <Button text="Modifier" onAction="#onEditProfile"/>
+            <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="container"
+                  style="-fx-background-color: #656565; -fx-min-width: 650px">
+                <HBox>
+                    <VBox>
+                        <Label text="Profile" styleClass="title"/>
+                        <Label text="Informations Personnelles" styleClass="subtitle"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="10.0">
+                    <Label text="Nom et Prénom:" prefWidth="100.0"/>
+                    <Label fx:id="nameLabel"/>
+                </HBox>
+                <HBox spacing="10.0">
+                    <Label text="Email:" prefWidth="100.0"/>
+                    <Label fx:id="emailLabel"/>
+                </HBox>
+                <HBox spacing="10.0">
+                    <Label text="Téléphone:" prefWidth="100.0"/>
+                    <Label fx:id="phoneLabel"/>
+                </HBox>
+                <HBox spacing="10.0">
+                    <Label text="Adresse:" prefWidth="100.0"/>
+                    <Label fx:id="addressLabel"/>
+                </HBox>
+                <HBox spacing="10.0">
+                    <Label text="Ville:" prefWidth="100.0"/>
+                    <Label fx:id="villeLabel"/>
+                </HBox>
+                <HBox spacing="10.0">
+                    <Label text="Pays:" prefWidth="100.0"/>
+                    <Label fx:id="paysLabel"/>
+                </HBox>
+                <HBox alignment="CENTER">
+                    <Button prefWidth="200.0" text="Modifier" onAction="#onEditProfile"/>
+                </HBox>
             </VBox>
         </HBox>
     </center>
