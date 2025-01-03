@@ -65,14 +65,25 @@ public class ProfileViewController {
 
     @FXML
     public void onGoToHome(ActionEvent actionEvent) {
+        FXMLLoader loader;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/user-view.fxml"));
-            Scene scene = new Scene(loader.load());
-            UserViewController controller = loader.getController();
-            controller.setCurrentUser(currentUser);
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            if (currentUser.getType().equals("Admin")) {
+                loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
+                Scene scene = new Scene(loader.load());
+                DashboardViewController controller = loader.getController();
+                controller.setCurrentUser(currentUser);
+                Stage stage = (Stage) welcome.getScene().getWindow();
+                scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+                stage.setScene(scene);
+            } else {
+                loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/user-view.fxml"));
+                Scene scene = new Scene(loader.load());
+                UserViewController controller = loader.getController();
+                controller.setCurrentUser(currentUser);
+                Stage stage = (Stage) welcome.getScene().getWindow();
+                scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+                stage.setScene(scene);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
