@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Entities.User;
+import org.example.teleporti.Utils.Router;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class ProfileViewController {
@@ -68,7 +69,7 @@ public class ProfileViewController {
         FXMLLoader loader;
         try {
             if (currentUser.getType().equals("Admin")) {
-                loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
+                loader = new FXMLLoader(getClass().getResource(Router.DASHBOARD_VIEW));
                 Scene scene = new Scene(loader.load());
                 DashboardViewController controller = loader.getController();
                 controller.setCurrentUser(currentUser);
@@ -76,7 +77,7 @@ public class ProfileViewController {
                 scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                 stage.setScene(scene);
             } else {
-                loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/user-view.fxml"));
+                loader = new FXMLLoader(getClass().getResource(Router.USER_VIEW));
                 Scene scene = new Scene(loader.load());
                 UserViewController controller = loader.getController();
                 controller.setCurrentUser(currentUser);

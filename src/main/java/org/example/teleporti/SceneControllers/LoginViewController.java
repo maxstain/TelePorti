@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Entities.User;
+import org.example.teleporti.Utils.Router;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class LoginViewController {
                 errorText.setText("Login successful!");
                 FXMLLoader fxmlLoader;
                 if (user.getType().equals("Admin")) {
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource(Router.DASHBOARD_VIEW));
                     scene = new Scene(fxmlLoader.load());
                     scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                     DashboardViewController controller = fxmlLoader.getController();
@@ -50,7 +51,7 @@ public class LoginViewController {
                     Stage stage = (Stage) emailText.getScene().getWindow();
                     stage.setScene(scene);
                 } else {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/user-view.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.USER_VIEW));
                     scene = new Scene(loader.load());
                     UserViewController controller = loader.getController();
                     controller.setCurrentUser(user);
