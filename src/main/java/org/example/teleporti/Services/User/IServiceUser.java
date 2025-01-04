@@ -21,4 +21,8 @@ public interface IServiceUser {
     public int countByType(String type);
 
     public int countByGovernerat(String gouvernerat);
+
+    public User getUserById(int id);
+
+    public List<User> getAllChauffeurs();
 }

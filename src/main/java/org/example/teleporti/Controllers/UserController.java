@@ -54,4 +54,8 @@ public class UserController {
     public int countByGovernerat(String governerat) {
         return _serviceUser.countByGovernerat(governerat);
     }
+
+    public List<User> getAllChauffeurs() {
+        return _serviceUser.getAllChauffeurs();
+    }
 }

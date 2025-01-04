@@ -58,10 +58,23 @@ public class ProfileViewController {
         addressLabel.setText(user.getAddresse());
         villeLabel.setText(user.getVille());
         paysLabel.setText(user.getGovernerat());
+        setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
     }
 
     @FXML
     public void onEditProfile(ActionEvent actionEvent) {
+        FXMLLoader loader;
+//        try {
+//            loader = new FXMLLoader(getClass().getResource(Router.EDIT_PROFILE_VIEW));
+//            Scene scene = new Scene(loader.load());
+//            EditProfileViewController controller = loader.getController();
+//            controller.setCurrentUser(currentUser);
+//            Stage stage = (Stage) welcome.getScene().getWindow();
+//            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+//            stage.setScene(scene);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     @FXML

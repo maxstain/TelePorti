@@ -273,4 +273,61 @@ public class ServiceUser implements IServiceUser {
         }
         return null;
     }
+
+    @Override
+    public User getUserById(int id) {
+        String req = "select * from users where id=" + id;
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                return new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("password"),
+                        res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public List<User> getAllChauffeurs() {
+        List<User> users = new ArrayList<>();
+        String req = "select * from users where type = 'chauffeur'";
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                users.add(new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("password"),
+                        res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return users;
+    }
 }

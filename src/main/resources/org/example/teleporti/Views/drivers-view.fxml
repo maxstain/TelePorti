@@ -8,10 +8,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<?import org.controlsfx.control.tableview2.TableColumn2?>
-<?import javafx.util.Callback?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.teleporti.SceneControllers.UsersViewController"
+            fx:controller="org.example.teleporti.SceneControllers.DriversViewController"
             stylesheets="@../Styles/General.css"
             styleClass="panel-with-background-image, container">
 
@@ -37,19 +35,14 @@
             <!-- Side Menu -->
             <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <VBox spacing="10.0">
-                    <Button alignment="CENTER" styleClass="button" text="Stats" onAction="#onGotToStats"/>
-                    <Button alignment="CENTER" styleClass="button" text="Dashboard" onAction="#onGotToDashboard"/>
                     <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGotToProfile"/>
-                    <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGotToMaps"/>
-                    <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
-                    <Button alignment="CENTER" styleClass="button" text="Paramétres" onAction="#onGotToSettings"/>
                     <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
                 </VBox>
             </HBox>
 
             <!-- Main Content -->
             <VBox spacing="5.0" styleClass="container">
-                <Label styleClass="text-label" text="Utilisateurs"/>
+                <Label styleClass="text-label" text="Chauffeurs"/>
                 <VBox alignment="CENTER" spacing="10.0">
                     <TableView fx:id="usersTable" prefHeight="200.0">
                         <columns>
@@ -73,11 +66,6 @@
                                     <PropertyValueFactory property="email"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="type"/>
-                                </cellValueFactory>
-                            </TableColumn>
                             <TableColumn fx:id="governeratColumn" prefWidth="75.0" text="Governerat">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="governerat"/>
@@ -90,11 +78,6 @@
                             </TableColumn>
                         </columns>
                     </TableView>
-                    <HBox>
-                        <Button styleClass="button" text="Ajouter" onAction="#openAddModal"/>
-                        <Button styleClass="button" text="Modifier" onAction="#openEditModal"/>
-                        <Button styleClass="button" text="Supprimer" onAction="#openDeleteModal"/>
-                    </HBox>
                 </VBox>
             </VBox>
         </HBox>

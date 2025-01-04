@@ -8,14 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
+import org.example.teleporti.Utils.Router;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.util.Objects;
@@ -45,7 +42,7 @@ public class DashboardViewController {
         System.out.println("User logged out.");
         try {
             authController.logout(currentUser.getId());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.LOGIN_VIEW));
             Scene scene = new Scene(loader.load());
             String css = Objects.requireNonNull(getClass().getResource("/org/example/teleporti/Styles/Auth.css")).toExternalForm();
             scene.getStylesheets().add(css);
@@ -62,7 +59,7 @@ public class DashboardViewController {
 
     public void onGotToProfile() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/profile-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.PROFILE_VIEW));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
             ProfileViewController controller = loader.getController();
@@ -76,7 +73,7 @@ public class DashboardViewController {
 
     public void onGotToUsers() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/users-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.USERS_VIEW));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
             UsersViewController controller = loader.getController();
@@ -84,13 +81,13 @@ public class DashboardViewController {
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
         } catch (Exception e) {
-            e.getStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
     public void onGotToStats() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/stats-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.STATS_VIEW));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
@@ -103,12 +100,13 @@ public class DashboardViewController {
     @FXML
     public void setCurrentUser(User user) {
         this.currentUser = user;
+        setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
     }
 
     @FXML
     public void onGotToMaps(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/maps-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.MAPS_VIEW));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
@@ -121,7 +119,7 @@ public class DashboardViewController {
     @FXML
     public void onGotToDashboard(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/dashboard-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.DASHBOARD_VIEW));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) welcome.getScene().getWindow();
             DashboardViewController controller = loader.getController();

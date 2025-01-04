@@ -37,13 +37,15 @@
                         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                             <Image url="@../Images/user.png"/>
                         </ImageView>
-                        <Label style="-fx-text-fill: #fff" text="100 Chauffeurs valable"/>
+                        <Label fx:id="nbrChauff" style="-fx-text-fill: #fff"/>
+                        <Button styleClass="button" text="Chauffeurs" onAction="#onGoToChauffeurs"/>
                     </VBox>
                     <VBox styleClass="container" style="-fx-background-color: #333">
                         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                             <Image url="@../Images/Trip_history.png"/>
                         </ImageView>
                         <Label style="-fx-text-fill: #fff" text="Historique"/>
+                        <Button styleClass="button" text="Historique" onAction="#onGoToHistorique"/>
                     </VBox>
                 </HBox>
             </VBox>
