@@ -35,6 +35,7 @@
             <!-- Side Menu -->
             <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <VBox spacing="10.0">
+                    <Button alignment="CENTER" styleClass="button" text="Acceuil" onAction="#onGotToHome"/>
                     <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGotToProfile"/>
                     <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
                 </VBox>

@@ -2,21 +2,16 @@ package org.example.teleporti.SceneControllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Router;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.util.List;
 
@@ -108,5 +103,17 @@ public class DriversViewController {
     public void setChauffeurs(List<User> chauffeurs) {
         ObservableList<User> users = FXCollections.observableArrayList(chauffeurs);
         usersTable.setItems(users);
+    }
+
+    public void onGotToHome() {
+        try {
+            if (currentUser.getType().equals("Admin")) {
+                Router.goToDashboard(currentUser, welcome);
+            } else {
+                Router.goToUser(currentUser, welcome);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

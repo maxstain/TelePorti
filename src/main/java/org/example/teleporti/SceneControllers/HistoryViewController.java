@@ -2,7 +2,6 @@ package org.example.teleporti.SceneControllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -14,7 +13,6 @@ import org.example.teleporti.Entities.Trajet;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Router;
 
-import java.io.IOException;
 import java.sql.Date;
 
 public class HistoryViewController {
@@ -78,6 +76,14 @@ public class HistoryViewController {
         try {
             authController.logout(currentUser.getId());
             Router.goToLogin(welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToHome() {
+        try {
+            Router.goToUser(currentUser, welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }

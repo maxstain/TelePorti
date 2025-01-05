@@ -8,7 +8,7 @@ public class Trajet {
     private int conducteurId;
     private String pointDepart;
     private String destination;
-    private Date dateHeure;
+    private Date dateHeure = new Date(new java.util.Date().getTime());
     private int placesDisponibles;
     private float co2Economise;
 
@@ -18,6 +18,15 @@ public class Trajet {
         this.pointDepart = pointDepart;
         this.destination = destination;
         this.dateHeure = dateHeure;
+        this.placesDisponibles = placesDisponibles;
+        this.co2Economise = co2Economise;
+    }
+
+    public Trajet(int id, int conducteurId, String pointDepart, String destination, int placesDisponibles, float co2Economise) {
+        this.id = id;
+        this.conducteurId = conducteurId;
+        this.pointDepart = pointDepart;
+        this.destination = destination;
         this.placesDisponibles = placesDisponibles;
         this.co2Economise = co2Economise;
     }
