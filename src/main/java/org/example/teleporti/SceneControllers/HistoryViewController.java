@@ -35,7 +35,7 @@ public class HistoryViewController {
     @FXML
     protected Label welcome = new Label("");
 
-    protected User currentUser;
+    protected User currentUser = null;
 
     public void setCurrentUser(User user) {
         this.currentUser = user;
@@ -72,6 +72,7 @@ public class HistoryViewController {
         }
     }
 
+    @FXML
     public void onLogout() {
         try {
             authController.logout(currentUser.getId());
@@ -81,6 +82,7 @@ public class HistoryViewController {
         }
     }
 
+    @FXML
     public void onGoToHome() {
         try {
             Router.goToUser(currentUser, welcome);
