@@ -40,28 +40,13 @@ public class LoginViewController {
                 errorText.setText("Email ou mot de passe incorrect.");
             } else {
                 errorText.setText("Login successful!");
-                FXMLLoader fxmlLoader;
                 if (user.getType().equals("Admin")) {
-                    fxmlLoader = new FXMLLoader(getClass().getResource(Router.DASHBOARD_VIEW));
-                    scene = new Scene(fxmlLoader.load());
-                    scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-                    DashboardViewController controller = fxmlLoader.getController();
-                    controller.setWelcomeMessage(user.getPrenom());
-                    controller.setCurrentUser(user);
-                    Stage stage = (Stage) emailText.getScene().getWindow();
-                    stage.setScene(scene);
+                    Router.goToDashboard(user, errorText);
                 } else {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.USER_VIEW));
-                    scene = new Scene(loader.load());
-                    UserViewController controller = loader.getController();
-                    controller.setCurrentUser(user);
-                    controller.setWelcomeMessage(user.getPrenom());
-                    Stage stage = (Stage) emailText.getScene().getWindow();
-                    scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-                    stage.setScene(scene);
+                    Router.goToUser(user, errorText);
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -69,11 +54,8 @@ public class LoginViewController {
     @FXML
     protected void goToSignup() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/signup-view.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) emailText.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
+            Router.goToRegister(errorText);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

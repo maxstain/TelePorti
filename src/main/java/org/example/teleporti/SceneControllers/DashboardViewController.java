@@ -87,11 +87,7 @@ public class DashboardViewController {
 
     public void onGotToStats() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.STATS_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToStats(currentUser, welcome);
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -104,36 +100,25 @@ public class DashboardViewController {
     }
 
     @FXML
-    public void onGotToMaps(ActionEvent actionEvent) {
+    public void onGotToMaps() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.MAPS_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToMaps(currentUser, welcome);
         } catch (Exception e) {
             e.getStackTrace();
         }
     }
 
     @FXML
-    public void onGotToDashboard(ActionEvent actionEvent) {
+    public void onGotToDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.DASHBOARD_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            DashboardViewController controller = loader.getController();
-            controller.setWelcomeMessage(currentUser.getPrenom());
-            controller.setCurrentUser(currentUser);
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToDashboard(currentUser, welcome);
         } catch (Exception e) {
             e.getStackTrace();
         }
     }
 
     @FXML
-    public void onGotToSettings(ActionEvent actionEvent) {
-        // To be implemented
+    public void onGotToSettings() {
+        // TODO: To be implemented
     }
 }

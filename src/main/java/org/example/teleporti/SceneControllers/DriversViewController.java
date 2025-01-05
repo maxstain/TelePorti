@@ -73,12 +73,7 @@ public class DriversViewController {
         System.out.println("User logged out.");
         try {
             authController.logout(currentUser.getId());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.LOGIN_VIEW));
-            Scene scene = new Scene(loader.load());
-            String css = getClass().getResource("/org/example/teleporti/Styles/Auth.css").toExternalForm();
-            scene.getStylesheets().add(css);
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            stage.setScene(scene);
+            Router.goToLogin(welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -97,14 +92,7 @@ public class DriversViewController {
 
     public void onGotToProfile() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.PROFILE_VIEW));
-            Scene scene = new Scene(loader.load());
-            ProfileViewController controller = loader.getController();
-            controller.setCurrentUser(currentUser);
-            controller.setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToProfile(currentUser, welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

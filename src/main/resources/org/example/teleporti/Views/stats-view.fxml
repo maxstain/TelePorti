@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.teleporti.SceneControllers.StatsViewController"
+            stylesheets="@../Styles/General.css"
+            styleClass="panel-with-background-image, container"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox styleClass="NavigationBar" alignment="TOP_CENTER">
+            <VBox alignment="CENTER_LEFT">
+                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/logo.png"/>
+                </ImageView>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                <Label styleClass="welcome" fx:id="welcome"/>
+            </HBox>
+        </HBox>
+    </top>
+    <center>
+        <HBox spacing="10.0">
+            <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
+                <Button alignment="CENTER" styleClass="button" text="Acceuil" onAction="#onGoToHome"/>
+                <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="container"
+                  style="-fx-background-color: #656565; -fx-min-width: 650px">
+                <Label styleClass="text-title" text="Statistiques"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

@@ -82,12 +82,7 @@ public class UsersViewController {
         System.out.println("User logged out.");
         try {
             authController.logout(currentUser.getId());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.LOGIN_VIEW));
-            Scene scene = new Scene(loader.load());
-            String css = getClass().getResource("/org/example/teleporti/Styles/Auth.css").toExternalForm();
-            scene.getStylesheets().add(css);
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            stage.setScene(scene);
+            Router.goToLogin(welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -106,13 +101,7 @@ public class UsersViewController {
 
     public void onGotToProfile() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.PROFILE_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            ProfileViewController controller = loader.getController();
-            controller.setCurrentUser(currentUser);
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToProfile(currentUser, welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -120,14 +109,7 @@ public class UsersViewController {
 
     public void onGotToUsers() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.USERS_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            UsersViewController controller = loader.getController();
-            controller.setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
-            controller.setCurrentUser(currentUser);
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToUsers(currentUser, welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -135,11 +117,7 @@ public class UsersViewController {
 
     public void onGotToStats() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.STATS_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToStats(currentUser, welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -151,36 +129,26 @@ public class UsersViewController {
         setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
     }
 
-    public void onGotToMaps(ActionEvent actionEvent) {
+    public void onGotToMaps() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.MAPS_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToMaps(currentUser, welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     @FXML
-    public void onGotToDashboard(ActionEvent actionEvent) {
+    public void onGotToDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.DASHBOARD_VIEW));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            DashboardViewController controller = loader.getController();
-            controller.setCurrentUser(currentUser);
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToDashboard(currentUser, welcome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     @FXML
-    public void onGotToSettings(ActionEvent actionEvent) {
-        // To be implemented
+    public void onGotToSettings() {
+        // TODO: To be implemented
     }
 
     @FXML

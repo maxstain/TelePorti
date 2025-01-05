@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.teleporti.SceneControllers.HistoryViewController"
+            stylesheets="@../Styles/General.css"
+            styleClass="panel-with-background-image, container"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <top>
+        <HBox styleClass="NavigationBar" alignment="TOP_CENTER">
+            <VBox alignment="CENTER_LEFT">
+                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/logo.png"/>
+                </ImageView>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                <Label styleClass="welcome" fx:id="welcome"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox>
+            <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
+                <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGoToProfile"/>
+                <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="20.0" styleClass="container">
+                <Label styleClass="title" text="Historique"/>
+                <TableView fx:id="historyTable" styleClass="table-view" prefHeight="200.0" prefWidth="400.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="20.0" text="ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="dateHeureColumn" prefWidth="100.0" text="Date">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="dateHeure"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="pointDepartColumn" prefWidth="100.0" text="pointDepart">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="pointDepart"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="destinationColumn" prefWidth="100.0" text="Destination">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="destination"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="co2EconomiseColumn" prefWidth="100.0" text="CO2">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="co2Economise"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </center>
+
+</BorderPane>

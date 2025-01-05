@@ -4,12 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Router;
 import org.kordamp.bootstrapfx.BootstrapFX;
+
+import java.io.IOException;
 
 public class ProfileViewController {
     private final AuthController authController = new AuthController();
@@ -36,11 +40,7 @@ public class ProfileViewController {
         System.out.println("User logged out.");
         try {
             authController.logout(currentUser.getId());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) welcome.getScene().getWindow();
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setScene(scene);
+            Router.goToLogin(welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,43 +62,31 @@ public class ProfileViewController {
     }
 
     @FXML
-    public void onEditProfile(ActionEvent actionEvent) {
-        FXMLLoader loader;
-//        try {
-//            loader = new FXMLLoader(getClass().getResource(Router.EDIT_PROFILE_VIEW));
-//            Scene scene = new Scene(loader.load());
-//            EditProfileViewController controller = loader.getController();
-//            controller.setCurrentUser(currentUser);
-//            Stage stage = (Stage) welcome.getScene().getWindow();
-//            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-//            stage.setScene(scene);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+    public void onGoToHome(ActionEvent actionEvent) {
+        try {
+            if (currentUser.getType().equals("Admin")) {
+                Router.goToDashboard(currentUser, welcome);
+            } else {
+                Router.goToUser(currentUser, welcome);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    public void onGoToHome(ActionEvent actionEvent) {
-        FXMLLoader loader;
+    private void openEditModal(ActionEvent actionEvent) {
         try {
-            if (currentUser.getType().equals("Admin")) {
-                loader = new FXMLLoader(getClass().getResource(Router.DASHBOARD_VIEW));
-                Scene scene = new Scene(loader.load());
-                DashboardViewController controller = loader.getController();
-                controller.setCurrentUser(currentUser);
-                Stage stage = (Stage) welcome.getScene().getWindow();
-                scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-                stage.setScene(scene);
-            } else {
-                loader = new FXMLLoader(getClass().getResource(Router.USER_VIEW));
-                Scene scene = new Scene(loader.load());
-                UserViewController controller = loader.getController();
-                controller.setCurrentUser(currentUser);
-                Stage stage = (Stage) welcome.getScene().getWindow();
-                scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-                stage.setScene(scene);
-            }
-        } catch (Exception e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
+            Scene scene = new Scene(loader.load());
+            EditModalController controller = loader.getController();
+            controller.setUser(currentUser);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Edit User");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

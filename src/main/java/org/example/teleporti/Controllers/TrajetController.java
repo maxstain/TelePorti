@@ -1,10 +1,12 @@
 package org.example.teleporti.Controllers;
 
+import javafx.collections.ObservableList;
 import org.example.teleporti.Entities.Trajet;
 import org.example.teleporti.Services.Trajet.ServiceTrajet;
 import org.example.teleporti.Utils.DatabaseConnection;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class TrajetController {
     private static Connection con = new DatabaseConnection().getConnection();
@@ -32,5 +34,9 @@ public class TrajetController {
 
     public void truncate() {
         _serviceTrajet.truncate();
+    }
+
+    public List<Trajet> getTrajetsByUserId(int id) {
+        return _serviceTrajet.getTrajetsByUserId(id);
     }
 }

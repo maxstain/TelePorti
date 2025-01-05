@@ -65,7 +65,7 @@
                     <Label fx:id="paysLabel"/>
                 </HBox>
                 <HBox alignment="CENTER">
-                    <Button prefWidth="200.0" text="Modifier" onAction="#onEditProfile"/>
+                    <Button prefWidth="200.0" text="Modifier" onAction="#openEditModal"/>
                 </HBox>
             </VBox>
         </HBox>

@@ -11,6 +11,7 @@ import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.EmailVerification;
+import org.example.teleporti.Utils.Router;
 
 import java.io.IOException;
 
@@ -62,13 +63,8 @@ public class SignupViewController {
     @FXML
     protected void goToLogin() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/teleporti/Views/login-view.fxml"));
-            Scene scene = new Scene(loader.load());
-            String css = getClass().getResource("/org/example/teleporti/Styles/Auth.css").toExternalForm();
-            scene.getStylesheets().add(css);
-            Stage stage = (Stage) emailText.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
+            Router.goToLogin(errorText);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

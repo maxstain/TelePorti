@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class ServiceTrajet implements IServiceTrajet {
 
@@ -97,6 +98,31 @@ public class ServiceTrajet implements IServiceTrajet {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Trajet> getTrajetsByUserId(int id) {
+        String req = "select * from trajets where conducteurId = " + id;
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                System.out.println("ID: " + res.getInt("id") +
+                        "\nConducteur ID: " + res.getInt("conducteurId") +
+                        "\nPoint de départ: " + res.getString("pointDepart") +
+                        "\nDestination: " + res.getString("destination") +
+                        "\nDate et heure: " + res.getDate("dateHeure") +
+                        "\nPlaces disponibles: " + res.getInt("placesDisponibles") +
+                        "\nCO2 économisé: " + res.getFloat("co2Economise")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     public int getSize() {

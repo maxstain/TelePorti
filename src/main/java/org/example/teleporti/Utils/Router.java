@@ -1,15 +1,23 @@
 package org.example.teleporti.Utils;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import org.example.teleporti.Entities.User;
+import org.example.teleporti.SceneControllers.*;
+import org.kordamp.bootstrapfx.BootstrapFX;
+
+import java.util.List;
+
 public class Router {
     public static final String LOGIN_VIEW = "/org/example/teleporti/Views/login-view.fxml";
     public static final String REGISTER_VIEW = "/org/example/teleporti/Views/register-view.fxml";
     public static final String PROFILE_VIEW = "/org/example/teleporti/Views/profile-view.fxml";
-    public static final String HOME_VIEW = "/org/example/teleporti/Views/home-view.fxml";
     public static final String DASHBOARD_VIEW = "/org/example/teleporti/Views/dashboard-view.fxml";
     public static final String STATS_VIEW = "/org/example/teleporti/Views/stats-view.fxml";
     public static final String USER_VIEW = "/org/example/teleporti/Views/user-view.fxml";
     public static final String ADD_VIEW = "/org/example/teleporti/Views/add-view.fxml";
-    public static final String UPDATE_VIEW = "/org/example/teleporti/Views/update-view.fxml";
     public static final String DRIVERS_VIEW = "/org/example/teleporti/Views/drivers-view.fxml";
     public static final String HISTORY_VIEW = "/org/example/teleporti/Views/history-view.fxml";
     public static final String MAPS_VIEW = "/org/example/teleporti/Views/maps-view.fxml";
@@ -19,5 +27,157 @@ public class Router {
     public static final String DELETE_MODAL_VIEW = "/org/example/teleporti/Views/Modals/delete-modal.fxml";
 
     private Router() {
+    }
+
+    public static void goToProfile(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(PROFILE_VIEW));
+            Scene scene = new Scene(loader.load());
+            ProfileViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            controller.setWelcomeMessage(currentUser.getPrenom());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToDashboard(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(DASHBOARD_VIEW));
+            Scene scene = new Scene(loader.load());
+            DashboardViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            controller.setWelcomeMessage(currentUser.getPrenom());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToStats(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(STATS_VIEW));
+            Scene scene = new Scene(loader.load());
+            StatsViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToUser(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(USER_VIEW));
+            Scene scene = new Scene(loader.load());
+            UserViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToHistory(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(HISTORY_VIEW));
+            Scene scene = new Scene(loader.load());
+            HistoryViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToMaps(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(MAPS_VIEW));
+            Scene scene = new Scene(loader.load());
+            MapsViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToUsers(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(USERS_VIEW));
+            Scene scene = new Scene(loader.load());
+            UsersViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            controller.setWelcomeMessage(currentUser.getPrenom());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToDrivers(User currentUser, Label welcome, List<User> chauffeurs) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(DRIVERS_VIEW));
+            Scene scene = new Scene(loader.load());
+            DriversViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            controller.setChauffeurs(chauffeurs);
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToAdd(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(ADD_VIEW));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToLogin(Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(LOGIN_VIEW));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToRegister(Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(REGISTER_VIEW));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
