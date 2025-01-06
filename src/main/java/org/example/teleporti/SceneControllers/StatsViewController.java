@@ -1,6 +1,5 @@
 package org.example.teleporti.SceneControllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.example.teleporti.Controllers.AuthController;
@@ -30,7 +29,24 @@ public class StatsViewController {
     }
 
     @FXML
-    public void onGoToHome() {
+    public void onLogout() {
+        try {
+            authController.logout(currentUser.getId());
+            Router.goToLogin(welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToStats() {
+        try {
+            Router.goToStats(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToDashboard() {
         try {
             Router.goToDashboard(currentUser, welcome);
         } catch (Exception e) {
@@ -38,11 +54,33 @@ public class StatsViewController {
         }
     }
 
-    @FXML
-    public void onLogout() {
+    public void onGoToProfile() {
         try {
-            authController.logout(currentUser.getId());
-            Router.goToLogin(welcome);
+            Router.goToProfile(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToMaps() {
+        try {
+            Router.goToMaps(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToUsers() {
+        try {
+            Router.goToUsers(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToSettings() {
+        try {
+            // Router.goToSettings(currentUser, welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }
