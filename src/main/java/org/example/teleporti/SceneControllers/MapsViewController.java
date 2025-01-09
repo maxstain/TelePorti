@@ -1,5 +1,7 @@
 package org.example.teleporti.SceneControllers;
 
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.controlsfx.control.WorldMapView;
@@ -10,12 +12,26 @@ import org.example.teleporti.Utils.Router;
 public class MapsViewController {
 
     private final AuthController authController = new AuthController();
-    public WorldMapView worldMapView;
+
+    @FXML
+    private WorldMapView worldMapView;
 
     @FXML
     private Label welcome = new Label("");
 
     protected User currentUser;
+
+    protected ObservableList<WorldMapView.Country> countries = new ObservableListBase<>() {
+        @Override
+        public WorldMapView.Country get(int index) {
+            return WorldMapView.Country.TN;
+        }
+
+        @Override
+        public int size() {
+            return 1;
+        }
+    };
 
     @FXML
     public void initialize() {
@@ -25,7 +41,10 @@ public class MapsViewController {
                 new WorldMapView.Location("Sfax", 34.7487, 10.7601),
                 new WorldMapView.Location("Gabes", 33.8814, 10.0982)
         );
-        worldMapView.setZoomFactor(3);
+
+        worldMapView.setCountries(countries);
+
+        worldMapView.setShowLocations(true);
     }
 
     public void setWelcomeMessage(String message) {
