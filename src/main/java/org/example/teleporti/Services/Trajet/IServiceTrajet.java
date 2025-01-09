@@ -8,7 +8,7 @@ import java.util.List;
 public interface IServiceTrajet {
     public void ajout(Trajet newTrajet);
 
-    public void afficher();
+    public Object afficher();
 
     public void modifier(Trajet trajet);
 

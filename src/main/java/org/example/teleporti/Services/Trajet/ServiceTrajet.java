@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceTrajet implements IServiceTrajet {
@@ -50,8 +51,9 @@ public class ServiceTrajet implements IServiceTrajet {
     }
 
     @Override
-    public void afficher() {
+    public List<Trajet> afficher() {
         String req = "select id, conducteurId, pointDepart, destination, dateHeure, placesDisponibles, co2Economise from trajets";
+        ArrayList<Trajet> trajets = new ArrayList<>();
         try {
             if (getSize() == 0) {
                 System.out.println("Aucun trajet trouvé");
@@ -66,11 +68,21 @@ public class ServiceTrajet implements IServiceTrajet {
                             "\nPlaces disponibles: " + res.getInt("placesDisponibles") +
                             "\nCO2 économisé: " + res.getFloat("co2Economise")
                     );
+                    trajets.add(new Trajet(
+                            res.getInt("id"),
+                            res.getInt("conducteurId"),
+                            res.getString("pointDepart"),
+                            res.getString("destination"),
+                            res.getDate("dateHeure"),
+                            res.getInt("placesDisponibles"),
+                            res.getFloat("co2Economise")
+                    ));
                 }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return trajets;
     }
 
     @Override
@@ -101,6 +113,8 @@ public class ServiceTrajet implements IServiceTrajet {
     }
 
     /**
+     * Get all trajets by user ID
+     *
      * @param id
      * @return
      */

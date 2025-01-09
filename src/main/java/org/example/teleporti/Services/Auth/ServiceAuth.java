@@ -112,4 +112,18 @@ public class ServiceAuth implements IServiceAuth {
         }
         return null;
     }
+
+    public int getUserIdBySessionToken(String sessionToken) {
+        String query = "SELECT id FROM users WHERE token = ?";
+        try (PreparedStatement statement = ste.getConnection().prepareStatement(query)) {
+            statement.setString(1, sessionToken);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

@@ -2,6 +2,7 @@ package org.example.teleporti.SceneControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.controlsfx.control.WorldMapView;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Router;
@@ -9,6 +10,7 @@ import org.example.teleporti.Utils.Router;
 public class MapsViewController {
 
     private final AuthController authController = new AuthController();
+    public WorldMapView worldMapView;
 
     @FXML
     private Label welcome = new Label("");
@@ -17,6 +19,13 @@ public class MapsViewController {
 
     @FXML
     public void initialize() {
+        worldMapView.getLocations().addAll(
+                new WorldMapView.Location("Tunis", 36.8065, 10.1815),
+                new WorldMapView.Location("Sousse", 35.8252, 10.6367),
+                new WorldMapView.Location("Sfax", 34.7487, 10.7601),
+                new WorldMapView.Location("Gabes", 33.8814, 10.0982)
+        );
+        worldMapView.setZoomFactor(3);
     }
 
     public void setWelcomeMessage(String message) {

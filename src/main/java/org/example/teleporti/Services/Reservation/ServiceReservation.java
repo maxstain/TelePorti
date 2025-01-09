@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceReservation implements IServiceReservation {
 
@@ -43,14 +45,21 @@ public class ServiceReservation implements IServiceReservation {
     }
 
     @Override
-    public void afficher() {
+    public List<Reservation> afficher() {
         String req = "select id, trajetId, passagerId, status from reservations";
+        ArrayList<Reservation> reservations = new ArrayList<>();
         try {
             if (getSize() == 0) {
                 System.out.println("Aucun reservation trouvée");
             } else {
                 ResultSet res = ste.executeQuery(req);
                 while (res.next()) {
+                    reservations.add(new Reservation(
+                            res.getInt("id"),
+                            res.getInt("trajetId"),
+                            res.getInt("passagerId"),
+                            res.getString("status")
+                    ));
                     System.out.println("ID: " + res.getInt("id") +
                             "\nTrajet ID: " + res.getInt("trajetId") +
                             "\nPassager ID: " + res.getInt("passagerId") +
@@ -61,6 +70,7 @@ public class ServiceReservation implements IServiceReservation {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return reservations;
     }
 
     @Override

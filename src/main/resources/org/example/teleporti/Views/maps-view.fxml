@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.WorldMapView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.teleporti.SceneControllers.MapsViewController"
@@ -35,7 +36,8 @@
             </VBox>
             <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="container"
                   style="-fx-background-color: #656565; -fx-min-width: 650px">
-                <Label styleClass="text-title" text="Statistiques"/>
+                <Label styleClass="text-title" text="Maps"/>
+                <WorldMapView fx:id="worldMapView" prefHeight="400.0" prefWidth="600.0"/>
             </VBox>
         </HBox>
     </center>
