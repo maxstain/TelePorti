@@ -25,4 +25,8 @@ public interface IServiceUser {
     public User getUserById(int id);
 
     public List<User> getAllChauffeurs();
+
+    public List<User> getAllClients();
+
+    public List<String> getAllGovernerats();
 }

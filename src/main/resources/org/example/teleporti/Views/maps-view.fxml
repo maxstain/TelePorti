@@ -37,7 +37,9 @@
             <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="container"
                   style="-fx-background-color: #656565; -fx-min-width: 650px">
                 <Label styleClass="text-title" text="Maps"/>
-                <WorldMapView fx:id="worldMapView" prefHeight="50.0" styleClass="container"/>
+                <Pane styleClass="container" prefWidth="100" prefHeight="100">
+                    <WorldMapView fx:id="worldMapView" prefHeight="200" prefWidth="100" styleClass="container"/>
+                </Pane>
             </VBox>
         </HBox>
     </center>

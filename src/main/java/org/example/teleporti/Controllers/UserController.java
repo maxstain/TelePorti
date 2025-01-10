@@ -91,4 +91,12 @@ public class UserController implements HttpHandler {
         os.write(response.getBytes());
         os.close();
     }
+
+    public List<User> getAllClients() {
+        return _serviceUser.getAllClients();
+    }
+
+    public List<String> getAllGovernerats() {
+        return _serviceUser.getAllGovernerats();
+    }
 }

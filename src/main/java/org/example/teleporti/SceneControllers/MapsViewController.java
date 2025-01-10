@@ -4,14 +4,19 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import org.controlsfx.control.WorldMapView;
 import org.example.teleporti.Controllers.AuthController;
+import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
+import org.example.teleporti.Utils.Constants;
 import org.example.teleporti.Utils.Router;
 
 public class MapsViewController {
 
     private final AuthController authController = new AuthController();
+    private final UserController userController = new UserController();
 
     @FXML
     private WorldMapView worldMapView;
@@ -21,7 +26,19 @@ public class MapsViewController {
 
     protected User currentUser;
 
-    protected ObservableList<WorldMapView.Country> countries = new ObservableListBase<>() {
+    private final ObservableList<WorldMapView.Location> locations = new ObservableListBase<>() {
+        @Override
+        public WorldMapView.Location get(int index) {
+            return Constants.locations.stream().filter(location -> location.getName().equals(userController.getAllGovernerats().get(index))).findFirst().orElse(null);
+        }
+
+        @Override
+        public int size() {
+            return userController.getAllGovernerats().size();
+        }
+    };
+
+    private final ObservableList<WorldMapView.Country> countries = new ObservableListBase<>() {
         @Override
         public WorldMapView.Country get(int index) {
             return WorldMapView.Country.TN;
@@ -35,16 +52,23 @@ public class MapsViewController {
 
     @FXML
     public void initialize() {
-        worldMapView.getLocations().addAll(
-                new WorldMapView.Location("Tunis", 36.8065, 10.1815),
-                new WorldMapView.Location("Sousse", 35.8252, 10.6367),
-                new WorldMapView.Location("Sfax", 34.7487, 10.7601),
-                new WorldMapView.Location("Gabes", 33.8814, 10.0982)
+        worldMapView.getLocations().addAll(locations);
+        worldMapView.locationViewFactoryProperty().set(
+                (location) -> {
+                    Circle circle = new Circle(1.5);
+                    circle.setFill(Color.RED);
+                    return circle;
+                }
         );
-
-        worldMapView.setCountries(countries);
-
         worldMapView.setShowLocations(true);
+        worldMapView.setCountries(countries);
+        worldMapView.countryViewFactoryProperty().set(
+                (country) -> {
+                    WorldMapView.CountryView countryView = new WorldMapView.CountryView(country);
+                    countryView.setOpacity(0.5);
+                    return countryView;
+                }
+        );
     }
 
     public void setWelcomeMessage(String message) {

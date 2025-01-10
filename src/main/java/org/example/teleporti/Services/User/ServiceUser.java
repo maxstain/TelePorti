@@ -330,4 +330,48 @@ public class ServiceUser implements IServiceUser {
         }
         return users;
     }
+
+    @Override
+    public List<User> getAllClients() {
+        String req = "select * from users where type = 'client'";
+        List<User> users = new ArrayList<>();
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                users.add(new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("password"),
+                        res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return users;
+    }
+
+    @Override
+    public List<String> getAllGovernerats() {
+        String req = "select distinct(governerat) from users";
+        List<String> governerats = new ArrayList<>();
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                governerats.add(res.getString("governerat"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return governerats;
+    }
 }
