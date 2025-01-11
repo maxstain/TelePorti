@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.teleporti.SceneControllers.ErrorModalController"
+            stylesheets="@../../Styles/General.css"
+            prefHeight="200.0" prefWidth="250.0">
+
+    <VBox prefHeight="200.0" prefWidth="300" alignment="CENTER" styleClass="container"
+          style="-fx-background-color: #333">
+        <Label styleClass="text-title" style="-fx-text-fill: #fff" fx:id="label"/>
+    </VBox>
+
+</AnchorPane>

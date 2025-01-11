@@ -173,6 +173,7 @@ public class UsersViewController {
         User user = usersTable.getSelectionModel().getSelectedItem();
 
         if (user == null) {
+            Router.openErrorMessageModal("Merci de selectionner un utilisateur à modifier.");
             return;
         }
 
@@ -196,6 +197,7 @@ public class UsersViewController {
         User user = usersTable.getSelectionModel().getSelectedItem();
 
         if (user == null) {
+            Router.openErrorMessageModal("Merci de selectionner un utilisateur à supprimer.");
             return;
         }
 

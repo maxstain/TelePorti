@@ -26,6 +26,7 @@ public class Router {
     public static final String EDIT_MODAL_VIEW = "/org/example/teleporti/Views/Modals/edit-modal.fxml";
     public static final String ADD_MODAL_VIEW = "/org/example/teleporti/Views/Modals/add-modal.fxml";
     public static final String DELETE_MODAL_VIEW = "/org/example/teleporti/Views/Modals/delete-modal.fxml";
+    private static final String ERROR_MODAL_VIEW = "/org/example/teleporti/Views/Modals/error-modal.fxml";
 
     private Router() {
     }
@@ -191,6 +192,20 @@ public class Router {
             Stage stage = (Stage) welcome.getScene().getWindow();
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void openErrorMessageModal(String message) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(ERROR_MODAL_VIEW));
+            Scene scene = new Scene(loader.load());
+            ErrorModalController controller = loader.getController();
+            controller.setMessage(message);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
