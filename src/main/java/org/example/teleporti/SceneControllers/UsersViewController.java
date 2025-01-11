@@ -194,6 +194,11 @@ public class UsersViewController {
     @FXML
     private void openDeleteModal() {
         User user = usersTable.getSelectionModel().getSelectedItem();
+
+        if (user == null) {
+            return;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.DELETE_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
