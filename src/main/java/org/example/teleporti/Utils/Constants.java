@@ -9,7 +9,7 @@ public class Constants {
     public static final List<Location> locations = List.of(
             new Location("Tunis", 36.8065, 10.1815),
             new Location("Sousse", 35.8252, 10.6367),
-            new Location("Sfax", 34.7487, 10.7601),
+            new Location("Sfax", 34.7487, 10.6500),
             new Location("Gabes (Sem7a)", 33.8814, 10.0982),
             new Location("Bizerte", 37.2744, 9.8733),
             new Location("Kairouan", 35.6784, 10.0967),

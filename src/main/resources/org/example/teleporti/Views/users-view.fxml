@@ -2,14 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-
-<?import org.controlsfx.control.tableview2.TableColumn2?>
-<?import javafx.util.Callback?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.teleporti.SceneControllers.UsersViewController"
             stylesheets="@../Styles/General.css"
@@ -51,7 +46,10 @@
             <VBox spacing="5.0" styleClass="container">
                 <Label styleClass="text-label" text="Utilisateurs"/>
                 <VBox alignment="CENTER" spacing="10.0">
-                    <TableView fx:id="usersTable" prefHeight="200.0">
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button styleClass="button" text="Recharger" onAction="#onRefresh"/>
+                    </HBox>
+                    <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="700">
                         <columns>
                             <TableColumn fx:id="idColumn" prefWidth="20.0" text="ID">
                                 <cellValueFactory>
@@ -78,7 +76,7 @@
                                     <PropertyValueFactory property="type"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="governeratColumn" prefWidth="75.0" text="Governerat">
+                            <TableColumn fx:id="governeratColumn" prefWidth="150.0" text="Governerat">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="governerat"/>
                                 </cellValueFactory>
@@ -90,7 +88,7 @@
                             </TableColumn>
                         </columns>
                     </TableView>
-                    <HBox>
+                    <HBox alignment="CENTER_RIGHT" spacing="10.0">
                         <Button styleClass="button" text="Ajouter" onAction="#openAddModal"/>
                         <Button styleClass="button" text="Modifier" onAction="#openEditModal"/>
                         <Button styleClass="button" text="Supprimer" onAction="#openDeleteModal"/>

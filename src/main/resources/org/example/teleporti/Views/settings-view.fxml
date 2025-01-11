@@ -4,10 +4,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import org.controlsfx.control.WorldMapView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.teleporti.SceneControllers.MapsViewController"
+            fx:controller="org.example.teleporti.SceneControllers.SettingsViewController"
             stylesheets="@../Styles/General.css"
             styleClass="panel-with-background-image, container"
             prefHeight="400.0" prefWidth="600.0">
@@ -34,12 +33,9 @@
                 <Button alignment="CENTER" styleClass="button" text="Paramétres" onAction="#onGoToSettings"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
-            <VBox spacing="20.0" styleClass="container"
-                  style="-fx-background-color: #333; -fx-min-width: 650px">
-                <Label styleClass="text-title" style="-fx-text-fill: #fff; -fx-font-weight: bold" text="Maps"/>
-                <Pane styleClass="container" prefWidth="100" prefHeight="100">
-                    <WorldMapView fx:id="worldMapView" prefHeight="200" prefWidth="100" styleClass="container"/>
-                </Pane>
+            <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="container"
+                  style="-fx-background-color: #656565; -fx-min-width: 650px">
+                <Label styleClass="text-title" text="Statistiques"/>
             </VBox>
         </HBox>
     </center>

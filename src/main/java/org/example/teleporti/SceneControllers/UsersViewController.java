@@ -2,24 +2,22 @@ package org.example.teleporti.SceneControllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Router;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 
 public class UsersViewController {
 
@@ -148,7 +146,11 @@ public class UsersViewController {
 
     @FXML
     public void onGotToSettings() {
-        // TODO: To be implemented
+        try {
+            Router.goToSettings(currentUser, welcome);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -167,10 +169,12 @@ public class UsersViewController {
     }
 
     @FXML
-    private void openEditModal(ActionEvent actionEvent) {
-        User user = actionEvent.getSource() instanceof Button
-                ? (User) ((Button) actionEvent.getSource()).getUserData()
-                : null;
+    private void openEditModal() {
+        User user = usersTable.getSelectionModel().getSelectedItem();
+
+        if (user == null) {
+            return;
+        }
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
@@ -188,10 +192,8 @@ public class UsersViewController {
     }
 
     @FXML
-    private void openDeleteModal(ActionEvent actionEvent) {
-        User user = actionEvent.getSource() instanceof Button
-                ? (User) ((Button) actionEvent.getSource()).getUserData()
-                : null;
+    private void openDeleteModal() {
+        User user = usersTable.getSelectionModel().getSelectedItem();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.DELETE_MODAL_VIEW));
             Scene scene = new Scene(loader.load());

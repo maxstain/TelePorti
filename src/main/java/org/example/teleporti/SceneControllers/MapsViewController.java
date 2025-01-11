@@ -29,7 +29,7 @@ public class MapsViewController {
     private final ObservableList<WorldMapView.Location> locations = new ObservableListBase<>() {
         @Override
         public WorldMapView.Location get(int index) {
-            return Constants.locations.stream().filter(location -> location.getName().equals(userController.getAllGovernerats().get(index))).findFirst().orElse(null);
+            return Constants.locations.stream().filter(location -> location.getName().contains(userController.getAllGovernerats().get(index))).findFirst().orElse(null);
         }
 
         @Override

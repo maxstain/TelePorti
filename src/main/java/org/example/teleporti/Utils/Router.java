@@ -15,6 +15,7 @@ public class Router {
     public static final String REGISTER_VIEW = "/org/example/teleporti/Views/register-view.fxml";
     public static final String PROFILE_VIEW = "/org/example/teleporti/Views/profile-view.fxml";
     public static final String DASHBOARD_VIEW = "/org/example/teleporti/Views/dashboard-view.fxml";
+    public static final String SETTINGS_VIEW = "/org/example/teleporti/Views/settings-view.fxml";
     public static final String STATS_VIEW = "/org/example/teleporti/Views/stats-view.fxml";
     public static final String USER_VIEW = "/org/example/teleporti/Views/user-view.fxml";
     public static final String ADD_VIEW = "/org/example/teleporti/Views/add-view.fxml";
@@ -173,6 +174,20 @@ public class Router {
         try {
             FXMLLoader loader = new FXMLLoader(Router.class.getResource(REGISTER_VIEW));
             Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToSettings(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(SETTINGS_VIEW));
+            Scene scene = new Scene(loader.load());
+            SettingsViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
             Stage stage = (Stage) welcome.getScene().getWindow();
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             stage.setScene(scene);
