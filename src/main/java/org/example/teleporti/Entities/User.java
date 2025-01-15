@@ -219,6 +219,6 @@ public class User {
     }
 
     public static User empty() {
-        return new User(0, "", "", 0, "", "", "", "", "", "", "");
+        return new User(0, "", "", 0, "", "", "Client", "", "", "", "");
     }
 }
