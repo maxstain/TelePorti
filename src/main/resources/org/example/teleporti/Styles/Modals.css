@@ -44,3 +44,13 @@ TextField {
     -fx-border-radius: 5px;
     -fx-padding: 5px 10px;
 }
+
+PasswordField {
+    -fx-background-color: #fff;
+    -fx-text-fill: #333;
+    -fx-font-size: 15px;
+    -fx-border-color: #333;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
