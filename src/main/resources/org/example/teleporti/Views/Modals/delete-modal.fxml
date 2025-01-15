@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@../../Styles/Modals.css"
             fx:controller="org.example.teleporti.SceneControllers.DeleteModalController"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox>
-        <Label fx:id="label"/>
-        <HBox alignment="CENTER_RIGHT">
-            <Button text="Oui" onAction="#onYes"/>
-            <Button text="Non" onAction="#onNo"/>
+            prefHeight="200.0" prefWidth="250.0">
+    <VBox styleClass="container" prefHeight="200.0" prefWidth="300">
+        <Label styleClass="text-title" fx:id="label"/>
+        <HBox alignment="CENTER" spacing="10.0">
+            <Button styleClass="button" text="Oui" onAction="#onYes"/>
+            <Button styleClass="button" text="Non" onAction="#onNo"/>
         </HBox>
     </VBox>
 </AnchorPane>

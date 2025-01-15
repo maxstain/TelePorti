@@ -88,8 +88,7 @@ public class UsersViewController {
 
     @FXML
     protected void onRefresh() {
-        ObservableList<User> users = FXCollections.observableArrayList(userController.afficherList());
-        usersTable.setItems(users);
+        Router.goToUsers(currentUser, welcome);
         System.out.println("Refreshed.");
     }
 

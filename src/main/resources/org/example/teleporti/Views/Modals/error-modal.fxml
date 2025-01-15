@@ -6,7 +6,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.teleporti.SceneControllers.ErrorModalController"
-            stylesheets="@../../Styles/General.css"
+            stylesheets="@../../Styles/Modals.css"
             prefHeight="200.0" prefWidth="250.0">
 
     <VBox prefHeight="200.0" prefWidth="300" alignment="CENTER" styleClass="container"
