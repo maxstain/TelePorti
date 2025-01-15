@@ -1,6 +1,7 @@
 package org.example.teleporti.SceneControllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.UserController;
@@ -17,7 +18,7 @@ public class AddModalController {
     @FXML
     private TextField emailField;
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
     @FXML
     private TextField ageField;
     @FXML
@@ -28,7 +29,7 @@ public class AddModalController {
     private TextField telephoneField;
 
     @FXML
-    protected User user;
+    private User user = User.empty();
 
     @FXML
     public void initialize() {
@@ -43,13 +44,7 @@ public class AddModalController {
     }
 
     @FXML
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @FXML
     public void onSave() {
-        user = User.empty();
         user.setPrenom(prenomField.getText());
         user.setNom(nomField.getText());
         user.setEmail(emailField.getText());

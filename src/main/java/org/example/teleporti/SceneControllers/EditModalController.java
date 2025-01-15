@@ -17,6 +17,8 @@ public class EditModalController {
     @FXML
     private TextField emailField;
     @FXML
+    private TextField typeField;
+    @FXML
     private TextField passwordField;
     @FXML
     private TextField ageField;
@@ -39,6 +41,7 @@ public class EditModalController {
         prenomField.setText(user.getPrenom());
         nomField.setText(user.getNom());
         emailField.setText(user.getEmail());
+        typeField.setText(user.getType());
         passwordField.setText(user.getMotDePasse());
         ageField.setText(String.valueOf(user.getAge()));
         governeratField.setText(user.getGovernerat());
@@ -51,6 +54,7 @@ public class EditModalController {
         user.setPrenom(prenomField.getText());
         user.setNom(nomField.getText());
         user.setEmail(emailField.getText());
+        user.setType(typeField.getText());
         user.setMotDePasse(passwordField.getText());
         user.setAge(Integer.parseInt(ageField.getText()));
         user.setGovernerat(governeratField.getText());
