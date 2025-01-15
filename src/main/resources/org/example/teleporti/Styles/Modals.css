@@ -54,3 +54,33 @@ PasswordField {
     -fx-border-radius: 5px;
     -fx-padding: 5px 10px;
 }
+
+MenuButton {
+    -fx-background-color: #fff;
+    -fx-text-fill: #333;
+    -fx-font-size: 15px;
+    -fx-border-color: #333;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
+
+MenuBar {
+    -fx-background-color: #333;
+    -fx-text-fill: #fff;
+    -fx-font-size: 15px;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
+
+MenuItem {
+    -fx-background-color: #333;
+    -fx-text-fill: #fff;
+    -fx-font-size: 15px;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}

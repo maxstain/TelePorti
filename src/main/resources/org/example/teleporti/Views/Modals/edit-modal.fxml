@@ -17,7 +17,7 @@
         <TextField fx:id="passwordField" promptText="Mot de passe"/>
         <TextField fx:id="typeField" promptText="Type"/>
         <TextField fx:id="ageField" promptText="Age"/>
-        <TextField fx:id="governeratField" promptText="Governerat"/>
+        <MenuButton fx:id="governeratField" text="Governerat"/>
         <TextField fx:id="villeField" promptText="Ville"/>
         <TextField fx:id="telephoneField" promptText="Telephone"/>
         <Button styleClass="button" text="Save" onAction="#onSave"/>
