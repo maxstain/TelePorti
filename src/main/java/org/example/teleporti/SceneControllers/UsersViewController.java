@@ -56,9 +56,6 @@ public class UsersViewController {
     private TableColumn<User, String> telephoneColumn;
 
     @FXML
-    private TableColumn actionsColumn;
-
-    @FXML
     public void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -67,7 +64,7 @@ public class UsersViewController {
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         governeratColumn.setCellValueFactory(new PropertyValueFactory<>("governerat"));
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<>("telephone"));
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+        searchField.textProperty().addListener((_, _, newValue) -> {
             ObservableList<User> users = FXCollections.observableArrayList(userController.rechercher(newValue));
             usersTable.setItems(users);
         });

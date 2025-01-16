@@ -4,14 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Router;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
@@ -62,7 +60,7 @@ public class ProfileViewController {
     }
 
     @FXML
-    public void onGoToHome(ActionEvent actionEvent) {
+    public void onGoToHome() {
         try {
             if (currentUser.getType().equals("Admin")) {
                 Router.goToDashboard(currentUser, welcome);
@@ -75,7 +73,7 @@ public class ProfileViewController {
     }
 
     @FXML
-    private void openEditModal(ActionEvent actionEvent) {
+    private void openEditModal() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
             Scene scene = new Scene(loader.load());

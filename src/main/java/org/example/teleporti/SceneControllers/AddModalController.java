@@ -44,7 +44,7 @@ public class AddModalController {
         governeratField.getItems().addAll(
                 Constants.locations.stream().map(location -> {
                     MenuItem item = new MenuItem(location.getName());
-                    item.setOnAction(event -> governeratField.setText(location.getName()));
+                    item.setOnAction(_ -> governeratField.setText(location.getName()));
                     return item;
                 }).toArray(MenuItem[]::new)
         );

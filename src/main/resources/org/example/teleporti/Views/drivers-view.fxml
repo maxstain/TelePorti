@@ -44,6 +44,9 @@
             <!-- Main Content -->
             <VBox spacing="5.0" styleClass="container">
                 <Label styleClass="text-label" text="Chauffeurs"/>
+                <HBox alignment="CENTER_RIGHT">
+                    <Button styleClass="button" text="Recharger" onAction="#onRefresh"/>
+                </HBox>
                 <VBox alignment="CENTER" spacing="10.0">
                     <TableView fx:id="usersTable" prefHeight="200.0">
                         <columns>

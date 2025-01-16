@@ -55,7 +55,7 @@ public class DriversViewController {
         prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         governeratColumn.setCellValueFactory(new PropertyValueFactory<>("governerat"));
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<>("telephone"));
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+        searchField.textProperty().addListener((_, _, newValue) -> {
             ObservableList<User> users = FXCollections.observableArrayList(userController.rechercher(newValue));
             usersTable.setItems(users);
         });
@@ -76,8 +76,7 @@ public class DriversViewController {
 
     @FXML
     protected void onRefresh() {
-        ObservableList<User> users = FXCollections.observableArrayList(userController.afficherList());
-        usersTable.setItems(users);
+        Router.goToDrivers(currentUser, welcome, usersTable.getItems());
         System.out.println("Refreshed.");
     }
 

@@ -39,14 +39,14 @@ public class EditModalController {
         typeField.getItems().addAll(
                 Constants.roles.stream().map(role -> {
                     MenuItem item = new MenuItem(role);
-                    item.setOnAction(event -> typeField.setText(role));
+                    item.setOnAction(_ -> typeField.setText(role));
                     return item;
                 }).toArray(MenuItem[]::new)
         );
         governeratField.getItems().addAll(
                 Constants.locations.stream().map(location -> {
                     MenuItem item = new MenuItem(location.getName());
-                    item.setOnAction(event -> governeratField.setText(location.getName()));
+                    item.setOnAction(_ -> governeratField.setText(location.getName()));
                     return item;
                 }).toArray(MenuItem[]::new)
         );
