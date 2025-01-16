@@ -44,7 +44,7 @@
 
             <!-- Main Content -->
             <VBox spacing="5.0" styleClass="container">
-                <Label styleClass="text-label" text="Utilisateurs"/>
+                <Label styleClass="text-title" text="Utilisateurs"/>
                 <VBox alignment="CENTER" spacing="10.0">
                     <HBox alignment="CENTER_RIGHT">
                         <Button styleClass="button" text="Recharger" onAction="#onRefresh"/>

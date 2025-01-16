@@ -123,7 +123,7 @@ public class UsersViewController {
     @FXML
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
+        setWelcomeMessage(currentUser.getPrenom());
     }
 
     public void onGotToMaps() {

@@ -58,7 +58,7 @@ public class ProfileViewController {
         addressLabel.setText(user.getAddresse());
         villeLabel.setText(user.getVille());
         paysLabel.setText(user.getGovernerat());
-        setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
+        setWelcomeMessage(currentUser.getPrenom());
     }
 
     @FXML

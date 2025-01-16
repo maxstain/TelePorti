@@ -20,7 +20,7 @@ public class EditModalController {
     @FXML
     private TextField emailField;
     @FXML
-    private TextField typeField;
+    private MenuButton typeField;
     @FXML
     private TextField passwordField;
     @FXML
@@ -36,6 +36,13 @@ public class EditModalController {
 
     @FXML
     public void initialize() {
+        typeField.getItems().addAll(
+                Constants.roles.stream().map(role -> {
+                    MenuItem item = new MenuItem(role);
+                    item.setOnAction(event -> typeField.setText(role));
+                    return item;
+                }).toArray(MenuItem[]::new)
+        );
         governeratField.getItems().addAll(
                 Constants.locations.stream().map(location -> {
                     MenuItem item = new MenuItem(location.getName());

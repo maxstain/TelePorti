@@ -9,7 +9,7 @@ public class SettingsViewController {
     @FXML
     protected Label welcome = new Label("");
 
-    private User currentUser;
+    protected User currentUser;
 
     @FXML
     private void initialize() {

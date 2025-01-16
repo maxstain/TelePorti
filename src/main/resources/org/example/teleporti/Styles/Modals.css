@@ -35,24 +35,15 @@
     -fx-pref-width: 600px;
 }
 
-TextField {
-    -fx-background-color: #fff;
+TextField, PasswordField {
     -fx-text-fill: #333;
     -fx-font-size: 15px;
-    -fx-border-color: #333;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
-    -fx-padding: 5px 10px;
-}
-
-PasswordField {
-    -fx-background-color: #fff;
-    -fx-text-fill: #333;
-    -fx-font-size: 15px;
-    -fx-border-color: #333;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-padding: 5px 10px;
+    -fx-background-color: #ecf0f1;
+    -fx-border-color: #bdc3c7;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
 }
 
 MenuButton {
@@ -62,7 +53,8 @@ MenuButton {
     -fx-border-color: #333;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
-    -fx-padding: 5px 10px;
+    -fx-padding: 10px;
+    -fx-pref-width: 600px;
 }
 
 MenuBar {
@@ -72,7 +64,7 @@ MenuBar {
     -fx-border-color: #fff;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
-    -fx-padding: 5px 10px;
+    -fx-padding: 10px;
 }
 
 MenuItem {
@@ -83,4 +75,5 @@ MenuItem {
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
     -fx-padding: 5px 10px;
+    -fx-pref-width: 600px;
 }

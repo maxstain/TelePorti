@@ -1,11 +1,14 @@
 package org.example.teleporti.SceneControllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
+import org.example.teleporti.Utils.Constants;
 
 public class AddModalController {
 
@@ -22,7 +25,7 @@ public class AddModalController {
     @FXML
     private TextField ageField;
     @FXML
-    private TextField governeratField;
+    private MenuButton governeratField;
     @FXML
     private TextField villeField;
     @FXML
@@ -38,7 +41,13 @@ public class AddModalController {
         emailField.setText("");
         passwordField.setText("");
         ageField.setText("");
-        governeratField.setText("");
+        governeratField.getItems().addAll(
+                Constants.locations.stream().map(location -> {
+                    MenuItem item = new MenuItem(location.getName());
+                    item.setOnAction(event -> governeratField.setText(location.getName()));
+                    return item;
+                }).toArray(MenuItem[]::new)
+        );
         villeField.setText("");
         telephoneField.setText("");
     }

@@ -24,7 +24,7 @@ public class Main {
                 "Tunis",
                 "Tunis",
                 "Tunis",
-                "+21612345678"
+                "12345678"
         );
         User user2 = new User(_userController.getSize() + 1,
                 "Chabchoub",
@@ -36,7 +36,7 @@ public class Main {
                 "Sfax",
                 "Sfax",
                 "Sfax",
-                "+21612345678"
+                "12345678"
         );
 
         User user3 = new User(_userController.getSize() + 1,
@@ -49,7 +49,7 @@ public class Main {
                 "Tunis",
                 "Tunis",
                 "Tunis",
-                "+21612345678"
+                "12345678"
         );
 
         User user4 = new User(_userController.getSize() + 1,
@@ -62,7 +62,7 @@ public class Main {
                 "Tunis",
                 "Tunis",
                 "Tunis",
-                "+21612345678"
+                "12345678"
         );
 
         Trajet trajet1 = new Trajet(_trajetController.getSize() + 1,

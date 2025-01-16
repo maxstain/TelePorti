@@ -1,8 +1,6 @@
 package org.example.teleporti.SceneControllers;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -96,7 +94,7 @@ public class DashboardViewController {
     @FXML
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        setWelcomeMessage(currentUser.getNom() + " " + currentUser.getPrenom());
+        setWelcomeMessage(currentUser.getPrenom());
     }
 
     @FXML
@@ -119,6 +117,10 @@ public class DashboardViewController {
 
     @FXML
     public void onGotToSettings() {
-        // TODO: To be implemented
+        try {
+            Router.goToSettings(currentUser, welcome);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 }

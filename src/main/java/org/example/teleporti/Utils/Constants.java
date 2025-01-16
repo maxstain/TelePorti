@@ -31,4 +31,11 @@ public class Constants {
             new Location("Kasserine", 35.1667, 8.8333),
             new Location("Kef", 36.1667, 8.7167)
     );
+
+    public static final List<String> roles = List.of(
+            "Admin",
+            "Client",
+            "Chauffeur",
+            "Manager"
+    );
 }
