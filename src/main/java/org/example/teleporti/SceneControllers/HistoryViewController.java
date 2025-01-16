@@ -43,7 +43,7 @@ public class HistoryViewController {
     }
 
     public void setWelcomeMessage(String message) {
-        welcome.setText("Welcome, " + message + "!");
+        welcome.setText("Bienvenue, " + message + "!");
     }
 
     @FXML

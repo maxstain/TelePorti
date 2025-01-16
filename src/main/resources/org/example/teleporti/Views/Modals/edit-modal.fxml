@@ -19,6 +19,7 @@
         <TextField fx:id="ageField" promptText="Age"/>
         <MenuButton fx:id="governeratField" text="Governerat"/>
         <TextField fx:id="villeField" promptText="Ville"/>
+        <TextField fx:id="addressField" promptText="Addresse"/>
         <TextField fx:id="telephoneField" promptText="Telephone"/>
         <Button styleClass="button" text="Save" onAction="#onSave"/>
         <Button styleClass="button" text="Cancel" onAction="#onCancel"/>

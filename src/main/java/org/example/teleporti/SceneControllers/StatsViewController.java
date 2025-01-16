@@ -20,7 +20,7 @@ public class StatsViewController {
     }
 
     public void setWelcomeMessage(String message) {
-        welcome.setText("Welcome, " + message + "!");
+        welcome.setText("Bienvenue, " + message + "!");
     }
 
     public void setCurrentUser(User currentUser) {

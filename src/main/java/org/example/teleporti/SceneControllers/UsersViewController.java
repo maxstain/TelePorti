@@ -90,7 +90,7 @@ public class UsersViewController {
     }
 
     public void setWelcomeMessage(String string) {
-        welcome.setText("Welcome, " + string + "!");
+        welcome.setText("Bienvenue, " + string + "!");
     }
 
     public void onGotToProfile() {
@@ -178,6 +178,7 @@ public class UsersViewController {
             Scene scene = new Scene(loader.load());
             EditModalController controller = loader.getController();
             controller.setUser(user);
+            controller.setCurrentUser(currentUser);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Edit User");

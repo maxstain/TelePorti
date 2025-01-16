@@ -52,7 +52,7 @@ public class DashboardViewController {
     }
 
     public void setWelcomeMessage(String string) {
-        welcome.setText("Welcome, " + string + "!");
+        welcome.setText("Bienvenue, " + string + "!");
     }
 
     public void onGotToProfile() {

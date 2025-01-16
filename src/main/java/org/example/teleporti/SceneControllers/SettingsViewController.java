@@ -18,6 +18,6 @@ public class SettingsViewController {
     @FXML
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        this.welcome.setText("Welcome " + user.getPrenom());
+        this.welcome.setText("Bienvenue " + user.getPrenom());
     }
 }

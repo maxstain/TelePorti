@@ -1,6 +1,5 @@
 package org.example.teleporti.SceneControllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -45,7 +44,7 @@ public class ProfileViewController {
     }
 
     public void setWelcomeMessage(String message) {
-        welcome.setText("Welcome, " + message + "!");
+        welcome.setText("Bienvenue, " + message + "!");
     }
 
     public void setCurrentUser(User user) {
@@ -79,6 +78,7 @@ public class ProfileViewController {
             Scene scene = new Scene(loader.load());
             EditModalController controller = loader.getController();
             controller.setUser(currentUser);
+            controller.setCurrentUser(currentUser);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Edit User");

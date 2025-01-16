@@ -19,8 +19,6 @@
                 </ImageView>
             </VBox>
             <HBox alignment="CENTER_RIGHT" spacing="20.0">
-                <TextField focusTraversable="false" styleClass="searchBar" fx:id="searchField" promptText="Rechercher"
-                           prefWidth="200.0"/>
                 <Label styleClass="welcome" fx:id="welcome"/>
             </HBox>
         </HBox>
@@ -28,7 +26,7 @@
 
     <!-- Side Menu and Main Content -->
     <center>
-        <HBox>
+        <HBox spacing="8.0">
             <!-- Side Menu -->
             <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <VBox spacing="10.0">
@@ -43,10 +41,13 @@
             </HBox>
 
             <!-- Main Content -->
-            <VBox spacing="5.0" styleClass="container">
+            <VBox spacing="5.0" styleClass="container" style="-fx-background-color: #333">
                 <Label styleClass="text-title" text="Utilisateurs"/>
                 <VBox alignment="CENTER" spacing="10.0">
-                    <HBox alignment="CENTER_RIGHT">
+                    <HBox alignment="CENTER_RIGHT" spacing="8.0">
+                        <TextField focusTraversable="false" styleClass="searchBar" fx:id="searchField"
+                                   promptText="Rechercher"
+                                   prefWidth="200.0"/>
                         <Button styleClass="button" text="Recharger" onAction="#onRefresh"/>
                     </HBox>
                     <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="700">

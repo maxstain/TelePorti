@@ -13,6 +13,7 @@ public class EditModalController {
 
     private final UserController userController = new UserController();
 
+
     @FXML
     private TextField prenomField;
     @FXML
@@ -30,19 +31,16 @@ public class EditModalController {
     @FXML
     private TextField villeField;
     @FXML
+    private TextField addressField;
+    @FXML
     private TextField telephoneField;
     @FXML
     protected User user;
 
+    protected User currentUser;
+
     @FXML
     public void initialize() {
-        typeField.getItems().addAll(
-                Constants.roles.stream().map(role -> {
-                    MenuItem item = new MenuItem(role);
-                    item.setOnAction(_ -> typeField.setText(role));
-                    return item;
-                }).toArray(MenuItem[]::new)
-        );
         governeratField.getItems().addAll(
                 Constants.locations.stream().map(location -> {
                     MenuItem item = new MenuItem(location.getName());
@@ -50,6 +48,30 @@ public class EditModalController {
                     return item;
                 }).toArray(MenuItem[]::new)
         );
+    }
+
+    @FXML
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+        if (currentUser.getType().equals("Admin")) {
+            typeField.getItems().addAll(
+                    Constants.roles.stream().map(role -> {
+                        MenuItem item = new MenuItem(role);
+                        item.setOnAction(_ -> typeField.setText(role));
+                        return item;
+                    }).toArray(MenuItem[]::new)
+            );
+        } else {
+            typeField.getItems().addAll(
+                    Constants.roles.stream()
+                            .filter(role -> role.equals("Chauffeur") || role.equals("Client"))
+                            .map(role -> {
+                                MenuItem item = new MenuItem(role);
+                                item.setOnAction(_ -> typeField.setText(role));
+                                return item;
+                            }).toArray(MenuItem[]::new)
+            );
+        }
     }
 
     @FXML
@@ -63,6 +85,7 @@ public class EditModalController {
         ageField.setText(String.valueOf(user.getAge()));
         governeratField.setText(user.getGovernerat());
         villeField.setText(user.getVille());
+        addressField.setText(user.getAddresse());
         telephoneField.setText(user.getTelephone());
     }
 
@@ -76,6 +99,7 @@ public class EditModalController {
         user.setAge(Integer.parseInt(ageField.getText()));
         user.setGovernerat(governeratField.getText());
         user.setVille(villeField.getText());
+        user.setAddresse(addressField.getText());
         user.setTelephone(telephoneField.getText());
         userController.modifier(user);
         closeModal();
