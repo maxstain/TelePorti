@@ -14,7 +14,8 @@ public class Main {
     private static final ReservationController _reservationController = new ReservationController();
 
     public static void main(String[] args) {
-        User user1 = new User(_userController.getSize() + 1,
+        User user1 = new User(
+                _userController.getSize() + 1,
                 "Abbassi",
                 "Chaima",
                 23,
@@ -26,7 +27,8 @@ public class Main {
                 "Tunis",
                 "12345678"
         );
-        User user2 = new User(_userController.getSize() + 1,
+        User user2 = new User(
+                _userController.getSize() + 1,
                 "Chabchoub",
                 "Firas",
                 25,
@@ -39,7 +41,8 @@ public class Main {
                 "12345678"
         );
 
-        User user3 = new User(_userController.getSize() + 1,
+        User user3 = new User(
+                _userController.getSize() + 1,
                 "Ben Rhouma",
                 "Rached",
                 24,
@@ -52,7 +55,8 @@ public class Main {
                 "12345678"
         );
 
-        User user4 = new User(_userController.getSize() + 1,
+        User user4 = new User(
+                _userController.getSize() + 1,
                 "Belhaj Amor",
                 "Ahmed",
                 25,
@@ -65,20 +69,24 @@ public class Main {
                 "12345678"
         );
 
-        Trajet trajet1 = new Trajet(_trajetController.getSize() + 1,
+        Trajet trajet1 = new Trajet(
+                _trajetController.getSize() + 1,
                 user1.getId(),
                 "Tunis",
                 "Sousse",
                 3,
-                20
+                20,
+                50.0f
         );
 
-        Trajet trajet2 = new Trajet(_trajetController.getSize() + 1,
+        Trajet trajet2 = new Trajet(
+                _trajetController.getSize() + 1,
                 user1.getId(),
                 "Tunis",
                 "Sfax",
                 4,
-                30
+                30,
+                70.0f
         );
 
         Trajet trajet3 = new Trajet(
@@ -87,22 +95,26 @@ public class Main {
                 "Tunis",
                 "Bizerte",
                 1,
-                10
+                10,
+                30.0f
         );
 
-        Reservation reservation1 = new Reservation(_reservationController.getSize() + 1,
+        Reservation reservation1 = new Reservation(
+                _reservationController.getSize() + 1,
                 user3.getId(),
                 trajet1.getId(),
                 "En cours"
         );
 
-        Reservation reservation2 = new Reservation(_reservationController.getSize() + 1,
+        Reservation reservation2 = new Reservation(
+                _reservationController.getSize() + 1,
                 user4.getId(),
                 trajet1.getId(),
                 "En cours"
         );
 
-        Reservation reservation3 = new Reservation(_reservationController.getSize() + 1,
+        Reservation reservation3 = new Reservation(
+                _reservationController.getSize() + 1,
                 user3.getId(),
                 trajet2.getId(),
                 "En cours"

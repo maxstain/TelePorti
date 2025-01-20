@@ -11,8 +11,9 @@ public class Trajet {
     private Date dateHeure = new Date(new java.util.Date().getTime());
     private int placesDisponibles;
     private float co2Economise;
+    private float prix;
 
-    public Trajet(int id, int conducteurId, String pointDepart, String destination, Date dateHeure, int placesDisponibles, float co2Economise) {
+    public Trajet(int id, int conducteurId, String pointDepart, String destination, Date dateHeure, int placesDisponibles, float co2Economise, float prix) {
         this.id = id;
         this.conducteurId = conducteurId;
         this.pointDepart = pointDepart;
@@ -20,15 +21,17 @@ public class Trajet {
         this.dateHeure = dateHeure;
         this.placesDisponibles = placesDisponibles;
         this.co2Economise = co2Economise;
+        this.prix = prix;
     }
 
-    public Trajet(int id, int conducteurId, String pointDepart, String destination, int placesDisponibles, float co2Economise) {
+    public Trajet(int id, int conducteurId, String pointDepart, String destination, int placesDisponibles, float co2Economise, float prix) {
         this.id = id;
         this.conducteurId = conducteurId;
         this.pointDepart = pointDepart;
         this.destination = destination;
         this.placesDisponibles = placesDisponibles;
         this.co2Economise = co2Economise;
+        this.prix = prix;
     }
 
     public int getId() {
@@ -87,11 +90,20 @@ public class Trajet {
         this.co2Economise = co2Economise;
     }
 
+    public float getPrix() {
+        return prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Trajet trajet)) return false;
-        return getId() == trajet.getId() && getConducteurId() == trajet.getConducteurId() && getPlacesDisponibles() == trajet.getPlacesDisponibles() && Float.compare(getCo2Economise(), trajet.getCo2Economise()) == 0 && Objects.equals(getPointDepart(), trajet.getPointDepart()) && Objects.equals(getDestination(), trajet.getDestination()) && Objects.equals(getDateHeure(), trajet.getDateHeure());
+        if (!(o instanceof Trajet)) return false;
+        Trajet trajet = (Trajet) o;
+        return getId() == trajet.getId() && getConducteurId() == trajet.getConducteurId() && getPlacesDisponibles() == trajet.getPlacesDisponibles() && Float.compare(trajet.getCo2Economise(), getCo2Economise()) == 0 && Objects.equals(getPointDepart(), trajet.getPointDepart()) && Objects.equals(getDestination(), trajet.getDestination()) && Objects.equals(getDateHeure(), trajet.getDateHeure());
     }
 
     @Override
