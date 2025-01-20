@@ -74,4 +74,8 @@ public class TrajetController implements HttpHandler {
         os.write(response.getBytes());
         os.close();
     }
+
+    public Double countAvgCO2EmissionByGovernerat(String governerat) {
+        return _serviceTrajet.countAvgCO2EmissionByGovernerat(governerat);
+    }
 }

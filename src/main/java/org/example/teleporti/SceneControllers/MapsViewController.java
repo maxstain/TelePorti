@@ -4,19 +4,25 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import org.controlsfx.control.WorldMapView;
 import org.example.teleporti.Controllers.AuthController;
+import org.example.teleporti.Controllers.TrajetController;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Constants;
 import org.example.teleporti.Utils.Router;
 
+import java.util.List;
+
 public class MapsViewController {
 
     private final AuthController authController = new AuthController();
     private final UserController userController = new UserController();
+    private final TrajetController trajetController = new TrajetController();
+    public Pane co2EmissionCountries;
 
     @FXML
     private WorldMapView worldMapView;
@@ -69,6 +75,7 @@ public class MapsViewController {
                     return countryView;
                 }
         );
+        co2EmissionCountries.getChildren().addAll(countAvgCO2EmissionByGovernerat());
     }
 
     public void setWelcomeMessage(String message) {
@@ -136,5 +143,14 @@ public class MapsViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    List<Label> countAvgCO2EmissionByGovernerat() {
+        return userController.getAllGovernerats().stream().map(governerat -> {
+            Label label = new Label();
+            label.setText(governerat + ": " + trajetController.countAvgCO2EmissionByGovernerat(governerat));
+            return label;
+        }).toList();
     }
 }

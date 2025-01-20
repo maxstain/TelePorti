@@ -15,4 +15,6 @@ public interface IServiceTrajet {
     public void supprimer(Trajet trajet);
 
     public List<Trajet> getTrajetsByUserId(int id);
+
+    public Double countAvgCO2EmissionByGovernerat(String governerat);
 }
