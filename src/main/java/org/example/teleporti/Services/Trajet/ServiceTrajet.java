@@ -35,13 +35,14 @@ public class ServiceTrajet implements IServiceTrajet {
     @Override
     public void ajout(Trajet newTrajet) {
         String req =
-                "insert into trajets (conducteurId, pointDepart, destination, dateHeure, placesDisponibles ,co2Economise) values ('" +
+                "insert into trajets (conducteurId, pointDepart, destination, dateHeure, placesDisponibles ,co2Economise, prix) values ('" +
                         newTrajet.getConducteurId() + "', '" +
                         newTrajet.getPointDepart() + "', '" +
                         newTrajet.getDestination() + "', '" +
                         newTrajet.getDateHeure() + "', '" +
                         newTrajet.getPlacesDisponibles() + "', '" +
-                        newTrajet.getCo2Economise()
+                        newTrajet.getCo2Economise() + "', '" +
+                        newTrajet.getPrix()
                         + "')";
         try {
             ste.executeUpdate(req);
@@ -66,7 +67,8 @@ public class ServiceTrajet implements IServiceTrajet {
                             "\nDestination: " + res.getString("destination") +
                             "\nDate et heure: " + res.getDate("dateHeure") +
                             "\nPlaces disponibles: " + res.getInt("placesDisponibles") +
-                            "\nCO2 économisé: " + res.getFloat("co2Economise")
+                            "\nCO2 économisé: " + res.getFloat("co2Economise") +
+                            "\nPrix: " + res.getFloat("prix")
                     );
                     trajets.add(new Trajet(
                             res.getInt("id"),
@@ -75,7 +77,8 @@ public class ServiceTrajet implements IServiceTrajet {
                             res.getString("destination"),
                             res.getDate("dateHeure"),
                             res.getInt("placesDisponibles"),
-                            res.getFloat("co2Economise")
+                            res.getFloat("co2Economise"),
+                            res.getFloat("prix")
                     ));
                 }
             }

@@ -120,12 +120,12 @@ public class Main {
                 "En cours"
         );
 
-        _userController.truncate();
-        _userController.ajout(user1);
-        _userController.ajout(user2);
-        _userController.ajout(user3);
-        _userController.ajout(user4);
-        _userController.afficher();
+//        _userController.truncate();
+//        _userController.ajout(user1);
+//        _userController.ajout(user2);
+//        _userController.ajout(user3);
+//        _userController.ajout(user4);
+//        _userController.afficher();
         _trajetController.truncate();
         _trajetController.ajout(trajet1);
         _trajetController.ajout(trajet2);

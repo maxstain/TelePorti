@@ -108,7 +108,7 @@ public class Trajet {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getConducteurId(), getPointDepart(), getDestination(), getDateHeure(), getPlacesDisponibles(), getCo2Economise());
+        return Objects.hash(getId(), getConducteurId(), getPointDepart(), getDestination(), getDateHeure(), getPlacesDisponibles(), getCo2Economise(), getPrix());
     }
 
 
