@@ -5,6 +5,7 @@ import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import org.controlsfx.control.WorldMapView;
@@ -22,7 +23,12 @@ public class MapsViewController {
     private final AuthController authController = new AuthController();
     private final UserController userController = new UserController();
     private final TrajetController trajetController = new TrajetController();
-    public Pane co2EmissionCountries;
+
+    @FXML
+    private VBox co2EmissionCountries;
+
+    @FXML
+    private VBox rideCostCountries;
 
     @FXML
     private WorldMapView worldMapView;
@@ -149,7 +155,8 @@ public class MapsViewController {
     List<Label> countAvgCO2EmissionByGovernerat() {
         return userController.getAllGovernerats().stream().map(governerat -> {
             Label label = new Label();
-            label.setText(governerat + ": " + trajetController.countAvgCO2EmissionByGovernerat(governerat));
+            label.getStyleClass().add("subtitle");
+            label.setText("- " + governerat + ": " + trajetController.countAvgCO2EmissionByGovernerat(governerat));
             return label;
         }).toList();
     }

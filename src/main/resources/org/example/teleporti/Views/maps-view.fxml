@@ -34,20 +34,24 @@
                 <Button alignment="CENTER" styleClass="button" text="Paramétres" onAction="#onGoToSettings"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
-            <VBox spacing="20.0" styleClass="container"
-                  style="-fx-background-color: #333; -fx-min-width: 650px">
+            <VBox spacing="20.0" styleClass="container" alignment="CENTER" style="-fx-background-color: #333">
                 <Label styleClass="text-title" style="-fx-text-fill: #fff; -fx-font-weight: bold" text="Maps"/>
-                <VBox prefWidth="150" spacing="8.0">
-                    <Label styleClass="text-title" style="-fx-text-fill: #fff;"
-                           text="Popularity"/>
-                    <Pane styleClass="container" prefHeight="250" prefWidth="150">
+                <HBox spacing="20.0" alignment="CENTER_LEFT"
+                      style="-fx-background-color: #333; -fx-min-width: 650px">
+                    <VBox maxWidth="200" maxHeight="300" spacing="8.0" alignment="CENTER" styleClass="normal-container">
+                        <Label styleClass="text-title" style="-fx-text-fill: #fff;"
+                               text="Popularity"/>
                         <WorldMapView fx:id="worldMapView" prefHeight="250" prefWidth="150" styleClass="container"/>
-                    </Pane>
-                </VBox>
-                <VBox>
-                    <Label styleClass="subtitle" text="Avg CO2 emission"/>
-                    <Pane fx:id="co2EmissionCountries" />
-                </VBox>
+                    </VBox>
+                    <VBox styleClass="normal-container" alignment="CENTER_LEFT" maxWidth="200">
+                        <Label styleClass="title" text="Avg CO2 emission"/>
+                        <VBox fx:id="co2EmissionCountries"/>
+                    </VBox>
+                    <VBox styleClass="normal-container" alignment="CENTER_LEFT" maxWidth="200">
+                        <Label styleClass="title" text="Avg Ride cost"/>
+                        <VBox fx:id="rideCostCountries"/>
+                    </VBox>
+                </HBox>
             </VBox>
         </HBox>
     </center>
