@@ -168,4 +168,22 @@ public class ServiceTrajet implements IServiceTrajet {
         }
         return 0.0;
     }
+
+    /**
+     * @param governerat
+     * @return
+     */
+    @Override
+    public Double countAvgRideCostByGovernerat(String governerat) {
+        String req = "select avg(prix) from trajets where pointDepart = '" + governerat + "'";
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                return res.getDouble(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0.0;
+    }
 }

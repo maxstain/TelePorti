@@ -8,13 +8,15 @@ import java.util.List;
 public interface IServiceTrajet {
     public void ajout(Trajet newTrajet);
 
-    public Object afficher();
+    Object afficher();
 
-    public void modifier(Trajet trajet);
+    void modifier(Trajet trajet);
 
-    public void supprimer(Trajet trajet);
+    void supprimer(Trajet trajet);
 
-    public List<Trajet> getTrajetsByUserId(int id);
+    List<Trajet> getTrajetsByUserId(int id);
 
-    public Double countAvgCO2EmissionByGovernerat(String governerat);
+    Double countAvgCO2EmissionByGovernerat(String governerat);
+
+    Double countAvgRideCostByGovernerat(String governerat);
 }

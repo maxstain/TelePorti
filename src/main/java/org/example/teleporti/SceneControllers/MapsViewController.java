@@ -82,6 +82,7 @@ public class MapsViewController {
                 }
         );
         co2EmissionCountries.getChildren().addAll(countAvgCO2EmissionByGovernerat());
+        rideCostCountries.getChildren().addAll(countAvgRideCostByGovernerat());
     }
 
     public void setWelcomeMessage(String message) {
@@ -157,6 +158,16 @@ public class MapsViewController {
             Label label = new Label();
             label.getStyleClass().add("subtitle");
             label.setText("- " + governerat + ": " + trajetController.countAvgCO2EmissionByGovernerat(governerat));
+            return label;
+        }).toList();
+    }
+
+    @FXML
+    List<Label> countAvgRideCostByGovernerat() {
+        return userController.getAllGovernerats().stream().map(governerat -> {
+            Label label = new Label();
+            label.getStyleClass().add("subtitle");
+            label.setText("- " + governerat + ": " + trajetController.countAvgRideCostByGovernerat(governerat) + "DT");
             return label;
         }).toList();
     }
