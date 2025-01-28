@@ -393,8 +393,8 @@ public class ServiceUser implements IServiceUser {
                 "update_date datetime" +
                 ")";
         try {
-            ResultSet res = ste.executeQuery(schema);
-            if (res.next()) {
+            boolean res = ste.execute(schema);
+            if (res) {
                 System.out.println("Table created");
             }
         } catch (SQLException e) {
