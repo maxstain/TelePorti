@@ -99,4 +99,8 @@ public class UserController implements HttpHandler {
     public List<String> getAllGovernerats() {
         return _serviceUser.getAllGovernerats();
     }
+
+    public void createUserTableInDatabase() {
+        _serviceUser.createUsersTableInDatabase();
+    }
 }

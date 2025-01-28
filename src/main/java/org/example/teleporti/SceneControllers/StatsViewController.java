@@ -80,7 +80,7 @@ public class StatsViewController {
 
     public void onGoToSettings() {
         try {
-            // Router.goToSettings(currentUser, welcome);
+            Router.goToSettings(currentUser, welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }

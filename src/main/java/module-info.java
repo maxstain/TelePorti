@@ -13,6 +13,8 @@ module org.example.teleporti {
     requires jdk.httpserver;
     requires com.google.gson;
     requires java.sql;
+    requires java.net.http;
+    requires mysql.connector.j;
 
     opens org.example.teleporti to javafx.fxml;
     exports org.example.teleporti;

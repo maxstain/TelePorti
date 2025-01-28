@@ -374,4 +374,31 @@ public class ServiceUser implements IServiceUser {
         }
         return governerats;
     }
+
+    public void createUsersTableInDatabase() {
+        String schema = "create table users (" +
+                "id int(11) primary key auto_increment," +
+                "nom varchar(20)," +
+                "prenom varchar(20)," +
+                "age int(11)," +
+                "email varchar(50)," +
+                "password varchar(25)," +
+                "type varchar(20)," +
+                "governerat varchar(50)," +
+                "ville varchar(50)," +
+                "addresse varchar(255)," +
+                "telephone varchar(8)," +
+                "token varchar(50)," +
+                "creation_date datetime," +
+                "update_date datetime" +
+                ")";
+        try {
+            ResultSet res = ste.executeQuery(schema);
+            if (res.next()) {
+                System.out.println("Table created");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
