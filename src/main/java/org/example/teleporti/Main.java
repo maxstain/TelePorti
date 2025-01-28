@@ -15,6 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        _userController.createUserTableInDatabase();
+
         User user1 = new User(_userController.getSize() + 1, "Abbassi", "Chaima", 23, "chaimaabbassi@gmail.com", "chaima123", "Chauffeur", "Tunis", "Tunis", "Tunis", "12345678");
         User user2 = new User(_userController.getSize() + 1, "Chabchoub", "Firas", 25, "firaschabchoub@gmail.com", "Firas123", "Admin", "Sfax", "Sfax", "Sfax", "12345678");
 
@@ -34,8 +36,7 @@ public class Main {
 
         Reservation reservation3 = new Reservation(_reservationController.getSize() + 1, user3.getId(), trajet2.getId(), "En cours");
 
-        _userController.createUserTableInDatabase();
-        _userController.truncate();
+        // _userController.truncate();
         _userController.ajout(user1);
         _userController.ajout(user2);
         _userController.ajout(user3);
