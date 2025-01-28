@@ -1,5 +1,6 @@
 package org.example.teleporti.SceneControllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.example.teleporti.Controllers.AuthController;
@@ -72,6 +73,11 @@ public class UserViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void onGoToMessages() {
+
     }
 
     @FXML

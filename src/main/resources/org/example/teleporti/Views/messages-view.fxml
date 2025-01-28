@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.teleporti.SceneControllers.MessagesViewController"
+            stylesheets="../Styles/General.css"
+            styleClass="panel-with-background-image, container"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox styleClass="NavigationBar">
+            <VBox alignment="CENTER_LEFT">
+                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/logo.png"/>
+                </ImageView>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                <Label styleClass="welcome" fx:id="welcome"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox>
+            <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
+                <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGoToProfile"/>
+                <Button alignment="CENTER" styleClass="button" text="Chats" onAction="#onGoToMessages"/>
+                <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="20.0" styleClass="container">
+
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

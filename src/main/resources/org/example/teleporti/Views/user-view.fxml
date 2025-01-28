@@ -29,6 +29,7 @@
         <HBox>
             <VBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGoToProfile"/>
+                <Button alignment="CENTER" styleClass="button" text="Chats" onAction="#onGoToMessages"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
             <VBox alignment="CENTER" spacing="20.0" styleClass="container">
