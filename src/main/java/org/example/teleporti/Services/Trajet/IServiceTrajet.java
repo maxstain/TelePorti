@@ -6,7 +6,7 @@ import org.example.teleporti.Entities.Trajet;
 import java.util.List;
 
 public interface IServiceTrajet {
-    public void ajout(Trajet newTrajet);
+    void ajout(Trajet newTrajet);
 
     Object afficher();
 

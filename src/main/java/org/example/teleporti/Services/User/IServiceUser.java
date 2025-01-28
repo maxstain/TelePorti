@@ -7,26 +7,27 @@ import java.util.List;
 public interface IServiceUser {
 
 
-    public boolean ajout(User newUser);
+    boolean ajout(User newUser);
 
+    void afficher();
 
-    public void afficher();
+    void modifier(User user);
 
-    public void modifier(User user);
+    List<User> rechercher(String nom);
 
-    public List<User> rechercher(String nom);
+    void supprimer(User user);
 
-    public void supprimer(User user);
+    int countByType(String type);
 
-    public int countByType(String type);
+    int countByGovernerat(String gouvernerat);
 
-    public int countByGovernerat(String gouvernerat);
+    User getUserById(int id);
 
-    public User getUserById(int id);
+    List<User> getAllChauffeurs();
 
-    public List<User> getAllChauffeurs();
+    List<User> getAllClients();
 
-    public List<User> getAllClients();
+    List<String> getAllGovernerats();
 
-    public List<String> getAllGovernerats();
+    void createUsersTableInDatabase();
 }
