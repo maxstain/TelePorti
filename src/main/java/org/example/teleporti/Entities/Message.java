@@ -15,6 +15,15 @@ public class Message {
     public Message() {
     }
 
+    public Message(int id, String messageContent, int senderId, int recieverId, Date sentAt, Date updatedAt) {
+        this.id = id;
+        this.messageContent = messageContent;
+        this.senderId = senderId;
+        this.recieverId = recieverId;
+        this.sentAt = sentAt;
+        this.updatedAt = updatedAt;
+    }
+
     public Message(int id, String messageContent, int senderId, int recieverId) {
         this.id = id;
         this.messageContent = messageContent;

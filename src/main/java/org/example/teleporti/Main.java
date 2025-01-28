@@ -1,8 +1,10 @@
 package org.example.teleporti;
 
+import org.example.teleporti.Controllers.MessageController;
 import org.example.teleporti.Controllers.ReservationController;
 import org.example.teleporti.Controllers.TrajetController;
 import org.example.teleporti.Controllers.UserController;
+import org.example.teleporti.Entities.Message;
 import org.example.teleporti.Entities.Reservation;
 import org.example.teleporti.Entities.Trajet;
 import org.example.teleporti.Entities.User;
@@ -12,10 +14,13 @@ public class Main {
     private static final UserController _userController = new UserController();
     private static final TrajetController _trajetController = new TrajetController();
     private static final ReservationController _reservationController = new ReservationController();
+    private static final MessageController _messageController = new MessageController();
 
     public static void main(String[] args) {
 
         _userController.createUserTableInDatabase();
+        _messageController.createMessagesTable();
+
 
         User user1 = new User(_userController.getSize() + 1, "Abbassi", "Chaima", 23, "chaimaabbassi@gmail.com", "chaima123", "Chauffeur", "Tunis", "Tunis", "Tunis", "12345678");
         _userController.ajout(user1);
@@ -48,11 +53,11 @@ public class Main {
         _reservationController.ajout(reservation3);
 
         // _userController.truncate();
-        // _userController.afficher();
+        _userController.afficher();
         // _trajetController.truncate();
-        // _trajetController.afficher();
+        _trajetController.afficher();
         // _reservationController.truncate();
-        // _reservationController.afficher();
+        _reservationController.afficher();
 
     }
 

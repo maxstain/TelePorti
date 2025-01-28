@@ -77,7 +77,11 @@ public class UserViewController {
 
     @FXML
     public void onGoToMessages() {
-
+        try {
+            Router.goToMessages(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

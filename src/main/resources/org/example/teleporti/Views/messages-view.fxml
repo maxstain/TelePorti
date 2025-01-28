@@ -6,10 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.teleporti.SceneControllers.MessagesViewController"
-            stylesheets="../Styles/General.css"
+            stylesheets="@../Styles/General.css"
             styleClass="panel-with-background-image, container"
             prefHeight="400.0" prefWidth="600.0">
     <top>
@@ -32,9 +34,21 @@
                 <Button alignment="CENTER" styleClass="button" text="Chats" onAction="#onGoToMessages"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
-            <VBox alignment="CENTER" spacing="20.0" styleClass="container">
-
-            </VBox>
+            <HBox alignment="CENTER" spacing="20.0" styleClass="container">
+                <VBox styleClass="normal-container" spacing="8.0">
+                    <TextField focusTraversable="false" styleClass="searchBar"
+                               promptText="Rechercher"
+                               prefWidth="200.0"/>
+                    <ScrollPane>
+                        <VBox styleClass="container" onMouseClicked="#selectConvo">
+                            <Label text="User1"/>
+                            <Label text="This is a Messsage"/>
+                        </VBox>
+                    </ScrollPane>
+                    <Button styleClass="button" text="+ New Conversation"/>
+                </VBox>
+                <VBox styleClass="normal-container" fx:id="Conversation"/>
+            </HBox>
         </HBox>
     </center>
 </BorderPane>
