@@ -35,11 +35,11 @@ public class Main {
         Reservation reservation3 = new Reservation(_reservationController.getSize() + 1, user3.getId(), trajet2.getId(), "En cours");
 
         _userController.createUserTableInDatabase();
-//        _userController.truncate();
-//        _userController.ajout(user1);
-//        _userController.ajout(user2);
-//        _userController.ajout(user3);
-//        _userController.ajout(user4);
+        _userController.truncate();
+        _userController.ajout(user1);
+        _userController.ajout(user2);
+        _userController.ajout(user3);
+        _userController.ajout(user4);
 //        _userController.afficher();
         _trajetController.truncate();
         _trajetController.ajout(trajet1);
