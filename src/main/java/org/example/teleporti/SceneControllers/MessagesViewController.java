@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Controllers.MessageController;
+import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.Router;
 
@@ -17,6 +18,7 @@ public class MessagesViewController {
 
     private final AuthController authController = new AuthController();
     private final MessageController _messageController = new MessageController();
+    private final UserController _userController = new UserController();
 
     @FXML
     protected VBox Conversation = new VBox();
@@ -43,6 +45,11 @@ public class MessagesViewController {
                 .stream()
                 .map(message -> {
                     VBox vBox = new VBox();
+                    vBox.getStyleClass().add("conversation-preview");
+                    vBox.getChildren().add(
+                            new Label(_userController.getUserById(message.getSenderId() == currentUser.getId()
+                                    ? message.getRecieverId()
+                                    : message.getSenderId()).getPrenom()));
                     vBox.getChildren().add(new Label(message.getMessageContent()));
                     return vBox;
                 })

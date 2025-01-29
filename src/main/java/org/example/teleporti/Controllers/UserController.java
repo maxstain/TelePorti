@@ -103,4 +103,8 @@ public class UserController implements HttpHandler {
     public void createUserTableInDatabase() {
         _serviceUser.createUsersTableInDatabase();
     }
+
+    public User getUserById(int id) {
+        return _serviceUser.getUserById(id);
+    }
 }

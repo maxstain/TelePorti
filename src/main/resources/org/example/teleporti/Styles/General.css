@@ -117,4 +117,5 @@ TableView {
 .conversation-preview {
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+    -fx-padding: 8px;
 }
