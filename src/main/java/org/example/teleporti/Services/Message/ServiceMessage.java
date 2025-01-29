@@ -2,12 +2,10 @@ package org.example.teleporti.Services.Message;
 
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.Message;
-import org.example.teleporti.Entities.User;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class ServiceMessage implements IServiceMessage {
 
@@ -25,41 +23,95 @@ public class ServiceMessage implements IServiceMessage {
 
 
     /**
-     * @param newMessage
+     * Cette fonction permet d'ajouter une Message a la base de données
+     *
+     * @param newMessage la nouvelle message a ajoutée
      */
     @Override
     public boolean ajout(Message newMessage) {
-        return true;
+        String req = "INSERT INTO messages (messageContent, senderId, recieverId, sentAt, updatedAt) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = ste.getConnection().prepareStatement(req)) {
+            pstmt.setString(1, newMessage.getMessageContent());
+            pstmt.setInt(2, newMessage.getSenderId());
+            pstmt.setInt(3, newMessage.getRecieverId());
+            pstmt.setTimestamp(4, new Timestamp(newMessage.getSentAt().getTime()));
+            pstmt.setTimestamp(5, new Timestamp(newMessage.getUpdatedAt().getTime()));
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
-     * @return
+     * Cette fonction permet d'afficher tous les messages de la base de données.
+     *
+     * @return une liste de tous les messages
      */
     @Override
     public List<Message> afficher() {
-        return List.of();
+        List<Message> messages = new ArrayList<>();
+        String query = "SELECT * FROM messages";
+        try (ResultSet rs = ste.executeQuery(query)) {
+            while (rs.next()) {
+                messages.add(new Message(rs.getInt("id"), rs.getString("messageContent"), rs.getInt("senderId"), rs.getInt("recieverId"), rs.getDate("sentAt"), rs.getDate("updatedAt")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return messages;
     }
 
     /**
-     * @param message
+     * Cette fonction permet de modifier une message dans la base de données.
+     *
+     * @param message la message modifiée
+     * @return true si la message a été modifiée, false sinon
      */
     @Override
     public boolean modifier(Message message) {
-        return true;
+        String req = "UPDATE messages SET messageContent = ?, senderId = ?, recieverId = ?, sentAt = ?, updatedAt = ? WHERE id = ?";
+        try (PreparedStatement pstmt = ste.getConnection().prepareStatement(req)) {
+            pstmt.setString(1, message.getMessageContent());
+            pstmt.setInt(2, message.getSenderId());
+            pstmt.setInt(3, message.getRecieverId());
+            pstmt.setTimestamp(4, new Timestamp(message.getSentAt().getTime()));
+            pstmt.setTimestamp(5, new Timestamp(message.getUpdatedAt().getTime()));
+            pstmt.setInt(6, message.getId());
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
-     * @param message
+     * Cette fonction permet de supprimer un message de la base de données.
+     *
+     * @param message le message à supprimer
+     * @return true si le message a été supprimé avec succès, false sinon
      */
     @Override
     public boolean supprimer(Message message) {
-        return true;
+        String req = "DELETE FROM messages WHERE id = ?";
+        try (PreparedStatement pstmt = ste.getConnection().prepareStatement(req)) {
+            pstmt.setInt(1, message.getId());
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
-     * @param senderId
-     * @param recieverId
-     * @return
+     * Cette fonction permet de récupérer un message par l'identifiant de l'expéditeur et du destinataire.
+     *
+     * @param senderId   l'identifiant de l'expéditeur
+     * @param recieverId l'identifiant du destinataire
+     * @return le message correspondant ou null si aucun message n'est trouvé
      */
     @Override
     public Message getMessageBySenderIdAndRecieverId(int senderId, int recieverId) {
@@ -69,14 +121,7 @@ public class ServiceMessage implements IServiceMessage {
             pstmt.setInt(2, recieverId);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                return new Message(
-                        rs.getInt("id"),
-                        rs.getString("messageContent"),
-                        rs.getInt("senderId"),
-                        rs.getInt("recieverId"),
-                        rs.getDate("sentAt"),
-                        rs.getDate("updatedAt")
-                );
+                return new Message(rs.getInt("id"), rs.getString("messageContent"), rs.getInt("senderId"), rs.getInt("recieverId"), rs.getDate("sentAt"), rs.getDate("updatedAt"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,14 +142,7 @@ public class ServiceMessage implements IServiceMessage {
             pstmt.setInt(2, currentUserId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                messages.add(new Message(
-                        rs.getInt("id"),
-                        rs.getString("messageContent"),
-                        rs.getInt("senderId"),
-                        rs.getInt("recieverId"),
-                        rs.getDate("sentAt"),
-                        rs.getDate("updatedAt")
-                ));
+                messages.add(new Message(rs.getInt("id"), rs.getString("messageContent"), rs.getInt("senderId"), rs.getInt("recieverId"), rs.getDate("sentAt"), rs.getDate("updatedAt")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,14 +151,7 @@ public class ServiceMessage implements IServiceMessage {
     }
 
     public void createMessagesTable() {
-        String req = "create table messages(" +
-                "id int(11) primary key auto_increment," +
-                "messageContent text not null," +
-                "senderId int(11) not null," +
-                "recieverId int(11) not null," +
-                "sentAt datetime," +
-                "updatedAt datetime" +
-                ")";
+        String req = "create table messages(" + "id int(11) primary key auto_increment," + "messageContent text not null," + "senderId int(11) not null," + "recieverId int(11) not null," + "sentAt datetime," + "updatedAt datetime" + ")";
         try {
             ste.execute(req);
         } catch (Exception e) {

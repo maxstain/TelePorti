@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.teleporti.SceneControllers.MessagesViewController"
@@ -39,12 +35,7 @@
                     <TextField focusTraversable="false" styleClass="searchBar"
                                promptText="Rechercher"
                                prefWidth="200.0"/>
-                    <ScrollPane>
-                        <VBox styleClass="container" onMouseClicked="#selectConvo">
-                            <Label text="User1"/>
-                            <Label text="This is a Messsage"/>
-                        </VBox>
-                    </ScrollPane>
+                    <ScrollPane fx:id="scrollPane"/>
                     <Button styleClass="button" text="+ New Conversation"/>
                 </VBox>
                 <VBox styleClass="normal-container" fx:id="Conversation"/>

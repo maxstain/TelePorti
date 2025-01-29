@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.example.teleporti.Entities.Message;
-import org.example.teleporti.Entities.User;
 import org.example.teleporti.Services.Message.ServiceMessage;
-import org.example.teleporti.Services.User.ServiceUser;
 import org.example.teleporti.Utils.DatabaseConnection;
 
 import java.io.IOException;
@@ -76,6 +74,10 @@ public class MessageController implements HttpHandler {
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
+    }
+
+    public List<Message> getAllCurrentUserConversations(int currentUserId) {
+        return _serviceMessage.getAllCurrentUserConversations(currentUserId);
     }
 
     public void createMessagesTable() {
