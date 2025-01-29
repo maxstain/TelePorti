@@ -38,7 +38,7 @@ public class MessagesViewController {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
-        welcome.setText("Welcome " + currentUser.getPrenom() + "!");
+        welcome.setText("Welcome, " + currentUser.getPrenom() + "!");
         List<VBox> vboxList = _messageController.getAllCurrentUserConversations(currentUser.getId())
                 .stream()
                 .map(message -> {
