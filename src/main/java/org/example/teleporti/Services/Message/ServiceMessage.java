@@ -150,6 +150,36 @@ public class ServiceMessage implements IServiceMessage {
         return messages;
     }
 
+/**
+     * Retrieves all messages exchanged between two users
+     * @param senderId ID of the first user
+     * @param recieverId ID of the second user
+     * @return List of messages between the two users ordered by sent time
+     */
+    @Override
+    public List<Message> getConversationBetweenTwoUsers(int senderId, int recieverId) {
+        List<Message> messages = new ArrayList<>();
+        String query = "SELECT * FROM messages WHERE (senderId = ? AND recieverId = ?) OR (senderId = ? AND recieverId = ?) ORDER BY sentAt ASC";
+        try (PreparedStatement pstmt = ste.getConnection().prepareStatement(query)) {
+            pstmt.setInt(1, senderId);
+            pstmt.setInt(2, recieverId);
+            pstmt.setInt(3, recieverId);
+            pstmt.setInt(4, senderId);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                messages.add(new Message(rs.getInt("id"),
+                                      rs.getString("messageContent"),
+                                      rs.getInt("senderId"),
+                                      rs.getInt("recieverId"),
+                                      rs.getDate("sentAt"),
+                                      rs.getDate("updatedAt")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return messages;
+    }
+
     public void createMessagesTable() {
         String req = "create table messages(" + "id int(11) primary key auto_increment," + "messageContent text not null," + "senderId int(11) not null," + "recieverId int(11) not null," + "sentAt datetime," + "updatedAt datetime" + ")";
         try {

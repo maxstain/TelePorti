@@ -80,6 +80,10 @@ public class MessageController implements HttpHandler {
         return _serviceMessage.getAllCurrentUserConversations(currentUserId);
     }
 
+    public List<Message> getConversationBetweenTwoUsers(int senderId, int recieverId) {
+        return _serviceMessage.getConversationBetweenTwoUsers(senderId, recieverId);
+    }
+
     public void createMessagesTable() {
         _serviceMessage.createMessagesTable();
     }

@@ -15,6 +15,7 @@ module org.example.teleporti {
     requires java.sql;
     requires java.net.http;
     requires mysql.connector.j;
+    requires org.kordamp.ikonli.materialdesign2;
 
     opens org.example.teleporti to javafx.fxml;
     exports org.example.teleporti;

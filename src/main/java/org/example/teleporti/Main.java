@@ -52,6 +52,14 @@ public class Main {
         Reservation reservation3 = new Reservation(_reservationController.getSize() + 1, user3.getId(), trajet2.getId(), "En cours");
         _reservationController.ajout(reservation3);
 
+        Message message1 = new Message(
+                _messageController.getSize() + 1,
+                "Hello World",
+                2,
+                4
+        );
+        _messageController.ajout(message1);
+
         // _userController.truncate();
         _userController.afficher();
         // _trajetController.truncate();

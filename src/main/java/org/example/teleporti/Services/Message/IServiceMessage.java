@@ -17,4 +17,6 @@ public interface IServiceMessage {
     Message getMessageBySenderIdAndRecieverId(int senderId, int recieverId);
 
     List<Message> getAllCurrentUserConversations(int currentUserId);
+
+    List<Message> getConversationBetweenTwoUsers(int senderId, int recieverId);
 }

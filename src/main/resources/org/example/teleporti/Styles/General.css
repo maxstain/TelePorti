@@ -42,6 +42,17 @@
     -fx-fill-width: true;
 }
 
+.button-rounded {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-border-radius: 100%;
+    -fx-background-radius: 100%;
+    -fx-cursor: hand;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-fill-width: true;
+}
+
 .button:hover {
     -fx-background-color: #2980b9;
 }
@@ -118,4 +129,13 @@ TableView {
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-padding: 8px;
+    -fx-border-color: #333;
+}
+
+.message {
+    -fx-padding: 20px;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-background-color: #96dbff;
+    -fx-text-fill: #333;
 }
