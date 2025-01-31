@@ -136,6 +136,6 @@ TableView {
     -fx-padding: 20px;
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
-    -fx-background-color: #96dbff;
-    -fx-text-fill: #333;
+    -fx-border-insets: 10px;
+    -fx-background-insets: 10px;
 }

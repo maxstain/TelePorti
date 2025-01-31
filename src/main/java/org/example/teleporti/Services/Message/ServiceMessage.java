@@ -150,32 +150,46 @@ public class ServiceMessage implements IServiceMessage {
         return messages;
     }
 
-/**
+    /**
      * Retrieves all messages exchanged between two users
-     * @param senderId ID of the first user
+     *
+     * @param senderId   ID of the first user
      * @param recieverId ID of the second user
      * @return List of messages between the two users ordered by sent time
+     * @throws SQLException if database error occurs
      */
     @Override
     public List<Message> getConversationBetweenTwoUsers(int senderId, int recieverId) {
         List<Message> messages = new ArrayList<>();
-        String query = "SELECT * FROM messages WHERE (senderId = ? AND recieverId = ?) OR (senderId = ? AND recieverId = ?) ORDER BY sentAt ASC";
-        try (PreparedStatement pstmt = ste.getConnection().prepareStatement(query)) {
+        String query = "SELECT * FROM messages WHERE (senderId = ? AND recieverId = ?) OR (senderId = ? AND recieverId = ?) " +
+                "ORDER BY sentAt ASC";
+
+        try (PreparedStatement pstmt = ste.getConnection().prepareStatement(query,
+                ResultSet.TYPE_FORWARD_ONLY,
+                ResultSet.CONCUR_READ_ONLY)) {
+
             pstmt.setInt(1, senderId);
             pstmt.setInt(2, recieverId);
             pstmt.setInt(3, recieverId);
             pstmt.setInt(4, senderId);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                messages.add(new Message(rs.getInt("id"),
-                                      rs.getString("messageContent"),
-                                      rs.getInt("senderId"),
-                                      rs.getInt("recieverId"),
-                                      rs.getDate("sentAt"),
-                                      rs.getDate("updatedAt")));
+            pstmt.setFetchSize(1000); // Optimize for large result sets
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    messages.add(new Message(
+                            rs.getInt("id"),
+                            rs.getString("messageContent"),
+                            rs.getInt("senderId"),
+                            rs.getInt("recieverId"),
+                            rs.getDate("sentAt"), // Use Timestamp instead of Date
+                            rs.getDate("updatedAt")
+                    ));
+                }
             }
         } catch (SQLException e) {
+            // Log error instead of just printing stack trace
             e.printStackTrace();
+            throw new RuntimeException("Error retrieving conversation messages", e);
         }
         return messages;
     }
