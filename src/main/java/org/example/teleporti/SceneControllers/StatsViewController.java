@@ -70,6 +70,15 @@ public class StatsViewController {
         }
     }
 
+    @FXML
+    public void onGoToMessages() {
+        try {
+            Router.goToMessages(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void onGoToUsers() {
         try {
             Router.goToUsers(currentUser, welcome);

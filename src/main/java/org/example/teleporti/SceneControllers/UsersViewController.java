@@ -141,6 +141,15 @@ public class UsersViewController {
     }
 
     @FXML
+    public void onGoToMessages() {
+        try {
+            Router.goToMessages(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void openAddModal() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.ADD_MODAL_VIEW));

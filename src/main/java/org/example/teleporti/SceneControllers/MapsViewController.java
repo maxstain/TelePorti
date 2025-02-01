@@ -154,6 +154,15 @@ public class MapsViewController {
     }
 
     @FXML
+    public void onGoToMessages() {
+        try {
+            Router.goToMessages(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     List<Label> countAvgRideCostByGovernerat() {
         return userController.getAllGovernerats().stream().map(governerat -> {
             Label label = new Label();
