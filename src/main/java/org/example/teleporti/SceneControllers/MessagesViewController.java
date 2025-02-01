@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.example.teleporti.Controllers.AuthController;
@@ -80,6 +79,7 @@ public class MessagesViewController {
                         senderLabel.getStyleClass().add("message-sender");
                         messageLabel.setAlignment(isSentByTalkingTo ? Pos.CENTER_LEFT : Pos.CENTER_RIGHT);
                         senderLabel.setAlignment(isSentByTalkingTo ? Pos.CENTER_LEFT : Pos.CENTER_RIGHT);
+                        senderLabel.setStyle("-fx-font-weight: bold");
                         messageBox.setAlignment(isSentByTalkingTo ? Pos.CENTER_LEFT : Pos.CENTER_RIGHT);
                         messageBox.setStyle(isSentByTalkingTo
                                 ? "-fx-background-color: #919090"
