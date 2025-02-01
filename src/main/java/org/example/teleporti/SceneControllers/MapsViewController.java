@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -139,14 +138,6 @@ public class MapsViewController {
     public void onGoToUsers() {
         try {
             Router.goToUsers(currentUser, welcome);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void onGoToSettings() {
-        try {
-            // Router.goToSettings(currentUser, welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }

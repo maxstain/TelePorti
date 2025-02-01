@@ -114,13 +114,4 @@ public class DashboardViewController {
             e.getStackTrace();
         }
     }
-
-    @FXML
-    public void onGotToSettings() {
-        try {
-            Router.goToSettings(currentUser, welcome);
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-    }
 }

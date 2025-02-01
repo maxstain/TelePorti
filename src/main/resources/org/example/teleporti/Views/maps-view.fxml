@@ -5,8 +5,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import org.controlsfx.control.WorldMapView?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
             fx:controller="org.example.teleporti.SceneControllers.MapsViewController"
             stylesheets="@../Styles/General.css"
             styleClass="panel-with-background-image, container"
@@ -31,7 +31,6 @@
                 <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGoToProfile"/>
                 <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGoToMaps"/>
                 <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGoToUsers"/>
-                <Button alignment="CENTER" styleClass="button" text="Paramétres" onAction="#onGoToSettings"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
             <VBox spacing="20.0" styleClass="container" alignment="CENTER" style="-fx-background-color: #333">

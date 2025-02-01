@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
             fx:controller="org.example.teleporti.SceneControllers.HistoryViewController"
             stylesheets="@../Styles/General.css"
             styleClass="panel-with-background-image, container"

@@ -3,8 +3,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
             fx:controller="org.example.teleporti.SceneControllers.ErrorModalController"
             stylesheets="@../../Styles/Modals.css"
             prefHeight="200.0" prefWidth="250.0">

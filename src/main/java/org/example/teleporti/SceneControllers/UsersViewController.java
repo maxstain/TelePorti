@@ -141,15 +141,6 @@ public class UsersViewController {
     }
 
     @FXML
-    public void onGotToSettings() {
-        try {
-            Router.goToSettings(currentUser, welcome);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    @FXML
     private void openAddModal() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.ADD_MODAL_VIEW));

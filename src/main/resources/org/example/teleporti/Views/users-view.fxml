@@ -35,7 +35,6 @@
                     <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGotToProfile"/>
                     <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGotToMaps"/>
                     <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
-                    <Button alignment="CENTER" styleClass="button" text="Paramétres" onAction="#onGotToSettings"/>
                     <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
                 </VBox>
             </HBox>

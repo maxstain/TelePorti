@@ -77,12 +77,4 @@ public class StatsViewController {
             e.printStackTrace();
         }
     }
-
-    public void onGoToSettings() {
-        try {
-            Router.goToSettings(currentUser, welcome);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
