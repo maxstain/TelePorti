@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.teleporti.SceneControllers.ReservationsViewController"
+            stylesheets="@../Styles/General.css"
+            styleClass="panel-with-background-image, container">
+
+    <!-- Top Menu -->
+    <top>
+        <HBox styleClass="NavigationBar" alignment="TOP_CENTER">
+            <VBox alignment="CENTER_LEFT">
+                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/logo.png"/>
+                </ImageView>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                <Label styleClass="welcome" fx:id="welcome"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Side Menu and Main Content -->
+    <center>
+        <HBox spacing="8.0">
+            <!-- Side Menu -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
+                <VBox spacing="10.0">
+                    <Button alignment="CENTER" styleClass="button" text="Stats" onAction="#onGotToStats"/>
+                    <Button alignment="CENTER" styleClass="button" text="Dashboard" onAction="#onGotToDashboard"/>
+                    <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGotToProfile"/>
+                    <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGotToMaps"/>
+                    <Button alignment="CENTER" styleClass="button" text="Chats" onAction="#onGoToMessages"/>
+                    <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
+                    <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
+                </VBox>
+            </HBox>
+
+            <!-- Main Content -->
+            <VBox spacing="5.0" styleClass="container" style="-fx-background-color: #333">
+                <Label styleClass="text-title" text="Utilisateurs"/>
+                <VBox alignment="CENTER" spacing="10.0">
+                    <HBox alignment="CENTER_RIGHT" spacing="8.0">
+                        <TextField focusTraversable="false" styleClass="searchBar" fx:id="searchField"
+                                   promptText="Rechercher"
+                                   prefWidth="200.0"/>
+                        <Button styleClass="button" text="Recharger" onAction="#onRefresh"/>
+                    </HBox>
+                    <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="700">
+                        <columns>
+                            <TableColumn fx:id="idColumn" prefWidth="20.0" text="ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="id"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="nomColumn" prefWidth="75.0" text="Nom">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="nom"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="prenomColumn" prefWidth="75.0" text="Prenom">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="prenom"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="email"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="type"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="governeratColumn" prefWidth="150.0" text="Governerat">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="governerat"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="telephoneColumn" prefWidth="100.0" text="Telephone">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="telephone"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                        <Button styleClass="button" text="Ajouter" onAction="#openAddModal"/>
+                        <Button styleClass="button" text="Modifier" onAction="#openEditModal"/>
+                        <Button styleClass="button" text="Supprimer" onAction="#openDeleteModal"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

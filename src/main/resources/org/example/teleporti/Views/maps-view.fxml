@@ -32,6 +32,8 @@
                 <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGoToMaps"/>
                 <Button alignment="CENTER" styleClass="button" text="Chats" onAction="#onGoToMessages"/>
                 <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGoToUsers"/>
+                <Button alignment="CENTER" styleClass="button" text="Trajets" onAction="#onGoToTrajets"/>
+                <Button alignment="CENTER" styleClass="button" text="Reservations" onAction="#onGoToReservations"/>
                 <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
             </VBox>
             <VBox spacing="20.0" styleClass="container" alignment="CENTER" style="-fx-background-color: #333">

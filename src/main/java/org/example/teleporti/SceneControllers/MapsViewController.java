@@ -40,7 +40,11 @@ public class MapsViewController {
     private final ObservableList<WorldMapView.Location> locations = new ObservableListBase<>() {
         @Override
         public WorldMapView.Location get(int index) {
-            return Constants.locations.stream().filter(location -> location.getName().contains(userController.getAllGovernerats().get(index))).findFirst().orElse(null);
+            String governerat = userController.getAllGovernerats().get(index);
+            return Constants.locations.stream()
+                    .filter(location -> location.getName().contains(governerat))
+                    .findFirst()
+                    .orElse(null);
         }
 
         @Override
@@ -106,6 +110,22 @@ public class MapsViewController {
     public void onGoToStats() {
         try {
             Router.goToStats(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToReservations() {
+        try {
+            Router.goToReservations(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToTrajets() {
+        try {
+            Router.goToTrajets(currentUser, welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }

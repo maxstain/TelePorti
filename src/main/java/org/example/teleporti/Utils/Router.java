@@ -27,6 +27,8 @@ public class Router {
     public static final String DELETE_MODAL_VIEW = "/org/example/teleporti/Views/Modals/delete-modal.fxml";
     private static final String ERROR_MODAL_VIEW = "/org/example/teleporti/Views/Modals/error-modal.fxml";
     private static final String MESSAGES_VIEW = "/org/example/teleporti/Views/messages-view.fxml";
+    private static final String TRAJETS_VIEW = "/org/example/teleporti/Views/trajets-view.fxml";
+    private static final String RESERVATIONS_VIEW = "/org/example/teleporti/Views/reservations-view.fxml";
 
     private Router() {
     }
@@ -207,6 +209,34 @@ public class Router {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToTrajets(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(TRAJETS_VIEW));
+            Scene scene = new Scene(loader.load());
+            TrajetsViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void goToReservations(User currentUser, Label welcome) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(RESERVATIONS_VIEW));
+            Scene scene = new Scene(loader.load());
+            ReservationsViewController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            Stage stage = (Stage) welcome.getScene().getWindow();
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            stage.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
