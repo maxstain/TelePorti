@@ -65,7 +65,7 @@ public class MapsViewController {
     public void initialize() {
         worldMapView.getLocations().addAll(locations);
         worldMapView.locationViewFactoryProperty().set(
-                (location) -> {
+                _ -> {
                     Circle circle = new Circle(1.5);
                     circle.setFill(Color.RED);
                     return circle;
