@@ -149,11 +149,11 @@ public class TrajetsViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
             EditModalController controller = loader.getController();
-            controller.setUser(user);
+            controller.setTrajet(trajet);
             controller.setCurrentUser(currentUser);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Edit User");
+            stage.setTitle("Edit Trajet");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
@@ -163,10 +163,10 @@ public class TrajetsViewController {
 
     @FXML
     private void openDeleteModal() {
-        User user = usersTable.getSelectionModel().getSelectedItem();
+        Trajet trajet = trajetsTable.getSelectionModel().getSelectedItem();
 
-        if (user == null) {
-            Router.openErrorMessageModal("Merci de selectionner un utilisateur à supprimer.");
+        if (trajet == null) {
+            Router.openErrorMessageModal("Merci de selectionner un trajet à supprimer.");
             return;
         }
 
@@ -174,7 +174,7 @@ public class TrajetsViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.DELETE_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
             DeleteModalController controller = loader.getController();
-            controller.setUser(user);
+            controller.setTrajet(trajet);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Delete User");
