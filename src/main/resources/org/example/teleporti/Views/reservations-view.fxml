@@ -30,12 +30,14 @@
             <!-- Side Menu -->
             <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <VBox spacing="10.0">
-                    <Button alignment="CENTER" styleClass="button" text="Stats" onAction="#onGotToStats"/>
-                    <Button alignment="CENTER" styleClass="button" text="Dashboard" onAction="#onGotToDashboard"/>
-                    <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGotToProfile"/>
-                    <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGotToMaps"/>
+                    <Button alignment="CENTER" styleClass="button" text="Stats" onAction="#onGoToStats"/>
+                    <Button alignment="CENTER" styleClass="button" text="Dashboard" onAction="#onGoToDashboard"/>
+                    <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGoToProfile"/>
+                    <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGoToMaps"/>
                     <Button alignment="CENTER" styleClass="button" text="Chats" onAction="#onGoToMessages"/>
-                    <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
+                    <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGoToUsers"/>
+                    <Button alignment="CENTER" styleClass="button" text="Trajets" onAction="#onGoToTrajets"/>
+                    <Button alignment="CENTER" styleClass="button" text="Reservations" onAction="#onGoToReservations"/>
                     <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
                 </VBox>
             </HBox>
@@ -50,41 +52,26 @@
                                    prefWidth="200.0"/>
                         <Button styleClass="button" text="Recharger" onAction="#onRefresh"/>
                     </HBox>
-                    <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="700">
+                    <TableView fx:id="reservationsTable" prefHeight="200.0" prefWidth="700">
                         <columns>
                             <TableColumn fx:id="idColumn" prefWidth="20.0" text="ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="nomColumn" prefWidth="75.0" text="Nom">
+                            <TableColumn fx:id="trajetIdColumn" prefWidth="75.0" text="Trajet">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="nom"/>
+                                    <PropertyValueFactory property="trajetId"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="prenomColumn" prefWidth="75.0" text="Prenom">
+                            <TableColumn fx:id="passagerIdColumn" prefWidth="75.0" text="Passager">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="prenom"/>
+                                    <PropertyValueFactory property="passagerId"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email">
+                            <TableColumn fx:id="statusColumn" prefWidth="200.0" text="Status">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="email"/>
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="type"/>
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn fx:id="governeratColumn" prefWidth="150.0" text="Governerat">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="governerat"/>
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn fx:id="telephoneColumn" prefWidth="100.0" text="Telephone">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="telephone"/>
+                                    <PropertyValueFactory property="status"/>
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>

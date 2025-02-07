@@ -3,6 +3,7 @@ package org.example.teleporti.Controllers;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import javafx.collections.ObservableList;
 import org.example.teleporti.Entities.Reservation;
 import org.example.teleporti.Services.Reservation.ServiceReservation;
 import org.example.teleporti.Utils.DatabaseConnection;
@@ -72,5 +73,9 @@ public class ReservationController implements HttpHandler {
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
+    }
+
+    public ObservableList<Reservation> getAllReservations() {
+        return _serviceReservation.getAllReservations();
     }
 }

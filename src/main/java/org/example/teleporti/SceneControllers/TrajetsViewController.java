@@ -1,9 +1,12 @@
 package org.example.teleporti.SceneControllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -26,6 +29,16 @@ public class TrajetsViewController {
     @FXML
     public TextField searchField;
 
+    @FXML
+    public TableColumn<Trajet, Integer> idColumn;
+    public TableColumn<Trajet, String> conducteurColumn;
+    public TableColumn<Trajet, String> pointDepartColumn;
+    public TableColumn<Trajet, String> destinationColumn;
+    public TableColumn<Trajet, String> dateHeureColumn;
+    public TableColumn<Trajet, String> placesDisponiblesColumn;
+    public TableColumn<Trajet, String> co2EconomiseColumn;
+    public TableColumn<Trajet, String> prixColumn;
+
     private User currentUser;
 
     @FXML
@@ -39,7 +52,20 @@ public class TrajetsViewController {
 
     @FXML
     private void initialize() {
-
+        idColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
+        conducteurColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("conducteurId"));
+        pointDepartColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("pointDepart"));
+        destinationColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("destination"));
+        dateHeureColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("dateHeure"));
+        placesDisponiblesColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("placesDisponibles"));
+        co2EconomiseColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("co2Economise"));
+        prixColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("prix"));
+        searchField.textProperty().addListener((_, _, newValue) -> {
+            ObservableList<Trajet> trajets = FXCollections.observableArrayList(trajetController.rechercher(newValue));
+            trajetsTable.setItems(trajets);
+        });
+        ObservableList<Trajet> trajets = trajetController.getAllTrajets();
+        trajetsTable.setItems(trajets);
     }
 
     @FXML
@@ -59,54 +85,9 @@ public class TrajetsViewController {
     }
 
     @FXML
-    public void onGotToStats() {
-        try {
-            Router.goToStats(currentUser, welcome);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void onGotToDashboard() {
-        try {
-            Router.goToDashboard(currentUser, welcome);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void onGotToProfile() {
-        try {
-            Router.goToProfile(currentUser, welcome);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void onGotToMaps() {
-        try {
-            Router.goToMaps(currentUser, welcome);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     public void onGoToMessages() {
         try {
             Router.goToMessages(currentUser, welcome);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void onGotToUsers() {
-        try {
-            Router.goToUsers(currentUser, welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,7 +109,7 @@ public class TrajetsViewController {
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Add User");
+            stage.setTitle("Ajout Trajet");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
@@ -141,7 +122,7 @@ public class TrajetsViewController {
         Trajet trajet = trajetsTable.getSelectionModel().getSelectedItem();
 
         if (trajet == null) {
-            Router.openErrorMessageModal("Merci de selectionner un utilisateur à modifier.");
+            Router.openErrorMessageModal("Merci de selectionner un trajet à modifier.");
             return;
         }
 
@@ -153,7 +134,7 @@ public class TrajetsViewController {
             controller.setCurrentUser(currentUser);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Edit Trajet");
+            stage.setTitle("Modifier Trajet");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
@@ -177,10 +158,66 @@ public class TrajetsViewController {
             controller.setTrajet(trajet);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Delete User");
+            stage.setTitle("Supprimer Trajet");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToStats() {
+        try {
+            Router.goToStats(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToDashboard() {
+        try {
+            Router.goToDashboard(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToProfile() {
+        try {
+            Router.goToProfile(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToMaps() {
+        try {
+            Router.goToMaps(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToUsers() {
+        try {
+            Router.goToUsers(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToTrajets() {
+        try {
+            Router.goToTrajets(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToReservations() {
+        try {
+            Router.goToReservations(currentUser, welcome);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

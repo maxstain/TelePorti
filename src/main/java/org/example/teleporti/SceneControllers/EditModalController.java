@@ -165,7 +165,7 @@ public class EditModalController {
         }
     }
 
-    private void setReservation(Reservation selectedReservation) {
+    void setReservation(Reservation selectedReservation) {
         this.selectedReservation = selectedReservation;
         conducteurs.setText(String.valueOf(userController.getUserById(selectedReservation.getTrajetId()).getPrenom()));
         pointDepart.setText(String.valueOf(selectedReservation.getTrajetId()));

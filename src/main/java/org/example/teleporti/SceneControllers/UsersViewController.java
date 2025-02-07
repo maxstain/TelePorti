@@ -101,7 +101,7 @@ public class UsersViewController {
         }
     }
 
-    public void onGotToUsers() {
+    public void onGoToUsers() {
         try {
             Router.goToUsers(currentUser, welcome);
         } catch (Exception e) {
@@ -109,7 +109,7 @@ public class UsersViewController {
         }
     }
 
-    public void onGotToStats() {
+    public void onGoToStats() {
         try {
             Router.goToStats(currentUser, welcome);
         } catch (Exception e) {
@@ -123,7 +123,7 @@ public class UsersViewController {
         setWelcomeMessage(currentUser.getPrenom());
     }
 
-    public void onGotToMaps() {
+    public void onGoToMaps() {
         try {
             Router.goToMaps(currentUser, welcome);
         } catch (Exception e) {
@@ -132,7 +132,7 @@ public class UsersViewController {
     }
 
     @FXML
-    public void onGotToDashboard() {
+    public void onGoToDashboard() {
         try {
             Router.goToDashboard(currentUser, welcome);
         } catch (Exception e) {
@@ -210,6 +210,30 @@ public class UsersViewController {
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void onGoToProfile() {
+        try {
+            Router.goToProfile(currentUser, welcome);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void onGoToTrajets() {
+        try {
+            Router.goToTrajets(currentUser, welcome);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void onGoToReservations() {
+        try {
+            Router.goToReservations(currentUser, welcome);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }

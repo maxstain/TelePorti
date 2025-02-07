@@ -36,7 +36,7 @@ public class DeleteModalController {
         }
     }
 
-    private void setReservation(Reservation reservation) {
+    void setReservation(Reservation reservation) {
         this.reservation = reservation;
         label.setText("Voulez-vous vraiment supprimer la réservation de " + userController.getUserById(reservation.getPassagerId()).getPrenom() + " ?");
     }

@@ -3,6 +3,7 @@ package org.example.teleporti.Controllers;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import javafx.collections.ObservableList;
 import org.example.teleporti.Entities.Trajet;
 import org.example.teleporti.Services.Trajet.ServiceTrajet;
 import org.example.teleporti.Utils.DatabaseConnection;
@@ -83,7 +84,11 @@ public class TrajetController implements HttpHandler {
         return _serviceTrajet.countAvgRideCostByGovernerat(governerat);
     }
 
-    public List<Trajet> getAllTrajets() {
+    public ObservableList<Trajet> getAllTrajets() {
         return _serviceTrajet.getAllTrajets();
+    }
+
+    public Trajet rechercher(String newValue) {
+        return _serviceTrajet.rechercher(newValue);
     }
 }

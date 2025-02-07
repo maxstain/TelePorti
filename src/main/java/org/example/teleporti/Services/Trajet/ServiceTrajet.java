@@ -1,6 +1,8 @@
 package org.example.teleporti.Services.Trajet;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.example.teleporti.Entities.Trajet;
 
 import java.sql.Connection;
@@ -191,9 +193,9 @@ public class ServiceTrajet implements IServiceTrajet {
      * @return
      */
     @Override
-    public List<Trajet> getAllTrajets() {
+    public ObservableList<Trajet> getAllTrajets() {
         String req = "select * from trajets";
-        ArrayList<Trajet> trajets = new ArrayList<>();
+        ObservableList<Trajet> trajets = FXCollections.observableArrayList();
         try {
             ResultSet res = ste.executeQuery(req);
             while (res.next()) {
@@ -208,9 +210,32 @@ public class ServiceTrajet implements IServiceTrajet {
                         res.getFloat("prix")
                 ));
             }
+            return trajets;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return trajets;
+        return null;
+    }
+
+    public Trajet rechercher(String newValue) {
+        String req = "select * from trajets where pointDepart = '" + newValue + "'";
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                return new Trajet(
+                        res.getInt("id"),
+                        res.getInt("conducteurId"),
+                        res.getString("pointDepart"),
+                        res.getString("destination"),
+                        res.getDate("dateHeure"),
+                        res.getInt("placesDisponibles"),
+                        res.getFloat("co2Economise"),
+                        res.getFloat("prix")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

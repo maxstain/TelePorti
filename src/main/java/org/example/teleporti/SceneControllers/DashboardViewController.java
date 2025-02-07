@@ -1,6 +1,7 @@
 package org.example.teleporti.SceneControllers;
 
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -55,7 +56,7 @@ public class DashboardViewController {
         welcome.setText("Bienvenue, " + string + "!");
     }
 
-    public void onGotToProfile() {
+    public void onGoToProfile() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.PROFILE_VIEW));
             Scene scene = new Scene(loader.load());
@@ -69,7 +70,7 @@ public class DashboardViewController {
         }
     }
 
-    public void onGotToUsers() {
+    public void onGoToUsers() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.USERS_VIEW));
             Scene scene = new Scene(loader.load());
@@ -83,7 +84,7 @@ public class DashboardViewController {
         }
     }
 
-    public void onGotToStats() {
+    public void onGoToStats() {
         try {
             Router.goToStats(currentUser, welcome);
         } catch (Exception e) {
@@ -98,7 +99,7 @@ public class DashboardViewController {
     }
 
     @FXML
-    public void onGotToMaps() {
+    public void onGoToMaps() {
         try {
             Router.goToMaps(currentUser, welcome);
         } catch (Exception e) {
@@ -107,7 +108,7 @@ public class DashboardViewController {
     }
 
     @FXML
-    public void onGotToDashboard() {
+    public void onGoToDashboard() {
         try {
             Router.goToDashboard(currentUser, welcome);
         } catch (Exception e) {
@@ -119,6 +120,22 @@ public class DashboardViewController {
     public void onGoToMessages() {
         try {
             Router.goToMessages(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToTrajets() {
+        try {
+            Router.goToTrajets(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToReservations() {
+        try {
+            Router.goToReservations(currentUser, welcome);
         } catch (Exception e) {
             e.printStackTrace();
         }

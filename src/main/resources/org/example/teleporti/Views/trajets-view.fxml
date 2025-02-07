@@ -30,19 +30,21 @@
             <!-- Side Menu -->
             <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="side-menu">
                 <VBox spacing="10.0">
-                    <Button alignment="CENTER" styleClass="button" text="Stats" onAction="#onGotToStats"/>
-                    <Button alignment="CENTER" styleClass="button" text="Dashboard" onAction="#onGotToDashboard"/>
-                    <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGotToProfile"/>
-                    <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGotToMaps"/>
+                    <Button alignment="CENTER" styleClass="button" text="Stats" onAction="#onGoToStats"/>
+                    <Button alignment="CENTER" styleClass="button" text="Dashboard" onAction="#onGoToDashboard"/>
+                    <Button alignment="CENTER" styleClass="button" text="Profile" onAction="#onGoToProfile"/>
+                    <Button alignment="CENTER" styleClass="button" text="Maps" onAction="#onGoToMaps"/>
                     <Button alignment="CENTER" styleClass="button" text="Chats" onAction="#onGoToMessages"/>
-                    <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGotToUsers"/>
+                    <Button alignment="CENTER" styleClass="button" text="Utilisateurs" onAction="#onGoToUsers"/>
+                    <Button alignment="CENTER" styleClass="button" text="Trajets" onAction="#onGoToTrajets"/>
+                    <Button alignment="CENTER" styleClass="button" text="Reservations" onAction="#onGoToReservations"/>
                     <Button alignment="BOTTOM_CENTER" styleClass="button" text="Déconnecter" onAction="#onLogout"/>
                 </VBox>
             </HBox>
 
             <!-- Main Content -->
             <VBox spacing="5.0" styleClass="container" style="-fx-background-color: #333">
-                <Label styleClass="text-title" text="Utilisateurs"/>
+                <Label styleClass="text-title" text="Trajets"/>
                 <VBox alignment="CENTER" spacing="10.0">
                     <HBox alignment="CENTER_RIGHT" spacing="8.0">
                         <TextField focusTraversable="false" styleClass="searchBar" fx:id="searchField"
@@ -50,41 +52,46 @@
                                    prefWidth="200.0"/>
                         <Button styleClass="button" text="Recharger" onAction="#onRefresh"/>
                     </HBox>
-                    <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="700">
+                    <TableView fx:id="trajetsTable" prefHeight="200.0" prefWidth="700">
                         <columns>
-                            <TableColumn fx:id="idColumn" prefWidth="20.0" text="ID">
+                            <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="nomColumn" prefWidth="75.0" text="Nom">
+                            <TableColumn fx:id="conducteurColumn" prefWidth="75.0" text="Conducteur">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="nom"/>
+                                    <PropertyValueFactory property="conducteurId"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="prenomColumn" prefWidth="75.0" text="Prenom">
+                            <TableColumn fx:id="pointDepartColumn" prefWidth="100.0" text="Point de départ">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="prenom"/>
+                                    <PropertyValueFactory property="pointDepart"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email">
+                            <TableColumn fx:id="destinationColumn" prefWidth="75.0" text="Destination">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="email"/>
+                                    <PropertyValueFactory property="destination"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type">
+                            <TableColumn fx:id="dateHeureColumn" prefWidth="100.0" text="Date et Heure">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="type"/>
+                                    <PropertyValueFactory property="dateHeure"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="governeratColumn" prefWidth="150.0" text="Governerat">
+                            <TableColumn fx:id="placesDisponiblesColumn" prefWidth="100.0" text="Places dispo">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="governerat"/>
+                                    <PropertyValueFactory property="placesDisponibles"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="telephoneColumn" prefWidth="100.0" text="Telephone">
+                            <TableColumn fx:id="co2EconomiseColumn" prefWidth="100.0" text="CO2 Economise">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="telephone"/>
+                                    <PropertyValueFactory property="co2Economise"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Prix">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="prix"/>
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>

@@ -1,5 +1,7 @@
 package org.example.teleporti.Services.Reservation;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.example.teleporti.Entities.Reservation;
 
 import java.sql.Connection;
@@ -109,5 +111,28 @@ public class ServiceReservation implements IServiceReservation {
             System.out.println(e.getMessage());
         }
         return 0;
+    }
+
+    public ObservableList<Reservation> getAllReservations() {
+        String req = "select id, trajetId, passagerId, status from reservations";
+        ObservableList<Reservation> reservations = FXCollections.observableArrayList();
+        try {
+            if (getSize() == 0) {
+                System.out.println("Aucun reservation trouvée");
+            } else {
+                ResultSet res = ste.executeQuery(req);
+                while (res.next()) {
+                    reservations.add(new Reservation(
+                            res.getInt("id"),
+                            res.getInt("trajetId"),
+                            res.getInt("passagerId"),
+                            res.getString("status")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return reservations;
     }
 }

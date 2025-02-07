@@ -86,4 +86,20 @@ public class StatsViewController {
             e.printStackTrace();
         }
     }
+
+    public void onGoToTrajets() {
+        try {
+            Router.goToTrajets(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onGoToReservations() {
+        try {
+            Router.goToReservations(currentUser, welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
