@@ -43,6 +43,8 @@ public class Constants {
             "En attente",
             "Acceptée",
             "Refusée",
-            "Annulée"
+            "Annulée",
+            "Terminée",
+            "En cours"
     );
 }
