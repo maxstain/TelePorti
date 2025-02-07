@@ -23,6 +23,12 @@ public class EditModalController {
 
 
     @FXML
+    protected MenuButton trajetField = new MenuButton();
+    @FXML
+    protected MenuButton passagerField = new MenuButton();
+    @FXML
+    protected MenuButton statusField = new MenuButton();
+    @FXML
     protected MenuButton conducteurs = new MenuButton();
     @FXML
     protected MenuButton pointDepart = new MenuButton();
@@ -129,27 +135,30 @@ public class EditModalController {
         if (selectedReservation != null) {
             reservationForm.setVisible(true);
             setReservation(selectedReservation);
-            conducteurs.getItems().addAll(
-                    userController.getAllChauffeurs().stream().map(user -> {
-                        MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
+            trajetField.getItems().addAll(
+                    trajetController.getAllTrajets().stream().map(trajet -> {
+                        MenuItem item = new MenuItem(trajet.getPointDepart() + " -> " + trajet.getDestination());
                         item.setOnAction(_ -> {
-                            conducteurs.setText(user.getPrenom() + " " + user.getNom());
-                            selectedConducteur = user;
+                            trajetField.setText(trajet.getPointDepart() + " -> " + trajet.getDestination());
+                            selectedTrajet = trajet;
                         });
                         return item;
                     }).toArray(MenuItem[]::new)
             );
-            pointDepart.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> pointDepart.setText(location.getName()));
+            passagerField.getItems().addAll(
+                    userController.getAllClients().stream().map(user -> {
+                        MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
+                        item.setOnAction(_ -> {
+                            passagerField.setText(user.getPrenom() + " " + user.getNom());
+                            selectedClient = user;
+                        });
                         return item;
                     }).toArray(MenuItem[]::new)
             );
-            destination.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> destination.setText(location.getName()));
+            statusField.getItems().addAll(
+                    Constants.reservationStatus.stream().map(status -> {
+                        MenuItem item = new MenuItem(status);
+                        item.setOnAction(_ -> statusField.setText(status));
                         return item;
                     }).toArray(MenuItem[]::new)
             );

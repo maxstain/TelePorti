@@ -38,4 +38,11 @@ public class Constants {
             "Chauffeur",
             "Manager"
     );
+
+    public static final List<String> reservationStatus = List.of(
+            "En attente",
+            "Acceptée",
+            "Refusée",
+            "Annulée"
+    );
 }

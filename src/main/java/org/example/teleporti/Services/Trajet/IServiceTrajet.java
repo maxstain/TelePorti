@@ -19,4 +19,6 @@ public interface IServiceTrajet {
     Double countAvgCO2EmissionByGovernerat(String governerat);
 
     Double countAvgRideCostByGovernerat(String governerat);
+
+    List<Trajet> getAllTrajets();
 }

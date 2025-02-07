@@ -82,4 +82,8 @@ public class TrajetController implements HttpHandler {
     public Double countAvgRideCostByGovernerat(String governerat) {
         return _serviceTrajet.countAvgRideCostByGovernerat(governerat);
     }
+
+    public List<Trajet> getAllTrajets() {
+        return _serviceTrajet.getAllTrajets();
+    }
 }

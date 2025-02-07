@@ -186,4 +186,31 @@ public class ServiceTrajet implements IServiceTrajet {
         }
         return 0.0;
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public List<Trajet> getAllTrajets() {
+        String req = "select * from trajets";
+        ArrayList<Trajet> trajets = new ArrayList<>();
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                trajets.add(new Trajet(
+                        res.getInt("id"),
+                        res.getInt("conducteurId"),
+                        res.getString("pointDepart"),
+                        res.getString("destination"),
+                        res.getDate("dateHeure"),
+                        res.getInt("placesDisponibles"),
+                        res.getFloat("co2Economise"),
+                        res.getFloat("prix")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return trajets;
+    }
 }
