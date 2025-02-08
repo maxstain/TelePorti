@@ -31,12 +31,19 @@ public class TrajetsViewController {
 
     @FXML
     public TableColumn<Trajet, Integer> idColumn;
+    @FXML
     public TableColumn<Trajet, String> conducteurColumn;
+    @FXML
     public TableColumn<Trajet, String> pointDepartColumn;
+    @FXML
     public TableColumn<Trajet, String> destinationColumn;
+    @FXML
     public TableColumn<Trajet, String> dateHeureColumn;
+    @FXML
     public TableColumn<Trajet, String> placesDisponiblesColumn;
+    @FXML
     public TableColumn<Trajet, String> co2EconomiseColumn;
+    @FXML
     public TableColumn<Trajet, String> prixColumn;
 
     private User currentUser;
@@ -48,7 +55,7 @@ public class TrajetsViewController {
     protected TableView<Trajet> trajetsTable;
 
     @FXML
-    private User selectedUser;
+    private Trajet selectedTrajet;
 
     @FXML
     private void initialize() {
@@ -119,9 +126,9 @@ public class TrajetsViewController {
 
     @FXML
     private void openEditModal() {
-        Trajet trajet = trajetsTable.getSelectionModel().getSelectedItem();
+        selectedTrajet = trajetsTable.getSelectionModel().getSelectedItem();
 
-        if (trajet == null) {
+        if (selectedTrajet == null) {
             Router.openErrorMessageModal("Merci de selectionner un trajet à modifier.");
             return;
         }
@@ -130,7 +137,7 @@ public class TrajetsViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
             EditModalController controller = loader.getController();
-            controller.setTrajet(trajet);
+            controller.setTrajet(selectedTrajet);
             controller.setCurrentUser(currentUser);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -144,9 +151,9 @@ public class TrajetsViewController {
 
     @FXML
     private void openDeleteModal() {
-        Trajet trajet = trajetsTable.getSelectionModel().getSelectedItem();
+        selectedTrajet = trajetsTable.getSelectionModel().getSelectedItem();
 
-        if (trajet == null) {
+        if (selectedTrajet == null) {
             Router.openErrorMessageModal("Merci de selectionner un trajet à supprimer.");
             return;
         }
@@ -155,7 +162,7 @@ public class TrajetsViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.DELETE_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
             DeleteModalController controller = loader.getController();
-            controller.setTrajet(trajet);
+            controller.setTrajet(selectedTrajet);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Supprimer Trajet");

@@ -54,42 +54,42 @@
                     </HBox>
                     <TableView fx:id="trajetsTable" prefHeight="200.0" prefWidth="700">
                         <columns>
-                            <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID">
+                            <TableColumn fx:id="idColumn" text="ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="conducteurColumn" prefWidth="75.0" text="Conducteur">
+                            <TableColumn fx:id="conducteurColumn" text="Conducteur">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="conducteurId"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="pointDepartColumn" prefWidth="100.0" text="Point de départ">
+                            <TableColumn fx:id="pointDepartColumn" text="Point de départ">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="pointDepart"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="destinationColumn" prefWidth="75.0" text="Destination">
+                            <TableColumn fx:id="destinationColumn" text="Destination">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="destination"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="dateHeureColumn" prefWidth="100.0" text="Date et Heure">
+                            <TableColumn fx:id="dateHeureColumn" text="Date et Heure">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="dateHeure"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="placesDisponiblesColumn" prefWidth="100.0" text="Places dispo">
+                            <TableColumn fx:id="placesDisponiblesColumn" text="Places dispo">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="placesDisponibles"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="co2EconomiseColumn" prefWidth="100.0" text="CO2 Economise">
+                            <TableColumn fx:id="co2EconomiseColumn" text="CO2 Economise">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="co2Economise"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Prix">
+                            <TableColumn fx:id="prixColumn" text="Prix">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="prix"/>
                                 </cellValueFactory>

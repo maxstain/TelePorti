@@ -64,77 +64,36 @@ public class EditModalController {
     private TextField telephoneField;
 
     @FXML
-    private VBox userForm = new VBox();
+    private VBox userForm;
     @FXML
-    private VBox trajetForm = new VBox();
+    private VBox trajetForm;
     @FXML
-    private VBox reservationForm = new VBox();
+    private VBox reservationForm;
 
     @FXML
-    protected User user = null;
+    protected User user;
     protected User selectedConducteur;
     protected User selectedClient;
-    @FXML
-    protected Trajet selectedTrajet = null;
-    @FXML
-    protected Reservation selectedReservation = null;
-
     protected User currentUser;
+
+    @FXML
+    protected Trajet selectedTrajet;
+
+    @FXML
+    protected Reservation selectedReservation;
+
 
     @FXML
     public void initialize() {
         userForm.setVisible(false);
         trajetForm.setVisible(false);
         reservationForm.setVisible(false);
-        if (user != null) {
-            userForm.setVisible(true);
-            setUser(user);
-            governeratField.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> governeratField.setText(location.getName()));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            typeField.getItems().addAll(
-                    Constants.roles.stream().map(role -> {
-                        MenuItem item = new MenuItem(role);
-                        item.setOnAction(_ -> typeField.setText(role));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-        }
-        if (selectedTrajet != null) {
-            trajetForm.setVisible(true);
-            setTrajet(selectedTrajet);
-            conducteurs.getItems().addAll(
-                    userController.getAllChauffeurs().stream().map(user -> {
-                        MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
-                        item.setOnAction(_ -> {
-                            conducteurs.setText(user.getPrenom() + " " + user.getNom());
-                            selectedConducteur = user;
-                        });
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            pointDepart.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> pointDepart.setText(location.getName()));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            destination.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> destination.setText(location.getName()));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-        }
+    }
+
+    void setReservation(Reservation selectedReservation) {
+        this.selectedReservation = selectedReservation;
         if (selectedReservation != null) {
             reservationForm.setVisible(true);
-            setReservation(selectedReservation);
             trajetField.getItems().addAll(
                     trajetController.getAllTrajets().stream().map(trajet -> {
                         MenuItem item = new MenuItem(trajet.getPointDepart() + " -> " + trajet.getDestination());
@@ -146,11 +105,11 @@ public class EditModalController {
                     }).toArray(MenuItem[]::new)
             );
             passagerField.getItems().addAll(
-                    userController.getAllClients().stream().map(user -> {
-                        MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
+                    userController.getAllClients().stream().map(Vuser -> {
+                        MenuItem item = new MenuItem(Vuser.getPrenom() + " " + Vuser.getNom());
                         item.setOnAction(_ -> {
-                            passagerField.setText(user.getPrenom() + " " + user.getNom());
-                            selectedClient = user;
+                            passagerField.setText(Vuser.getPrenom() + " " + Vuser.getNom());
+                            selectedClient = Vuser;
                         });
                         return item;
                     }).toArray(MenuItem[]::new)
@@ -163,10 +122,6 @@ public class EditModalController {
                     }).toArray(MenuItem[]::new)
             );
         }
-    }
-
-    void setReservation(Reservation selectedReservation) {
-        this.selectedReservation = selectedReservation;
         conducteurs.setText(String.valueOf(userController.getUserById(selectedReservation.getTrajetId()).getPrenom()));
         pointDepart.setText(String.valueOf(selectedReservation.getTrajetId()));
         destination.setText(String.valueOf(userController.getUserById(selectedReservation.getPassagerId()).getPrenom()));
@@ -198,6 +153,33 @@ public class EditModalController {
 
     public void setTrajet(Trajet trajet) {
         this.selectedTrajet = trajet;
+        if (selectedTrajet != null) {
+            trajetForm.setVisible(true);
+            conducteurs.getItems().addAll(
+                    userController.getAllChauffeurs().stream().map(user -> {
+                        MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
+                        item.setOnAction(_ -> {
+                            conducteurs.setText(user.getPrenom() + " " + user.getNom());
+                            selectedConducteur = user;
+                        });
+                        return item;
+                    }).toArray(MenuItem[]::new)
+            );
+            pointDepart.getItems().addAll(
+                    Constants.locations.stream().map(location -> {
+                        MenuItem item = new MenuItem(location.getName());
+                        item.setOnAction(_ -> pointDepart.setText(location.getName()));
+                        return item;
+                    }).toArray(MenuItem[]::new)
+            );
+            destination.getItems().addAll(
+                    Constants.locations.stream().map(location -> {
+                        MenuItem item = new MenuItem(location.getName());
+                        item.setOnAction(_ -> destination.setText(location.getName()));
+                        return item;
+                    }).toArray(MenuItem[]::new)
+            );
+        }
         conducteurs.setText(String.valueOf(userController.getUserById(trajet.getConducteurId()).getPrenom()));
         pointDepart.setText(trajet.getPointDepart());
         destination.setText(trajet.getDestination());
@@ -210,6 +192,23 @@ public class EditModalController {
     @FXML
     public void setUser(User user) {
         this.user = user;
+        if (user != null) {
+            userForm.setVisible(true);
+            governeratField.getItems().addAll(
+                    Constants.locations.stream().map(location -> {
+                        MenuItem item = new MenuItem(location.getName());
+                        item.setOnAction(_ -> governeratField.setText(location.getName()));
+                        return item;
+                    }).toArray(MenuItem[]::new)
+            );
+            typeField.getItems().addAll(
+                    Constants.roles.stream().map(role -> {
+                        MenuItem item = new MenuItem(role);
+                        item.setOnAction(_ -> typeField.setText(role));
+                        return item;
+                    }).toArray(MenuItem[]::new)
+            );
+        }
         prenomField.setText(user.getPrenom());
         nomField.setText(user.getNom());
         emailField.setText(user.getEmail());

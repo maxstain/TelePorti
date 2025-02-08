@@ -39,7 +39,7 @@ public class ReservationsViewController {
     protected Label welcome;
 
     @FXML
-    private User selectedUser;
+    private Reservation selectedReservation;
 
     @FXML
     private TableView<Reservation> reservationsTable = new TableView<>();

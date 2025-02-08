@@ -54,37 +54,37 @@
                     </HBox>
                     <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="700">
                         <columns>
-                            <TableColumn fx:id="idColumn" prefWidth="20.0" text="ID">
+                            <TableColumn fx:id="idColumn" text="ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="nomColumn" prefWidth="75.0" text="Nom">
+                            <TableColumn fx:id="nomColumn" text="Nom">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="nom"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="prenomColumn" prefWidth="75.0" text="Prenom">
+                            <TableColumn fx:id="prenomColumn" text="Prenom">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="prenom"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email">
+                            <TableColumn fx:id="emailColumn" text="Email">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="email"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type">
+                            <TableColumn fx:id="typeColumn" text="Type">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="type"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="governeratColumn" prefWidth="150.0" text="Governerat">
+                            <TableColumn fx:id="governeratColumn" text="Governerat">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="governerat"/>
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="telephoneColumn" prefWidth="100.0" text="Telephone">
+                            <TableColumn fx:id="telephoneColumn" text="Telephone">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="telephone"/>
                                 </cellValueFactory>
