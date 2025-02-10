@@ -64,23 +64,23 @@ public class EditModalController {
     private TextField telephoneField;
 
     @FXML
-    private VBox userForm;
+    private VBox userForm = new VBox();
     @FXML
-    private VBox trajetForm;
+    private VBox trajetForm = new VBox();
     @FXML
-    private VBox reservationForm;
+    private VBox reservationForm = new VBox();
 
     @FXML
-    protected User user;
-    protected User selectedConducteur;
-    protected User selectedClient;
-    protected User currentUser;
+    protected User user = null;
+    protected User selectedConducteur = null;
+    protected User selectedClient = null;
+    protected User currentUser = null;
 
     @FXML
-    protected Trajet selectedTrajet;
+    protected Trajet selectedTrajet = null;
 
     @FXML
-    protected Reservation selectedReservation;
+    protected Reservation selectedReservation = null;
 
 
     @FXML
@@ -90,6 +90,7 @@ public class EditModalController {
         reservationForm.setVisible(false);
     }
 
+    @FXML
     void setReservation(Reservation selectedReservation) {
         this.selectedReservation = selectedReservation;
         if (selectedReservation != null) {
@@ -100,6 +101,7 @@ public class EditModalController {
                         item.setOnAction(_ -> {
                             trajetField.setText(trajet.getPointDepart() + " -> " + trajet.getDestination());
                             selectedTrajet = trajet;
+                            System.out.println(selectedTrajet.getId());
                         });
                         return item;
                     }).toArray(MenuItem[]::new)
@@ -151,6 +153,7 @@ public class EditModalController {
         }
     }
 
+    @FXML
     public void setTrajet(Trajet trajet) {
         this.selectedTrajet = trajet;
         if (selectedTrajet != null) {
