@@ -78,6 +78,7 @@ public class EditModalController {
 
     @FXML
     protected Trajet selectedTrajet = null;
+    protected Trajet trajet = null;
 
     @FXML
     protected Reservation selectedReservation = null;
@@ -96,12 +97,11 @@ public class EditModalController {
         if (selectedReservation != null) {
             reservationForm.setVisible(true);
             trajetField.getItems().addAll(
-                    trajetController.getAllTrajets().stream().map(trajet -> {
-                        MenuItem item = new MenuItem(trajet.getPointDepart() + " -> " + trajet.getDestination());
+                    trajetController.getAllTrajets().stream().map(newTrajet -> {
+                        MenuItem item = new MenuItem(newTrajet.getPointDepart() + " -> " + newTrajet.getDestination());
                         item.setOnAction(_ -> {
-                            trajetField.setText(trajet.getPointDepart() + " -> " + trajet.getDestination());
-                            selectedTrajet = trajet;
-                            System.out.println(selectedTrajet.getId());
+                            trajetField.setText(newTrajet.getPointDepart() + " -> " + newTrajet.getDestination());
+                            this.trajet = newTrajet;
                         });
                         return item;
                     }).toArray(MenuItem[]::new)
@@ -248,7 +248,7 @@ public class EditModalController {
             selectedTrajet.setPrix(Float.parseFloat(prix.getText()));
             trajetController.modifier(selectedTrajet);
         } else if (selectedReservation != null) {
-            selectedReservation.setTrajetId(selectedTrajet.getId());
+            selectedReservation.setTrajetId(trajet.getId());
             selectedReservation.setPassagerId(selectedClient.getId());
             reservationController.modifier(selectedReservation);
         }

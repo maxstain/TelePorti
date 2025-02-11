@@ -65,7 +65,7 @@ public class ServiceReservation implements IServiceReservation {
 
     @Override
     public void modifier(Reservation reservation) {
-        String req = "update reservations set nom = '" + reservation.getTrajetId() + "', prenom = '" + reservation.getPassagerId() + "', age = '" + reservation.getStatus() + "' where id = " + reservation.getId();
+        String req = "update reservations set trajetId = '" + reservation.getTrajetId() + "', passagerId = '" + reservation.getPassagerId() + "', status = '" + reservation.getStatus() + "' where id = " + reservation.getId();
         try {
             ste.executeUpdate(req);
         } catch (SQLException e) {
