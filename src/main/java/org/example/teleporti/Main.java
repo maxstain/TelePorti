@@ -20,6 +20,8 @@ public class Main {
 
         _userController.createUserTableInDatabase();
         _messageController.createMessagesTable();
+        _trajetController.createTrajetTable();
+        _reservationController.createReservationTable();
 
 
         User user1 = new User(_userController.getSize() + 1, "Abbassi", "Chaima", 23, "chaimaabbassi@gmail.com", "chaima123", "Chauffeur", "Tunis", "Tunis", "Tunis", "12345678");

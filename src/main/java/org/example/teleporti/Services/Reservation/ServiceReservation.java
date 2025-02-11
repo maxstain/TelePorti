@@ -35,10 +35,7 @@ public class ServiceReservation implements IServiceReservation {
 
     @Override
     public void ajout(Reservation newReservation) {
-        String req = "insert into reservations (trajetId, passagerId, status) values ('" +
-                newReservation.getTrajetId() + "', '" +
-                newReservation.getPassagerId() + "', '" +
-                newReservation.getStatus() + "')";
+        String req = "insert into reservations (trajetId, passagerId, status) values ('" + newReservation.getTrajetId() + "', '" + newReservation.getPassagerId() + "', '" + newReservation.getStatus() + "')";
         try {
             ste.executeUpdate(req);
         } catch (SQLException e) {
@@ -56,17 +53,8 @@ public class ServiceReservation implements IServiceReservation {
             } else {
                 ResultSet res = ste.executeQuery(req);
                 while (res.next()) {
-                    reservations.add(new Reservation(
-                            res.getInt("id"),
-                            res.getInt("trajetId"),
-                            res.getInt("passagerId"),
-                            res.getString("status")
-                    ));
-                    System.out.println("ID: " + res.getInt("id") +
-                            "\nTrajet ID: " + res.getInt("trajetId") +
-                            "\nPassager ID: " + res.getInt("passagerId") +
-                            "\nStatus: " + res.getString("status")
-                    );
+                    reservations.add(new Reservation(res.getInt("id"), res.getInt("trajetId"), res.getInt("passagerId"), res.getString("status")));
+                    System.out.println("ID: " + res.getInt("id") + "\nTrajet ID: " + res.getInt("trajetId") + "\nPassager ID: " + res.getInt("passagerId") + "\nStatus: " + res.getString("status"));
                 }
             }
         } catch (SQLException e) {
@@ -77,10 +65,7 @@ public class ServiceReservation implements IServiceReservation {
 
     @Override
     public void modifier(Reservation reservation) {
-        String req = "update reservations set nom = '" +
-                reservation.getTrajetId() + "', prenom = '" +
-                reservation.getPassagerId() + "', age = '" +
-                reservation.getStatus() + "' where id = " + reservation.getId();
+        String req = "update reservations set nom = '" + reservation.getTrajetId() + "', prenom = '" + reservation.getPassagerId() + "', age = '" + reservation.getStatus() + "' where id = " + reservation.getId();
         try {
             ste.executeUpdate(req);
         } catch (SQLException e) {
@@ -122,17 +107,21 @@ public class ServiceReservation implements IServiceReservation {
             } else {
                 ResultSet res = ste.executeQuery(req);
                 while (res.next()) {
-                    reservations.add(new Reservation(
-                            res.getInt("id"),
-                            res.getInt("trajetId"),
-                            res.getInt("passagerId"),
-                            res.getString("status")
-                    ));
+                    reservations.add(new Reservation(res.getInt("id"), res.getInt("trajetId"), res.getInt("passagerId"), res.getString("status")));
                 }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return reservations;
+    }
+
+    public void createReservationTable() {
+        String req = "create table if not exists reservations (id int primary key auto_increment, trajetId int, passagerId int, status varchar(255))";
+        try {
+            ste.executeUpdate(req);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

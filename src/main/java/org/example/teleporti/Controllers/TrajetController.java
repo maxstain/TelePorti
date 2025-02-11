@@ -91,4 +91,8 @@ public class TrajetController implements HttpHandler {
     public Trajet rechercher(String newValue) {
         return _serviceTrajet.rechercher(newValue);
     }
+
+    public void createTrajetTable() {
+        _serviceTrajet.createTrajetTable();
+    }
 }

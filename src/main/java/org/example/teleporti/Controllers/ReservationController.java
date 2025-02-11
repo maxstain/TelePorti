@@ -78,4 +78,8 @@ public class ReservationController implements HttpHandler {
     public ObservableList<Reservation> getAllReservations() {
         return _serviceReservation.getAllReservations();
     }
+
+    public void createReservationTable() {
+        _serviceReservation.createReservationTable();
+    }
 }

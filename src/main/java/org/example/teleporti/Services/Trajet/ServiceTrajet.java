@@ -238,4 +238,22 @@ public class ServiceTrajet implements IServiceTrajet {
         }
         return null;
     }
+
+    public void createTrajetTable() {
+        String req = "CREATE TABLE IF NOT EXISTS trajets (" +
+                "id int NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+                "conducteurId int NOT NULL," +
+                "pointDepart varchar(255) NOT NULL," +
+                "destination varchar(255) NOT NULL," +
+                "dateHeure date NOT NULL," +
+                "placesDisponibles int NOT NULL," +
+                "co2Economise float NOT NULL," +
+                "prix float NOT NULL" +
+                ")";
+        try {
+            ste.executeUpdate(req);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
