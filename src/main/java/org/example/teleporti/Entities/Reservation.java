@@ -15,6 +15,10 @@ public class Reservation {
         this.status = status;
     }
 
+    public static Reservation empty() {
+        return new Reservation(0, 0, 0, "");
+    }
+
     public int getId() {
         return id;
     }

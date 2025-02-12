@@ -72,8 +72,11 @@ public class EditModalController {
 
     @FXML
     protected User user = null;
+    @FXML
     protected User selectedConducteur = null;
+    @FXML
     protected User selectedClient = null;
+    @FXML
     protected User currentUser = null;
 
     @FXML

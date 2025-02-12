@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
@@ -46,10 +47,10 @@ public class ReservationsViewController {
 
     @FXML
     private void initialize() {
-        idColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
-        trajetIdColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("trajetId"));
-        passagerIdColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("passagerId"));
-        statusColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("status"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        trajetIdColumn.setCellValueFactory(new PropertyValueFactory<>("trajetId"));
+        passagerIdColumn.setCellValueFactory(new PropertyValueFactory<>("passagerId"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         ObservableList<Reservation> reservations = reservationController.getAllReservations();
         reservationsTable.setItems(reservations);
     }

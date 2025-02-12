@@ -34,6 +34,10 @@ public class Trajet {
         this.prix = prix;
     }
 
+    public static Trajet empty() {
+        return new Trajet(0, 0, "", "", 0, 0, 0);
+    }
+
     public int getId() {
         return id;
     }

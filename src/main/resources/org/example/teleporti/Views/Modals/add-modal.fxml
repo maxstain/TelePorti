@@ -9,8 +9,34 @@
             fx:controller="org.example.teleporti.SceneControllers.AddModalController"
             prefHeight="400.0" prefWidth="600.0">
 
-    <VBox alignment="CENTER" styleClass="modal">
-        <Label styleClass="text-title" text="Ajouter"/>
+    <VBox fx:id="addUserForm" alignment="CENTER" styleClass="modal">
+        <Label styleClass="text-title" text="Ajouter Utilisateur"/>
+        <TextField fx:id="prenomField" promptText="Prenom"/>
+        <TextField fx:id="nomField" promptText="Nom"/>
+        <TextField fx:id="emailField" promptText="Email"/>
+        <PasswordField fx:id="passwordField" promptText="Mot de passe"/>
+        <TextField fx:id="ageField" promptText="Age"/>
+        <MenuButton fx:id="governeratField" text="Governerat"/>
+        <TextField fx:id="villeField" promptText="Ville"/>
+        <TextField fx:id="telephoneField" promptText="Telephone"/>
+        <Button styleClass="button" text="Save" onAction="#onSave"/>
+        <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+    </VBox>
+    <VBox fx:id="addTrajetForm" alignment="CENTER" styleClass="modal">
+        <Label styleClass="text-title" text="Ajouter Trajet"/>
+        <TextField fx:id="prenomField" promptText="Prenom"/>
+        <TextField fx:id="nomField" promptText="Nom"/>
+        <TextField fx:id="emailField" promptText="Email"/>
+        <PasswordField fx:id="passwordField" promptText="Mot de passe"/>
+        <TextField fx:id="ageField" promptText="Age"/>
+        <MenuButton fx:id="governeratField" text="Governerat"/>
+        <TextField fx:id="villeField" promptText="Ville"/>
+        <TextField fx:id="telephoneField" promptText="Telephone"/>
+        <Button styleClass="button" text="Save" onAction="#onSave"/>
+        <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+    </VBox>
+    <VBox fx:id="addReservationForm" alignment="CENTER" styleClass="modal">
+        <Label styleClass="text-title" text="Ajouter Reservation"/>
         <TextField fx:id="prenomField" promptText="Prenom"/>
         <TextField fx:id="nomField" promptText="Nom"/>
         <TextField fx:id="emailField" promptText="Email"/>
