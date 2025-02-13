@@ -39,7 +39,7 @@ public class Constants {
             "Manager"
     );
 
-    public static final List<String> reservationStatus = List.of(
+    public static final List<String> statuses = List.of(
             "En attente",
             "Acceptée",
             "Refusée",

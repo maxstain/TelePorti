@@ -67,12 +67,21 @@ public class TrajetsViewController {
         placesDisponiblesColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("placesDisponibles"));
         co2EconomiseColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("co2Economise"));
         prixColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("prix"));
-        searchField.textProperty().addListener((_, _, newValue) -> {
-            ObservableList<Trajet> trajets = FXCollections.observableArrayList(trajetController.rechercher(newValue));
-            trajetsTable.setItems(trajets);
-        });
         ObservableList<Trajet> trajets = trajetController.getAllTrajets();
         trajetsTable.setItems(trajets);
+        searchField.textProperty().addListener((_, _, newValue) -> {
+            ObservableList<Trajet> trajetsList = FXCollections.observableArrayList(trajets.stream().filter(trajet -> {
+                String value = newValue.toLowerCase();
+                return String.valueOf(trajet.getConducteurId()).toLowerCase().contains(value.toLowerCase()) ||
+                        trajet.getPointDepart().toLowerCase().contains(value.toLowerCase()) ||
+                        trajet.getDestination().toLowerCase().contains(value.toLowerCase()) ||
+                        String.valueOf(trajet.getDateHeure()).toLowerCase().contains(value.toLowerCase()) ||
+                        String.valueOf(trajet.getPlacesDisponibles()).toLowerCase().contains(value.toLowerCase()) ||
+                        String.valueOf(trajet.getCo2Economise()).toLowerCase().contains(value.toLowerCase()) ||
+                        String.valueOf(trajet.getPrix()).toLowerCase().contains(value.toLowerCase());
+            }).toList());
+            trajetsTable.setItems(trajetsList);
+        });
     }
 
     @FXML
@@ -114,6 +123,8 @@ public class TrajetsViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.ADD_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
+            AddModalController controller = loader.getController();
+            controller.setTrajet();
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Ajout Trajet");

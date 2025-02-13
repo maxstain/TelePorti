@@ -64,12 +64,19 @@ public class UsersViewController {
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         governeratColumn.setCellValueFactory(new PropertyValueFactory<>("governerat"));
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<>("telephone"));
-        searchField.textProperty().addListener((_, _, newValue) -> {
-            ObservableList<User> users = FXCollections.observableArrayList(userController.rechercher(newValue));
-            usersTable.setItems(users);
-        });
         ObservableList<User> users = FXCollections.observableArrayList(userController.afficherList());
         usersTable.setItems(users);
+        searchField.textProperty().addListener((_, _, newValue) -> {
+            ObservableList<User> usersList = FXCollections.observableArrayList(users.stream().filter(user -> {
+                String value = newValue.toLowerCase();
+                return user.getNom().toLowerCase().contains(value.toLowerCase()) ||
+                        user.getPrenom().toLowerCase().contains(value.toLowerCase()) ||
+                        user.getEmail().toLowerCase().contains(value.toLowerCase()) ||
+                        user.getGovernerat().toLowerCase().contains(value.toLowerCase()) ||
+                        user.getTelephone().toLowerCase().contains(value.toLowerCase());
+            }).toList());
+            usersTable.setItems(usersList);
+        });
     }
 
     @FXML
@@ -154,6 +161,8 @@ public class UsersViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.ADD_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
+            AddModalController controller = loader.getController();
+            controller.setUser();
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Add User");

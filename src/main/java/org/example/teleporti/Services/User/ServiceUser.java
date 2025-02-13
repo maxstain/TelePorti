@@ -274,6 +274,71 @@ public class ServiceUser implements IServiceUser {
         return null;
     }
 
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public User getUserByEmail(String email) {
+        String req = "select * from users where email='" + email + "'";
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                return new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("password"),
+                        res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    /**
+     * @param prenom
+     * @param nom
+     * @return
+     */
+    @Override
+    public User getUserByPrenomAndNom(String prenom, String nom) {
+        String req = "select * from users where prenom='" + prenom + "' and nom='" + nom + "'";
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                return new User(
+                        res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("prenom"),
+                        res.getInt("age"),
+                        res.getString("email"),
+                        res.getString("password"),
+                        res.getString("type"),
+                        res.getString("governerat"),
+                        res.getString("ville"),
+                        res.getString("addresse"),
+                        res.getString("telephone"),
+                        res.getDate("creation_date"),
+                        res.getDate("update_date")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     @Override
     public User getUserById(int id) {
         String req = "select * from users where id=" + id;

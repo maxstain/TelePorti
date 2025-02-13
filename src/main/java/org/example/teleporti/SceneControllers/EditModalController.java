@@ -120,7 +120,7 @@ public class EditModalController {
                     }).toArray(MenuItem[]::new)
             );
             statusField.getItems().addAll(
-                    Constants.reservationStatus.stream().map(status -> {
+                    Constants.statuses.stream().map(status -> {
                         MenuItem item = new MenuItem(status);
                         item.setOnAction(_ -> statusField.setText(status));
                         return item;

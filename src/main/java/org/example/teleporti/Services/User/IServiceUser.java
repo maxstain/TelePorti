@@ -23,6 +23,12 @@ public interface IServiceUser {
 
     User getUserById(int id);
 
+    User getUserByEmailAndPassword(String email, String password);
+
+    User getUserByEmail(String email);
+
+    User getUserByPrenomAndNom(String prenom, String nom);
+
     List<User> getAllChauffeurs();
 
     List<User> getAllClients();

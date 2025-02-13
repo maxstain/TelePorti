@@ -1,5 +1,6 @@
 package org.example.teleporti.SceneControllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,6 +36,9 @@ public class ReservationsViewController {
     @FXML
     public TableColumn<Reservation, String> statusColumn;
 
+    @FXML
+    public TextField searchField;
+
     protected User currentUser;
 
     @FXML
@@ -53,6 +58,16 @@ public class ReservationsViewController {
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         ObservableList<Reservation> reservations = reservationController.getAllReservations();
         reservationsTable.setItems(reservations);
+        searchField.textProperty().addListener((_, _, newValue) -> {
+            ObservableList<Reservation> reservationsList = FXCollections.observableArrayList(reservations.stream().filter(reservation -> {
+                String value = newValue.toLowerCase();
+                return String.valueOf(reservation.getId()).contains(value) ||
+                        String.valueOf(reservation.getTrajetId()).contains(value) ||
+                        String.valueOf(reservation.getPassagerId()).contains(value) ||
+                        reservation.getStatus().toLowerCase().contains(value);
+            }).toList());
+            reservationsTable.setItems(reservationsList);
+        });
     }
 
     @FXML
@@ -152,6 +167,8 @@ public class ReservationsViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.ADD_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
+            AddModalController controller = loader.getController();
+            controller.setReservation();
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Add User");

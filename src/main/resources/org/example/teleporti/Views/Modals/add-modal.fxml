@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             stylesheets="@../../Styles/Modals.css"
-            fx:controller="org.example.teleporti.SceneControllers.AddModalController"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="org.example.teleporti.SceneControllers.AddModalController">
 
     <VBox fx:id="addUserForm" alignment="CENTER" styleClass="modal">
         <Label styleClass="text-title" text="Ajouter Utilisateur"/>
@@ -19,34 +17,33 @@
         <MenuButton fx:id="governeratField" text="Governerat"/>
         <TextField fx:id="villeField" promptText="Ville"/>
         <TextField fx:id="telephoneField" promptText="Telephone"/>
-        <Button styleClass="button" text="Save" onAction="#onSave"/>
-        <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+        <HBox alignment="CENTER">
+            <Button styleClass="button" text="Save" onAction="#onSave"/>
+            <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+        </HBox>
     </VBox>
     <VBox fx:id="addTrajetForm" alignment="CENTER" styleClass="modal">
         <Label styleClass="text-title" text="Ajouter Trajet"/>
-        <TextField fx:id="prenomField" promptText="Prenom"/>
-        <TextField fx:id="nomField" promptText="Nom"/>
-        <TextField fx:id="emailField" promptText="Email"/>
-        <PasswordField fx:id="passwordField" promptText="Mot de passe"/>
-        <TextField fx:id="ageField" promptText="Age"/>
-        <MenuButton fx:id="governeratField" text="Governerat"/>
-        <TextField fx:id="villeField" promptText="Ville"/>
-        <TextField fx:id="telephoneField" promptText="Telephone"/>
-        <Button styleClass="button" text="Save" onAction="#onSave"/>
-        <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+        <MenuButton fx:id="conducteurField" text="Conducteur"/>
+        <MenuButton fx:id="pointDepartField" text="Point Départ"/>
+        <MenuButton fx:id="destinationField" text="Destination"/>
+        <TextField fx:id="placesDisponiblesField" promptText="placesDisponibles"/>
+        <TextField fx:id="co2EconomiseField" promptText="CO2 Economise"/>
+        <TextField fx:id="prixField" promptText="Prix"/>
+        <HBox alignment="CENTER">
+            <Button styleClass="button" text="Save" onAction="#onSave"/>
+            <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+        </HBox>
     </VBox>
     <VBox fx:id="addReservationForm" alignment="CENTER" styleClass="modal">
         <Label styleClass="text-title" text="Ajouter Reservation"/>
-        <TextField fx:id="prenomField" promptText="Prenom"/>
-        <TextField fx:id="nomField" promptText="Nom"/>
-        <TextField fx:id="emailField" promptText="Email"/>
-        <PasswordField fx:id="passwordField" promptText="Mot de passe"/>
-        <TextField fx:id="ageField" promptText="Age"/>
-        <MenuButton fx:id="governeratField" text="Governerat"/>
-        <TextField fx:id="villeField" promptText="Ville"/>
-        <TextField fx:id="telephoneField" promptText="Telephone"/>
-        <Button styleClass="button" text="Save" onAction="#onSave"/>
-        <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+        <MenuButton fx:id="trajetField" text="Trajet"/>
+        <MenuButton fx:id="passagerField" text="Passager"/>
+        <MenuButton fx:id="statusField" text="Status"/>
+        <HBox alignment="CENTER">
+            <Button styleClass="button" text="Save" onAction="#onSave"/>
+            <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+        </HBox>
     </VBox>
 
 </AnchorPane>

@@ -107,4 +107,12 @@ public class UserController implements HttpHandler {
     public User getUserById(int id) {
         return _serviceUser.getUserById(id);
     }
+
+    public User getUserByEmail(String email) {
+        return _serviceUser.getUserByEmail(email);
+    }
+
+    public User getUserByPrenomAndNom(String prenom, String nom) {
+        return _serviceUser.getUserByPrenomAndNom(prenom, nom);
+    }
 }

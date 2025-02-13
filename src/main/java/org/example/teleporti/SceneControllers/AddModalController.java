@@ -21,13 +21,36 @@ public class AddModalController {
     private final ReservationController reservationController = new ReservationController();
     private final TrajetController trajetController = new TrajetController();
 
+    // Variable de la form du reservation
     @FXML
-    protected VBox addUserForm = new VBox();
+    protected MenuButton trajetField;
     @FXML
-    protected VBox addTrajetForm = new VBox();
+    protected MenuButton passagerField;
     @FXML
-    protected VBox addReservationForm = new VBox();
+    protected MenuButton statusField;
 
+    @FXML
+    private VBox addUserForm = new VBox();
+    @FXML
+    private VBox addTrajetForm = new VBox();
+    @FXML
+    private VBox addReservationForm = new VBox();
+
+    // Variable de la form du trajet
+    @FXML
+    protected MenuButton conducteurField;
+    @FXML
+    protected MenuButton pointDepartField;
+    @FXML
+    protected MenuButton destinationField;
+    @FXML
+    protected TextField placesDisponiblesField;
+    @FXML
+    protected TextField co2EconomiseField;
+    @FXML
+    protected TextField prixField;
+
+    // Variable de la form du user
     @FXML
     private TextField prenomField;
     @FXML
@@ -52,15 +75,18 @@ public class AddModalController {
     @FXML
     private Reservation reservation = null;
 
-    private boolean isUserForm = false;
-    private boolean isTrajetForm = false;
-    private boolean isReservationForm = false;
+    @FXML
+    private boolean isUserForm;
+    @FXML
+    private boolean isTrajetForm;
+    @FXML
+    private boolean isReservationForm;
 
     @FXML
     public void initialize() {
-        user = User.empty();
-        trajet = Trajet.empty();
-        reservation = Reservation.empty();
+        isUserForm = false;
+        isTrajetForm = false;
+        isReservationForm = false;
         addUserForm.setVisible(false);
         addTrajetForm.setVisible(false);
         addReservationForm.setVisible(false);
@@ -72,18 +98,19 @@ public class AddModalController {
         isTrajetForm = false;
         isReservationForm = false;
         addUserForm.setVisible(true);
+        addTrajetForm.setVisible(false);
+        addReservationForm.setVisible(false);
+        user = User.empty();
         prenomField.setText("");
         nomField.setText("");
         emailField.setText("");
         passwordField.setText("");
         ageField.setText("");
-        governeratField.getItems().addAll(
-                Constants.locations.stream().map(location -> {
-                    MenuItem item = new MenuItem(location.getName());
-                    item.setOnAction(_ -> governeratField.setText(location.getName()));
-                    return item;
-                }).toArray(MenuItem[]::new)
-        );
+        governeratField.getItems().addAll(Constants.locations.stream().map(location -> {
+            MenuItem item = new MenuItem(location.getName());
+            item.setOnAction(_ -> governeratField.setText(location.getName()));
+            return item;
+        }).toArray(MenuItem[]::new));
         villeField.setText("");
         telephoneField.setText("");
     }
@@ -93,14 +120,56 @@ public class AddModalController {
         isTrajetForm = true;
         isReservationForm = false;
         isUserForm = false;
-        addUserForm.setVisible(true);
+        addUserForm.setVisible(false);
+        addTrajetForm.setVisible(true);
+        addReservationForm.setVisible(false);
+        trajet = Trajet.empty();
+        conducteurField.getItems().addAll(userController.getAllChauffeurs().stream().map(conducteur -> {
+            MenuItem item = new MenuItem(conducteur.getPrenom() + " " + conducteur.getNom());
+            item.setOnAction(_ -> conducteurField.setText(conducteur.getPrenom() + " " + conducteur.getNom()));
+            return item;
+        }).toArray(MenuItem[]::new));
+        pointDepartField.getItems().addAll(Constants.locations.stream().map(location -> {
+            MenuItem item = new MenuItem(location.getName());
+            item.setOnAction(_ -> pointDepartField.setText(location.getName()));
+            return item;
+        }).toArray(MenuItem[]::new));
+        destinationField.getItems().addAll(Constants.locations.stream().map(location -> {
+            MenuItem item = new MenuItem(location.getName());
+            item.setOnAction(_ -> destinationField.setText(location.getName()));
+            return item;
+        }).toArray(MenuItem[]::new));
+        placesDisponiblesField.setText("");
+        co2EconomiseField.setText("");
+        prixField.setText("");
     }
 
     public void setReservation() {
         isReservationForm = true;
         isTrajetForm = false;
         isUserForm = false;
-        addUserForm.setVisible(true);
+        addUserForm.setVisible(false);
+        addTrajetForm.setVisible(false);
+        addReservationForm.setVisible(true);
+        reservation = Reservation.empty();
+        trajetField.getItems().addAll(trajetController.getAllTrajets().stream().map(vtrajet -> {
+            MenuItem item = new MenuItem(vtrajet.getPointDepart() + " -> " + vtrajet.getDestination());
+            item.setOnAction(_ -> trajetField.setText(vtrajet.getPointDepart() + " -> " + vtrajet.getDestination()));
+            return item;
+        }).toArray(MenuItem[]::new));
+        passagerField.getItems().addAll(userController.getAllClients().stream().map(passager -> {
+            MenuItem item = new MenuItem(passager.getPrenom() + " " + passager.getNom());
+            item.setOnAction(_ -> passagerField.setText(passager.getPrenom() + " " + passager.getNom()));
+            return item;
+        }).toArray(MenuItem[]::new));
+        statusField.getItems().addAll(Constants.statuses.stream().map(status -> {
+            MenuItem item = new MenuItem(status);
+            item.setOnAction(_ -> statusField.setText(status));
+            return item;
+        }).toArray(MenuItem[]::new));
+        trajetField.setText("");
+        passagerField.setText("");
+        statusField.setText("");
     }
 
     @FXML
@@ -116,9 +185,28 @@ public class AddModalController {
             user.setTelephone(telephoneField.getText());
             userController.ajout(user);
         } else if (isTrajetForm) {
-            // TODO: Implement trajet form
+            trajet.setConducteurId(userController.getAllChauffeurs().stream().filter(conducteur -> {
+                String[] conducteurParts = conducteurField.getText().split(" ");
+                return conducteurParts.length == 2 && conducteur.getPrenom().equals(conducteurParts[0]) && conducteur.getNom().equals(conducteurParts[1]);
+            }).findFirst().map(User::getId).orElseThrow(() -> new IllegalArgumentException("Conducteur not found")));
+            trajet.setPointDepart(pointDepartField.getText());
+            trajet.setDestination(destinationField.getText());
+            trajet.setPlacesDisponibles(Integer.parseInt(placesDisponiblesField.getText()));
+            trajet.setCo2Economise(Integer.parseInt(co2EconomiseField.getText()));
+            trajet.setPrix(Integer.parseInt(prixField.getText()));
+            trajetController.ajout(trajet);
         } else if (isReservationForm) {
-            // TODO: Implement reservation form
+            reservation.setTrajetId(trajetController.getAllTrajets().stream().filter(vtrajet -> {
+                String[] trajetParts = trajetField.getText().split(" -> ");
+                return trajetParts.length == 2 && vtrajet.getPointDepart().equals(trajetParts[0]) && vtrajet.getDestination().equals(trajetParts[1]);
+            }).findFirst().map(Trajet::getId).orElseThrow(() -> new IllegalArgumentException("Trajet not found")));
+            reservation.setTrajetId(trajetController.getAllTrajets().stream().filter(vtrajet -> {
+                String[] trajetParts = trajetField.getText().split(" -> ");
+                return trajetParts.length == 2 && vtrajet.getPointDepart().equals(trajetParts[0]) && vtrajet.getDestination().equals(trajetParts[1]);
+            }).findFirst().orElseThrow(() -> new IllegalArgumentException("Trajet not found")).getId());
+            reservation.setPassagerId(userController.getUserByPrenomAndNom(passagerField.getText().split(" ")[0], passagerField.getText().split(" ")[1]).getId());
+            reservation.setStatus(statusField.getText());
+            reservationController.ajout(reservation);
         }
         closeModal();
     }
