@@ -127,9 +127,19 @@ public class EditModalController {
                     }).toArray(MenuItem[]::new)
             );
         }
-        conducteurs.setText(String.valueOf(userController.getUserById(selectedReservation.getTrajetId()).getPrenom()));
-        pointDepart.setText(String.valueOf(selectedReservation.getTrajetId()));
-        destination.setText(String.valueOf(userController.getUserById(selectedReservation.getPassagerId()).getPrenom()));
+        conducteurs.setText(userController.getAllChauffeurs()
+                .stream()
+                .filter(
+                        user -> {
+                            assert selectedReservation != null;
+                            return user.getId() == trajetController.getTrajetById(selectedReservation.getTrajetId()).getConducteurId();
+                        }
+                )
+                .findFirst()
+                .map(User::getPrenom)
+                .orElse(""));
+        pointDepart.setText(trajetController.getTrajetById(selectedReservation.getTrajetId()).getPointDepart());
+        destination.setText(trajetController.getTrajetById(selectedReservation.getTrajetId()).getDestination());
     }
 
     @FXML

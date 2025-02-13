@@ -95,4 +95,8 @@ public class TrajetController implements HttpHandler {
     public void createTrajetTable() {
         _serviceTrajet.createTrajetTable();
     }
+
+    public Trajet getTrajetById(int id) {
+        return _serviceTrajet.getTrajetById(id);
+    }
 }

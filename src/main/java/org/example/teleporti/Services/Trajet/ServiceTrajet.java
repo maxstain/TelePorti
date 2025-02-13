@@ -217,6 +217,33 @@ public class ServiceTrajet implements IServiceTrajet {
         return null;
     }
 
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public Trajet getTrajetById(int id) {
+        String req = "select * from trajets where id = " + id;
+        try {
+            ResultSet res = ste.executeQuery(req);
+            while (res.next()) {
+                return new Trajet(
+                        res.getInt("id"),
+                        res.getInt("conducteurId"),
+                        res.getString("pointDepart"),
+                        res.getString("destination"),
+                        res.getDate("dateHeure"),
+                        res.getInt("placesDisponibles"),
+                        res.getFloat("co2Economise"),
+                        res.getFloat("prix")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public Trajet rechercher(String newValue) {
         String req = "select * from trajets where pointDepart = '" + newValue + "'";
         try {

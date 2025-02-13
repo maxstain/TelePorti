@@ -21,4 +21,6 @@ public interface IServiceTrajet {
     Double countAvgRideCostByGovernerat(String governerat);
 
     List<Trajet> getAllTrajets();
+
+    Trajet getTrajetById(int id);
 }
