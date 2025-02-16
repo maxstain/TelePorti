@@ -174,41 +174,44 @@ public class AddModalController {
 
     @FXML
     public void onSave() {
-        if (isUserForm) {
-            user.setPrenom(prenomField.getText());
-            user.setNom(nomField.getText());
-            user.setEmail(emailField.getText());
-            user.setMotDePasse(passwordField.getText());
-            user.setAge(Integer.parseInt(ageField.getText()));
-            user.setGovernerat(governeratField.getText());
-            user.setVille(villeField.getText());
-            user.setTelephone(telephoneField.getText());
-            userController.ajout(user);
-        } else if (isTrajetForm) {
-            trajet.setConducteurId(userController.getAllChauffeurs().stream().filter(conducteur -> {
-                String[] conducteurParts = conducteurField.getText().split(" ");
-                return conducteurParts.length == 2 && conducteur.getPrenom().equals(conducteurParts[0]) && conducteur.getNom().equals(conducteurParts[1]);
-            }).findFirst().map(User::getId).orElseThrow(() -> new IllegalArgumentException("Conducteur not found")));
-            trajet.setPointDepart(pointDepartField.getText());
-            trajet.setDestination(destinationField.getText());
-            trajet.setPlacesDisponibles(Integer.parseInt(placesDisponiblesField.getText()));
-            trajet.setCo2Economise(Integer.parseInt(co2EconomiseField.getText()));
-            trajet.setPrix(Integer.parseInt(prixField.getText()));
-            trajetController.ajout(trajet);
-        } else if (isReservationForm) {
-            reservation.setTrajetId(trajetController.getAllTrajets().stream().filter(vtrajet -> {
-                String[] trajetParts = trajetField.getText().split(" -> ");
-                return trajetParts.length == 2 && vtrajet.getPointDepart().equals(trajetParts[0]) && vtrajet.getDestination().equals(trajetParts[1]);
-            }).findFirst().map(Trajet::getId).orElseThrow(() -> new IllegalArgumentException("Trajet not found")));
-            reservation.setTrajetId(trajetController.getAllTrajets().stream().filter(vtrajet -> {
-                String[] trajetParts = trajetField.getText().split(" -> ");
-                return trajetParts.length == 2 && vtrajet.getPointDepart().equals(trajetParts[0]) && vtrajet.getDestination().equals(trajetParts[1]);
-            }).findFirst().orElseThrow(() -> new IllegalArgumentException("Trajet not found")).getId());
-            reservation.setPassagerId(userController.getUserByPrenomAndNom(passagerField.getText().split(" ")[0], passagerField.getText().split(" ")[1]).getId());
-            reservation.setStatus(statusField.getText());
-            reservationController.ajout(reservation);
+        try {
+            if (isUserForm) {
+                user.setPrenom(prenomField.getText());
+                user.setNom(nomField.getText());
+                user.setEmail(emailField.getText());
+                user.setMotDePasse(passwordField.getText());
+                user.setAge(Integer.parseInt(ageField.getText()));
+                user.setGovernerat(governeratField.getText());
+                user.setVille(villeField.getText());
+                user.setTelephone(telephoneField.getText());
+                userController.ajout(user);
+            } else if (isTrajetForm) {
+                String conducteurText = conducteurField.getText();
+                System.out.println("Conducteur Field Text: " + conducteurText);
+                trajet.setConducteurId(userController.getAllChauffeurs().stream().filter(conducteur -> {
+                    String[] conducteurParts = conducteurText.split(" ");
+                    return conducteurParts.length == 2 && conducteur.getPrenom().equals(conducteurParts[0]) && conducteur.getNom().equals(conducteurParts[1]);
+                }).findFirst().map(User::getId).orElseThrow(() -> new IllegalArgumentException("Conducteur not found")));
+                trajet.setPointDepart(pointDepartField.getText());
+                trajet.setDestination(destinationField.getText());
+                trajet.setPlacesDisponibles(Integer.parseInt(placesDisponiblesField.getText()));
+                trajet.setCo2Economise(Integer.parseInt(co2EconomiseField.getText()));
+                trajet.setPrix(Integer.parseInt(prixField.getText()));
+                trajetController.ajout(trajet);
+            } else if (isReservationForm) {
+                reservation.setTrajetId(trajetController.getAllTrajets().stream().filter(vtrajet -> {
+                    String[] trajetParts = trajetField.getText().split(" -> ");
+                    return trajetParts.length == 2 && vtrajet.getPointDepart().equals(trajetParts[0]) && vtrajet.getDestination().equals(trajetParts[1]);
+                }).findFirst().map(Trajet::getId).orElseThrow(() -> new IllegalArgumentException("Trajet not found")));
+                reservation.setPassagerId(userController.getUserByPrenomAndNom(passagerField.getText().split(" ")[0], passagerField.getText().split(" ")[1]).getId());
+                reservation.setStatus(statusField.getText());
+                reservationController.ajout(reservation);
+            }
+            closeModal();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Optionally, show an error message to the user
         }
-        closeModal();
     }
 
     @FXML
