@@ -96,73 +96,58 @@ public class EditModalController {
 
     @FXML
     void setReservation(Reservation selectedReservation) {
+        System.out.println("selectedReservation = " + selectedReservation);
         this.selectedReservation = selectedReservation;
         if (selectedReservation != null) {
             reservationForm.setVisible(true);
-            trajetField.getItems().addAll(
-                    trajetController.getAllTrajets().stream().map(newTrajet -> {
-                        MenuItem item = new MenuItem(newTrajet.getPointDepart() + " -> " + newTrajet.getDestination());
-                        item.setOnAction(_ -> {
-                            trajetField.setText(newTrajet.getPointDepart() + " -> " + newTrajet.getDestination());
-                            this.trajet = newTrajet;
-                        });
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            passagerField.getItems().addAll(
-                    userController.getAllClients().stream().map(Vuser -> {
-                        MenuItem item = new MenuItem(Vuser.getPrenom() + " " + Vuser.getNom());
-                        item.setOnAction(_ -> {
-                            passagerField.setText(Vuser.getPrenom() + " " + Vuser.getNom());
-                            selectedClient = Vuser;
-                        });
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            statusField.getItems().addAll(
-                    Constants.statuses.stream().map(status -> {
-                        MenuItem item = new MenuItem(status);
-                        item.setOnAction(_ -> statusField.setText(status));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
+            trajet = trajetController.getTrajetById(selectedReservation.getTrajetId());
+            trajetField.getItems().addAll(trajetController.getAllTrajets().stream().map(newTrajet -> {
+                MenuItem item = new MenuItem(newTrajet.getPointDepart() + " -> " + newTrajet.getDestination());
+                item.setOnAction(_ -> {
+                    trajetField.setText(newTrajet.getPointDepart() + " -> " + newTrajet.getDestination());
+                    trajet = newTrajet;
+                });
+                return item;
+            }).toArray(MenuItem[]::new));
+            passagerField.getItems().addAll(userController.getAllClients().stream().map(user -> {
+                MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
+                item.setOnAction(_ -> {
+                    passagerField.setText(user.getPrenom() + " " + user.getNom());
+                    selectedClient = user;
+                });
+                return item;
+            }).toArray(MenuItem[]::new));
+            statusField.getItems().addAll(Constants.statuses.stream().map(status -> {
+                MenuItem item = new MenuItem(status);
+                item.setOnAction(_ -> statusField.setText(status));
+                return item;
+            }).toArray(MenuItem[]::new));
+        } else {
+            trajetField.getItems().clear();
+            passagerField.getItems().clear();
+            statusField.getItems().clear();
         }
-        conducteurs.setText(userController.getAllChauffeurs()
-                .stream()
-                .filter(
-                        user -> {
-                            assert selectedReservation != null;
-                            return user.getId() == trajetController.getTrajetById(selectedReservation.getTrajetId()).getConducteurId();
-                        }
-                )
-                .findFirst()
-                .map(User::getPrenom)
-                .orElse(""));
-        pointDepart.setText(trajetController.getTrajetById(selectedReservation.getTrajetId()).getPointDepart());
-        destination.setText(trajetController.getTrajetById(selectedReservation.getTrajetId()).getDestination());
+        passagerField.setText(userController.getUserById(selectedReservation.getPassagerId()).getPrenom()
+                + " " + userController.getUserById(selectedReservation.getPassagerId()).getNom());
+        trajetField.setText(trajet.getPointDepart() + " -> " + trajet.getDestination());
+        statusField.setText(selectedReservation.getStatus());
     }
 
     @FXML
     public void setCurrentUser(User user) {
         this.currentUser = user;
         if (currentUser.getType().equals("Admin")) {
-            typeField.getItems().addAll(
-                    Constants.roles.stream().map(role -> {
-                        MenuItem item = new MenuItem(role);
-                        item.setOnAction(_ -> typeField.setText(role));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
+            typeField.getItems().addAll(Constants.roles.stream().map(role -> {
+                MenuItem item = new MenuItem(role);
+                item.setOnAction(_ -> typeField.setText(role));
+                return item;
+            }).toArray(MenuItem[]::new));
         } else {
-            typeField.getItems().addAll(
-                    Constants.roles.stream()
-                            .filter(role -> role.equals("Chauffeur") || role.equals("Client"))
-                            .map(role -> {
-                                MenuItem item = new MenuItem(role);
-                                item.setOnAction(_ -> typeField.setText(role));
-                                return item;
-                            }).toArray(MenuItem[]::new)
-            );
+            typeField.getItems().addAll(Constants.roles.stream().filter(role -> role.equals("Chauffeur") || role.equals("Client")).map(role -> {
+                MenuItem item = new MenuItem(role);
+                item.setOnAction(_ -> typeField.setText(role));
+                return item;
+            }).toArray(MenuItem[]::new));
         }
     }
 
@@ -171,30 +156,24 @@ public class EditModalController {
         this.selectedTrajet = trajet;
         if (selectedTrajet != null) {
             trajetForm.setVisible(true);
-            conducteurs.getItems().addAll(
-                    userController.getAllChauffeurs().stream().map(user -> {
-                        MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
-                        item.setOnAction(_ -> {
-                            conducteurs.setText(user.getPrenom() + " " + user.getNom());
-                            selectedConducteur = user;
-                        });
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            pointDepart.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> pointDepart.setText(location.getName()));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            destination.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> destination.setText(location.getName()));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
+            conducteurs.getItems().addAll(userController.getAllChauffeurs().stream().map(user -> {
+                MenuItem item = new MenuItem(user.getPrenom() + " " + user.getNom());
+                item.setOnAction(_ -> {
+                    conducteurs.setText(user.getPrenom() + " " + user.getNom());
+                    selectedConducteur = user;
+                });
+                return item;
+            }).toArray(MenuItem[]::new));
+            pointDepart.getItems().addAll(Constants.locations.stream().map(location -> {
+                MenuItem item = new MenuItem(location.getName());
+                item.setOnAction(_ -> pointDepart.setText(location.getName()));
+                return item;
+            }).toArray(MenuItem[]::new));
+            destination.getItems().addAll(Constants.locations.stream().map(location -> {
+                MenuItem item = new MenuItem(location.getName());
+                item.setOnAction(_ -> destination.setText(location.getName()));
+                return item;
+            }).toArray(MenuItem[]::new));
         }
         conducteurs.setText(String.valueOf(userController.getUserById(trajet.getConducteurId()).getPrenom()));
         pointDepart.setText(trajet.getPointDepart());
@@ -210,20 +189,16 @@ public class EditModalController {
         this.user = user;
         if (user != null) {
             userForm.setVisible(true);
-            governeratField.getItems().addAll(
-                    Constants.locations.stream().map(location -> {
-                        MenuItem item = new MenuItem(location.getName());
-                        item.setOnAction(_ -> governeratField.setText(location.getName()));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
-            typeField.getItems().addAll(
-                    Constants.roles.stream().map(role -> {
-                        MenuItem item = new MenuItem(role);
-                        item.setOnAction(_ -> typeField.setText(role));
-                        return item;
-                    }).toArray(MenuItem[]::new)
-            );
+            governeratField.getItems().addAll(Constants.locations.stream().map(location -> {
+                MenuItem item = new MenuItem(location.getName());
+                item.setOnAction(_ -> governeratField.setText(location.getName()));
+                return item;
+            }).toArray(MenuItem[]::new));
+            typeField.getItems().addAll(Constants.roles.stream().map(role -> {
+                MenuItem item = new MenuItem(role);
+                item.setOnAction(_ -> typeField.setText(role));
+                return item;
+            }).toArray(MenuItem[]::new));
         }
         prenomField.setText(user.getPrenom());
         nomField.setText(user.getNom());
