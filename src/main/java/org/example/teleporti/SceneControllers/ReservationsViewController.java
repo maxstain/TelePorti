@@ -189,9 +189,9 @@ public class ReservationsViewController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_RESERVATION_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
-            EditModalController controller = loader.getController();
+            EditReservationModalController controller = loader.getController();
             controller.setReservation(reservation);
             controller.setCurrentUser(currentUser);
             Stage stage = new Stage();

@@ -74,9 +74,9 @@ public class ProfileViewController {
     @FXML
     private void openEditModal() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_USER_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
-            EditModalController controller = loader.getController();
+            EditUserModalController controller = loader.getController();
             controller.setUser(currentUser);
             controller.setCurrentUser(currentUser);
             Stage stage = new Stage();

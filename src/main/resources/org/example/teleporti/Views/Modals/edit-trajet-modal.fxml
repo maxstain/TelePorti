@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            stylesheets="@../../Styles/Modals.css"
+            fx:controller="org.example.teleporti.SceneControllers.EditTrajetModalController"
+            prefWidth="600.0">
+
+    <VBox fx:id="trajetForm" alignment="CENTER" styleClass="modal">
+        <Label styleClass="text-title" text="Edit"/>
+        <MenuButton fx:id="conducteurs" text="Conducteurs"/>
+        <MenuButton fx:id="pointDepart" text="Point Départ"/>
+        <MenuButton fx:id="destination" text="destination"/>
+        <DatePicker fx:id="dateHeure" promptText="Date et Heure"/>
+        <TextField fx:id="placesDisponibles" promptText="Places Disponibles"/>
+        <TextField fx:id="co2Economise" promptText="co2 Economisé"/>
+        <TextField fx:id="prix" promptText="Prix"/>
+        <Button styleClass="button" text="Save" onAction="#onSave"/>
+        <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+    </VBox>
+    
+</AnchorPane>

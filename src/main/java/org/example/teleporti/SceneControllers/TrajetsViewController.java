@@ -145,9 +145,9 @@ public class TrajetsViewController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_TRAJET_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
-            EditModalController controller = loader.getController();
+            EditTrajetModalController controller = loader.getController();
             controller.setTrajet(selectedTrajet);
             controller.setCurrentUser(currentUser);
             Stage stage = new Stage();

@@ -183,9 +183,9 @@ public class UsersViewController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_MODAL_VIEW));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Router.EDIT_USER_MODAL_VIEW));
             Scene scene = new Scene(loader.load());
-            EditModalController controller = loader.getController();
+            EditUserModalController controller = loader.getController();
             controller.setUser(user);
             controller.setCurrentUser(currentUser);
             Stage stage = new Stage();

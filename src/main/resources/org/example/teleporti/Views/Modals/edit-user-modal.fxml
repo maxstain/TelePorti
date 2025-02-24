@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            stylesheets="@../../Styles/Modals.css"
+            fx:controller="org.example.teleporti.SceneControllers.EditUserModalController"
+            prefWidth="600.0">
+
+    <VBox fx:id="userForm" alignment="CENTER" styleClass="modal">
+        <Label styleClass="text-title" text="Edit"/>
+        <TextField fx:id="prenomField" promptText="Prenom"/>
+        <TextField fx:id="nomField" promptText="Nom"/>
+        <TextField fx:id="emailField" promptText="Email"/>
+        <TextField fx:id="passwordField" promptText="Mot de passe"/>
+        <MenuButton fx:id="typeField" text="Type"/>
+        <TextField fx:id="ageField" promptText="Age"/>
+        <MenuButton fx:id="governeratField" text="Governerat"/>
+        <TextField fx:id="villeField" promptText="Ville"/>
+        <TextField fx:id="addressField" promptText="Addresse"/>
+        <TextField fx:id="telephoneField" promptText="Telephone"/>
+        <Button styleClass="button" text="Save" onAction="#onSave"/>
+        <Button styleClass="button" text="Cancel" onAction="#onCancel"/>
+    </VBox>
+
+</AnchorPane>
