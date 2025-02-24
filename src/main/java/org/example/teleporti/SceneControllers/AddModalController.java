@@ -203,7 +203,11 @@ public class AddModalController {
                     String[] trajetParts = trajetField.getText().split(" -> ");
                     return trajetParts.length == 2 && vtrajet.getPointDepart().equals(trajetParts[0]) && vtrajet.getDestination().equals(trajetParts[1]);
                 }).findFirst().map(Trajet::getId).orElseThrow(() -> new IllegalArgumentException("Trajet not found")));
-                reservation.setPassagerId(userController.getUserByPrenomAndNom(passagerField.getText().split(" ")[0], passagerField.getText().split(" ")[1]).getId());
+                if (passagerField.getText().trim().split(" ").length <= 2) {
+                    reservation.setPassagerId(userController.getUserByPrenomAndNom(passagerField.getText().trim().split(" ")[0], passagerField.getText().trim().split(" ")[1]).getId());
+                } else {
+                    reservation.setPassagerId(userController.getUserByPrenomAndNom(passagerField.getText().trim().split(" ")[0], passagerField.getText().trim().split(" ")[1] + " " + passagerField.getText().trim().split(" ")[2]).getId());
+                }
                 System.out.println(reservation.getPassagerId());
                 reservation.setStatus(statusField.getText());
                 reservationController.ajout(reservation);
