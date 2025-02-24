@@ -210,7 +210,6 @@ public class AddModalController {
             closeModal();
         } catch (Exception e) {
             e.printStackTrace();
-            // Optionally, show an error message to the user
         }
     }
 
