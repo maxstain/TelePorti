@@ -1,19 +1,14 @@
 package org.example.teleporti.SceneControllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
 import org.example.teleporti.Controllers.UserController;
 import org.example.teleporti.Entities.User;
 import org.example.teleporti.Utils.EmailVerification;
 import org.example.teleporti.Utils.Router;
-
-import java.io.IOException;
 
 public class SignupViewController {
 
