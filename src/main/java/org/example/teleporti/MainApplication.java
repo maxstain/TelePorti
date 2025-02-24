@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.teleporti.Controllers.AuthController;
-import org.example.teleporti.Utils.TeleportiServer;
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 
 import java.io.IOException;
@@ -19,7 +18,6 @@ import java.util.prefs.Preferences;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        TeleportiServer.startServer();
         Preferences prefs = Preferences.userNodeForPackage(MainApplication.class);
         String sessionToken = prefs.get("sessionToken", null);
 
